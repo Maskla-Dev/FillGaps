@@ -8,12 +8,12 @@ Se puede encontrar más información del proyecto en la entrada principal de la 
 1. [Estructura del proyecto](#estructura-del-proyecto)
 2. [Tecnologías](#tecnologías)
 3. [Reglas y convenciones de desarrollo](#reglas-y-convenciones-de-desarrollo)
-   1. [Convenciones en manipulación del repositorio](#convenciones-en-manipulación-del-repositorio)
-   2. [Workflow del desarrollador](#workflow-del-desarrollador)
-   3. [Convenciones de código](#convenciones-de-codigo)
-   4. [Convenciones del frontend](#convenciones-del-frontend)
-      1. [Librerías](#librerías)
-   5. [Convenciones del backend](#convenciones-del-backend)
+    1. [Convenciones en manipulación del repositorio](#convenciones-en-manipulación-del-repositorio)
+    2. [Workflow del desarrollador](#workflow-del-desarrollador)
+    3. [Convenciones de código](#convenciones-de-codigo)
+    4. [Convenciones del frontend](#convenciones-del-frontend)
+        1. [Librerías](#librerías)
+    5. [Convenciones del backend](#convenciones-del-backend)
 # Estructura del proyecto
 
 El proyecto se encuentra dividido en dos carpetas principales:
@@ -29,7 +29,7 @@ Las tecnologías utilizadas en el proyecto son:
 - **Backend**: _Por definir_
 - **Frontend**: [ReactJS](https://react.dev), [TailwindCSS](https://tailwindcss.com), [TypeScript](https://www.typescriptlang.org)
   y [Vite](https://vitejs.dev)
-- **Base de datos**: [MongoDB](https://www.mongodb.com)
+- **Base de datos**: [PostgreSQL](https://www.postgresql.org)
 
 Las herramientas utilizadas en el proceso de desarrollo son:
 
@@ -37,9 +37,8 @@ Las herramientas utilizadas en el proceso de desarrollo son:
 - [Drawio](https://app.diagrams.net): Elaboración de diagramas y esquemas.
 - [Worki](https://cliente.tuneupprocess.com/web/): Gestión y administración del proyecto y equipo de trabajo.
 
-Se recomienda utilizar [JetBrains WebStorm](https://www.jetbrains.com/webstorm/) como IDE para el desarrollo frontend
-del proyecto y [_por definir_](#) para el desarrollo backend, [Visual Studio Code](https://code.visualstudio.com) es una
-alternativa viable para ambos casos. Se recomienda manipular el repositorio remoto y local a través de una GUI.
+Se recomienda utilizar [Intellij IDEA](https://www.jetbrains.com/idea/) para el desarrollo del proyecto, [Visual Studio Code](https://code.visualstudio.com) es una
+alternativa viable. Se recomienda manipular el repositorio remoto y local a través de una GUI.
 
 # Reglas y convenciones de desarrollo
 
@@ -64,8 +63,7 @@ alternativa viable para ambos casos. Se recomienda manipular el repositorio remo
       el desarrollo del proyecto.
 - **Branches**: Cada desarrollador trabaja sobre su propia rama, existen 3 tipos de ramas, las cuales se describen a
   continuación:
-    - **main**: Rama principal del proyecto (única rama durante la vida del proyecto), contiene los avances globales del
-      proyecto.
+    - **main**: Rama principal del proyecto, contiene los avances globales del proyecto.
     - **sprint**: Rama de desarrollo, contiene los avances del sprint actual. Se crean tantas ramas como sprints. Cuando
       termina un sprint, se crea una nueva rama `sprint` y se elimina la rama `sprint` anterior en el proceso
       de [fusión de ramas](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging).
@@ -87,7 +85,7 @@ alternativa viable para ambos casos. Se recomienda manipular el repositorio remo
 
 ## Workflow del desarrollador
 
-Este repositorio tiene injerencia en las áreas de producción (implementación y pruebas), por lo que el flujo de trabajo
+Este repositorio tiene injerencia en las áreas de producción (implementación y pruebas), por lo que, el flujo de trabajo
 propuesto para la correcta gestión de los cambios en el proyecto esta determinada por la metodología _Tune-Up Process_.
 Se enlistan los pasos ideales a continuación:
 
@@ -97,23 +95,28 @@ Se enlistan los pasos ideales a continuación:
 ![Primer paso](Docs/Support%20images/flujo1.png)
 ![Segundo paso](Docs/Support%20images/flujo2.png)
 ![Tercer paso](Docs/Support%20images/flujo3.png)
+
 2. El desarrollador códifica la implementación de las UT asignadas. Se recomienda que al terminar una funcionalidad se
    realice un commit.
 
 ![Cuarto paso](Docs/Support%20images/flujo4.png)
+
 3. El desarrollador realiza commits para guardar su trabajo según
    la [convención establecida](#reglas-y-convenciones-de-desarrollo).
 4. Se realiza el pull request de la rama del desarrollador a la rama sprint.
 
 ![Quinto paso](Docs/Support%20images/flujo5.png)
+
 5. Se realizan pruebas unitarias de la UT.
 6. Cuando el pull request es aprobado, se realiza la fusión de la rama del desarrollador a la rama sprint
 
 ![Sexto paso](Docs/Support%20images/flujo6.png)
+
 7. Una vez fusionadas todas las ramas de los desarrolladores a la rama sprint, se realiza pull request a la rama main.
 
 ![Séptimo paso](Docs/Support%20images/flujo7.png)
-8. Se realizan pruebas de integración y de aceptación
+
+8. Se realizan pruebas de integración y de aceptación.
 9. Cuando el pull request es aprobado, se realiza la fusión de la rama sprint a la rama main.
 10. Se crea la tag correspondiente a la versión del proyecto.
 
