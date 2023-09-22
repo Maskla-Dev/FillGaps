@@ -26,10 +26,10 @@ El proyecto se encuentra dividido en dos carpetas principales:
 
 Las tecnologías utilizadas en el proyecto son:
 
-- **Backend**: _Por definir_
+- **Backend**: [Spring Boot](https://spring.io/)
 - **Frontend**: [ReactJS](https://react.dev), [TailwindCSS](https://tailwindcss.com), [TypeScript](https://www.typescriptlang.org)
   y [Vite](https://vitejs.dev)
-- **Base de datos**: [PostgreSQL](https://www.postgresql.org)
+- **Base de datos**: [MySQL](https://www.mysql.com/)
 
 Las herramientas utilizadas en el proceso de desarrollo son:
 
@@ -127,26 +127,27 @@ El flujo ideal se puede romper por diversas situaciones, a continuación se enli
 tomar:
 
 - **No se pasan las pruebas unitarias (punto 5)**: Se rechazará el pull request, el desarrollador deberá corregir los
-  errores. y realizar un nuevo pull request.
+  errores. y realizará un nuevo pull request.
 - **No se pasan las pruebas de integración o de aceptación (punto 8)**: Se rechazará el pull request, los
-  desarrolladores deberán corregir los errores (sobre la rama sprint) y realizar un nuevo pull request.
+  desarrolladores deberán corregir los errores y realizar un nuevo pull request.
 - **No hay suficiente tiempo para corregir errores (puntos 5 y 8)**: Se aceptará el pull request añadiendo comentarios y
-  levantando issues para corregir los errores en el siguiente sprint.
-- **Hotfixes**: Al ser correcciones de prioridad alta podrán pasar directamente a un pull request a la rama main, se
-  recomienda que el desarrollador que realice el hotfix sea el mismo que realizó la implementación de la UT.
+  añadiendo issues para corregir los errores en el siguiente sprint.
+- **Hotfixes**: Al ser correcciones de prioridad alta podrán pasar directamente a un pull request a la rama main desde una rama dedicada a ella, se
+  recomienda que el desarrollador que realice el hotfix sea el mismo que realizó la integración de las UT que presentan fallas.
 ## Convenciones de codigo
 
 - **Nomenclatura y formato**: Se utilizará la nomenclatura [camelCase](https://en.wikipedia.org/wiki/Camel_case) para
   nombrar funciones, métodos y macros. Se utilizará la
   nomenclatura [PascalCase](https://en.wikipedia.org/wiki/PascalCase) para nombrar componentes, clases, interfaces y
   estructuras. Se utilizará la nomenclatura [snake_case](https://en.wikipedia.org/wiki/Snake_case) para nombrar
-  variables, constantes (mayúsculas) y atributos. Para el formato de código, se recomienda utilizar el patrón del
+  variables, constantes (en mayúsculas) y atributos. Para el formato de código, se recomienda utilizar el patrón del
   siguiente ejemplo:
 
 ```Javascript
 // Ejemplo de nomenclatura y formato en javascript
 const MAXIMO_NUMERO = 10;
 
+// Objetos en javascript no son constantes
 const EjemploObjeto = {
     ejemplo_atributo: 0,
     ejemploAtributoFuncion: ( parametro_nuevo ) => {
@@ -240,7 +241,7 @@ class DesoperacionalizadorCatodico{
 
 - **Idioma**: _Por definir, tal vez sea ingles..._
 
-Tratar de seguir los diseños estructurales de cada modelo, componente, clase, interfaz y estructura de los distintos modelos.
+Tratar de seguir los diseños estructurales de cada modelo que describen componentes, clases e interfaces.
 ## Convenciones del frontend
 La estructura del proyecto frontend se basa en el patrón de diseño [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/), el cual se basa en la creación de componentes atómicos que se van agrupando en componentes más complejos. La estructura del proyecto se basa en la siguiente jerarquía:
 - **Atoms**: Contiene los componentes más básicos y simples del proyecto, como botones, inputs, etc.
@@ -249,10 +250,11 @@ La estructura del proyecto frontend se basa en el patrón de diseño [Atomic Des
 - **Pages**: Contiene componentes que se componen de componentes orgánicos, moleculares y atómicos, como la página de inicio, etc.
 - **Templates**: Contiene componentes que se componen de componentes de cualquier tipo, como la plantilla de la página, etc.
 
-Muchas de las abstracciones pueden tener dependencias con otras abstracciones que no encajan con la jerarquía planteada, por ejemplo, un componente orgánico puede tener dependencia con agentes (clases u objetos) dedicados a la abstracción de la lógica de negocio. Inclusive la generalización de funcionalidades mediante hooks puede crear estas situaciones. Para ello se recomienda alojar estas abstracciones en la carpeta **utils**.
-La carpeta **assets** contiene los recursos utilizados en el proyecto, como imágenes, fuentes, etc. Serán anexados a la carpeta **public** al momento de la compilación.
+Muchas de las abstracciones pueden tener dependencias con otras abstracciones que no encajan con la jerarquía planteada, por ejemplo, un componente orgánico puede tener dependencia con agentes (clases u objetos) dedicados a la abstracción de cierta lógica. Inclusive la generalización de funcionalidades mediante hooks puede crear estas situaciones. Para ello se recomienda alojar estas abstracciones en la carpeta **utils**.
+La carpeta **assets** contiene los recursos estáticos utilizados en el proyecto, como imágenes, fuentes, etc. Serán anexados a la carpeta **public** al momento de la compilación.
 ### Librerías
 Las siguientes librerias adicionales son utilizadas en el proyecto:
 - **React Router**: Librería para el manejo de rutas en React.
+- **Redux**: Librería para el manejo de estado de la aplicación.
 
 ## Convenciones del backend
