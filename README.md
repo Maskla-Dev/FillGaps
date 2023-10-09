@@ -26,7 +26,7 @@ El proyecto se encuentra dividido en dos carpetas principales:
 
 Las tecnologías utilizadas en el proyecto son:
 
-- **Backend**: [Spring Boot](https://spring.io/)
+- **Backend**: [Django](https://www.djangoproject.com)
 - **Frontend**: [ReactJS](https://react.dev), [TailwindCSS](https://tailwindcss.com), [TypeScript](https://www.typescriptlang.org)
   y [Vite](https://vitejs.dev)
 - **Base de datos**: [MySQL](https://www.mysql.com/)
@@ -37,8 +37,10 @@ Las herramientas utilizadas en el proceso de desarrollo son:
 - [Drawio](https://app.diagrams.net): Elaboración de diagramas y esquemas.
 - [Worki](https://cliente.tuneupprocess.com/web/): Gestión y administración del proyecto y equipo de trabajo.
 
-Se recomienda utilizar [Intellij IDEA](https://www.jetbrains.com/idea/) para el desarrollo del proyecto, [Visual Studio Code](https://code.visualstudio.com) es una
-alternativa viable. Se recomienda manipular el repositorio remoto y local a través de una GUI.
+Se recomienda utilizar [PyCharm](https://www.jetbrains.com/es-es/pycharm/) para el desarrollo del proyecto, ya que, 
+el proyecto contiene scripts y configuraciones para el manejo del proyecto en este IDE. [Visual Studio Code](https://code.visualstudio.com) es una
+alternativa viable, se recomienda crear configuraciones y scripts para la automatización de despliegue del servidor de
+desarrollo.
 
 # Reglas y convenciones de desarrollo
 

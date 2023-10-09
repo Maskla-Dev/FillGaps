@@ -75,28 +75,26 @@ eliminación total de un canal y su contenido, cuando esta
 acción ocurre, en realidad se archiva la información. Por lo que es necesario proveer herramientas para la recuperación
 de la información. El análisis de flujo de datos en el chat de manera global también es importante.
 
-| Código | Requisito                                          | Descripción                                                                                                                                                                                                                               | UT   |
-|--------|----------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------|
-| C001   | **Gestión de canales de comunicación**             | Se requieren canales para cada sección del museo y uno general. Así mismo, es posible crear otros canales para grupos de trabajo o actividades específicas, estos canales pueden ser eliminados comodificados (en metadatos).             | 3064 |
-| C002   | **Envío de mensajes**                              | Cualquier empleado puede comunicarse con otro, basta con seleccionar un empleado que esté laborando en el museo y enviar un mensaje con alguno de los siguientes contenidos: <del>voz</del>, <del>video</del>, texto, imágenes y archivos | 3040 |
-| C003   | **Estadísticas de uso de chat**                    | El encargado de sistemas informáticos puede obtener estadísticas del uso del servicio de chat. A través de opciones de filtrado se pueden visualizar la información y gráficos.                                                           |      |
-| C004   | **Visualización y recuperación de chat archivado** | El encargado de sistemas informáticos puede recuperar la información archivada                                                                                                                                                            |      |
+| Requisito                                          | Descripción                                                                                                                                                                                                                               | UT   |
+|----------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------|
+| **Gestión de canales de comunicación**             | Se requieren canales para cada sección del museo y uno general. Así mismo, es posible crear otros canales para grupos de trabajo o actividades específicas, estos canales pueden ser eliminados comodificados (en metadatos).             | 3064 |
+| **Envío de mensajes**                              | Cualquier empleado puede comunicarse con otro, basta con seleccionar un empleado que esté laborando en el museo y enviar un mensaje con alguno de los siguientes contenidos: <del>voz</del>, <del>video</del>, texto, imágenes y archivos | 3040 |
+| **Estadísticas de uso de chat**                    | El encargado de sistemas informáticos puede obtener estadísticas del uso del servicio de chat. A través de opciones de filtrado se pueden visualizar la información y gráficos.                                                           |      |
+| **Visualización y recuperación de chat archivado** | El encargado de sistemas informáticos puede recuperar la información archivada                                                                                                                                                            |      |
 
-### Planificador de actividades, evaluaciones y recepción de reportes
+### Planificador de tareas
 
 Permite que la coordinación entre empleados sea fluida, ayudando a liberar la carga del chat al ser más directo y
 especifico en la comunicación.
 
-| Código | Requisito                                                       | Descripción                                                                                                                                                                       | UTs |
-|--------|-----------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----|
-| C005   | **Solicitud de tareas**                                         | Cualquier encargado planifica tareas con sus empleados, desde tareas específicas del cargo hasta capacitaciones.                                                                  |     |
-| C006   | **Reporte de tareas**                                           | El empleado atiende las tareas planificadas por los encargados y genera un reporte                                                                                                |
-| C007   | **Creador peticiones**                                          | De la misma forma que un encargado puede realizar tareas, entre encargados del área pueden crear peticiones de actividades a realizar.                                            |     |
-| C008   | **Reportes del patrimonio cultural**                            | Cualquier empleado puede reportar anomalias del patrimonio cultural del recinto                                                                                                   |     |
-| C009   | **Estadísticas e histórico de tareas generadas**                | Los encargados pueden visualizar actividades realizadas en el pasado y obtener estadísticas con facilidades de filtrado                                                           |     |
-| C010   | **Estadísticas e hitórico de reportes del patrimonio cultural** | El encargado de los conservadores y restauradores pueden visualiza actividades reportes realizados en el pasado y obtener estadísticas en base a ello con facilidades de filtrado |     |
-| C011   | **Evaluaciones del personal**                                   | Cualquier encargado puede generar evaluaciones del personal de su área y calificarlo. En este sentido, el empleado atiende la evaluación.                                         |     |
-| C012   | **Estadísticas e histórico de evaluaciones**                    | El encargado puede visualizar las evaluaciones del pasado y obtener estadísticas con facilidades de filtrado                                                                      |     |
+| Requisito                                        | Descripción                                                                                                                               | UTs |
+|--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|-----|
+| **Solicitud de tareas**                          | Cualquier encargado planifica tareas con sus empleados, desde tareas específicas del cargo hasta capacitaciones.                          |     |
+| **Reporte de tareas**                            | El empleado atiende las tareas planificadas por los encargados y genera un reporte                                                        |     |
+| **Creador peticiones**                           | De la misma forma que un encargado puede realizar tareas, entre encargados del área pueden crear peticiones de actividades a realizar.    |     |
+| **Estadísticas e histórico de tareas generadas** | Los encargados pueden visualizar actividades realizadas en el pasado y obtener estadísticas con facilidades de filtrado                   |     |
+| **Evaluaciones del personal**                    | Cualquier encargado puede generar evaluaciones del personal de su área y calificarlo. En este sentido, el empleado atiende la evaluación. |     |
+| **Estadísticas e histórico de evaluaciones**     | El encargado puede visualizar las evaluaciones del pasado y obtener estadísticas con facilidades de filtrado                              |     |
 
 ## Operatividad
 
@@ -104,10 +102,19 @@ El dominio de la operatividad engloba actividades relacionadas a la disponibilid
 En su mayoría involucra solo al personal operativo y taquillas, aunque la coordinación con otros encargados es
 necesaria. Este dominio satisface los siguientes apartados:
 
-- Rotación empleados
+- Rotación de empleados
 - Disponibilidad del museo
-- Ventas
-- 
+- Ventas y control de inventario
+- Reportes y solicitudes
+
+### Rotación de empleados
+
+### Preservación
+
+| Requisito                                                        | Descripción                                                                                                                                                                       | UTs |
+|------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----|
+| **Reportes del patrimonio cultural**                             | Cualquier empleado puede reportar anomalías del patrimonio cultural del recinto                                                                                                   |     |
+| **Estadísticas e histórico de reportes del patrimonio cultural** | El encargado de los conservadores y restauradores pueden visualiza actividades reportes realizados en el pasado y obtener estadísticas en base a ello con facilidades de filtrado |     |
 
 # Mapa de caracteristicas
 
