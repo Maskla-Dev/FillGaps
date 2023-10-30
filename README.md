@@ -4,7 +4,9 @@ FillGaps es un sistema de gestión orientado a museos cuyas actividades sean la 
 difusión y exhibición del patrimonio histórico-cultural.
 
 Se puede encontrar más información del proyecto en la entrada principal de la carpeta [Docs](Docs/README.md)
+
 # Tabla de contenidos
+
 1. [Estructura del proyecto](#estructura-del-proyecto)
 2. [Tecnologías](#tecnologías)
 3. [Reglas y convenciones de desarrollo](#reglas-y-convenciones-de-desarrollo)
@@ -14,6 +16,7 @@ Se puede encontrar más información del proyecto en la entrada principal de la 
     4. [Convenciones del frontend](#convenciones-del-frontend)
         1. [Librerías](#librerías)
     5. [Convenciones del backend](#convenciones-del-backend)
+
 # Estructura del proyecto
 
 El proyecto se encuentra dividido en dos carpetas principales:
@@ -27,9 +30,10 @@ El proyecto se encuentra dividido en dos carpetas principales:
 Las tecnologías utilizadas en el proyecto son:
 
 - **Backend**: [Django](https://www.djangoproject.com)
-- **Frontend**: [ReactJS](https://react.dev), [TailwindCSS](https://tailwindcss.com), [TypeScript](https://www.typescriptlang.org)
+- **Frontend
+  **: [ReactJS](https://react.dev), [TailwindCSS](https://tailwindcss.com), [TypeScript](https://www.typescriptlang.org)
   y [Vite](https://vitejs.dev)
-- **Base de datos**: [MySQL](https://www.mysql.com/)
+- **Base de datos**: [PostgreSQL](https://www.postgresql.org)
 
 Las herramientas utilizadas en el proceso de desarrollo son:
 
@@ -37,8 +41,9 @@ Las herramientas utilizadas en el proceso de desarrollo son:
 - [Drawio](https://app.diagrams.net): Elaboración de diagramas y esquemas.
 - [Worki](https://cliente.tuneupprocess.com/web/): Gestión y administración del proyecto y equipo de trabajo.
 
-Se recomienda utilizar [PyCharm](https://www.jetbrains.com/es-es/pycharm/) para el desarrollo del proyecto, ya que, 
-el proyecto contiene scripts y configuraciones para el manejo del proyecto en este IDE. [Visual Studio Code](https://code.visualstudio.com) es una
+Se recomienda utilizar [PyCharm](https://www.jetbrains.com/es-es/pycharm/) para el desarrollo del proyecto, ya que,
+el proyecto contiene scripts y configuraciones para el manejo del proyecto en este
+IDE. [Visual Studio Code](https://code.visualstudio.com) es una
 alternativa viable, se recomienda crear configuraciones y scripts para la automatización de despliegue del servidor de
 desarrollo.
 
@@ -59,9 +64,13 @@ desarrollo.
 - **Tags**: Las tags son apuntadores a commits específicos, se utilizan sólo para marcar versiones estables del
   proyecto. Se consideran los siguientes puntos para la creación de los mismos:
     - **Nombre**: El nombre es la versión del proyecto. Las versiones se deben marcar con el siguiente
-      formato: `v<major.minor.patch>`, por ejemplo: `v1.0.0`. `major` es el número de versión mayor, incrementa cuando se agrega o elimina dependencias o funcionalidades principales, en general cuando se altera la estructura del software. `minor` incrementa cuando se agregan funcionalidades nuevas al software. `patch` incrementa cuando se corrigen errores o se mejora el rendimiento.
+      formato: `v<major.minor.patch>`, por ejemplo: `v1.0.0`. `major` es el número de versión mayor, incrementa cuando
+      se agrega o elimina dependencias o funcionalidades principales, en general cuando se altera la estructura del
+      software. `minor` incrementa cuando se agregan funcionalidades nuevas al software. `patch` incrementa cuando se
+      corrigen errores o se mejora el rendimiento.
     - **Creación**: La metodología <u>_agíl_</u> que rige al proyecto y la <u>_deadline_</u>, determinan la existencia
-      de por lo menos 4 sprints. Idealmente, por lo menos existirán el mismo número de <u>_tags_</u> como de <u>_sprints_</u> durante
+      de por lo menos 4 sprints. Idealmente, por lo menos existirán el mismo número de <u>_tags_</u> como de <u>
+      _sprints_</u> durante
       el desarrollo del proyecto.
 - **Branches**: Cada desarrollador trabaja sobre su propia rama, existen 3 tipos de ramas, las cuales se describen a
   continuación:
@@ -89,53 +98,8 @@ desarrollo.
 
 Este repositorio tiene injerencia en las áreas de producción (implementación y pruebas), por lo que, el flujo de trabajo
 propuesto para la correcta gestión de los cambios en el proyecto esta determinada por la metodología _Tune-Up Process_.
-Se enlistan los pasos ideales a continuación:
+Idealmente, existen tantas ramas como sprints. Cada rama `sprint` se crea a partir de la rama `main`.
 
-1. Se inicia el sprint, dentro de esas actividades está la creación de la rama sprint, al igual que las ramas de cada
-   uno de los desarrolladores.
-
-![Primer paso](Docs/Support%20images/flujo1.png)
-![Segundo paso](Docs/Support%20images/flujo2.png)
-![Tercer paso](Docs/Support%20images/flujo3.png)
-
-2. El desarrollador códifica la implementación de las UT asignadas. Se recomienda que al terminar una funcionalidad se
-   realice un commit.
-
-![Cuarto paso](Docs/Support%20images/flujo4.png)
-
-3. El desarrollador realiza commits para guardar su trabajo según
-   la [convención establecida](#reglas-y-convenciones-de-desarrollo).
-4. Se realiza el pull request de la rama del desarrollador a la rama sprint.
-
-![Quinto paso](Docs/Support%20images/flujo5.png)
-
-5. Se realizan pruebas unitarias de la UT.
-6. Cuando el pull request es aprobado, se realiza la fusión de la rama del desarrollador a la rama sprint
-
-![Sexto paso](Docs/Support%20images/flujo6.png)
-
-7. Una vez fusionadas todas las ramas de los desarrolladores a la rama sprint, se realiza pull request a la rama main.
-
-![Séptimo paso](Docs/Support%20images/flujo7.png)
-
-8. Se realizan pruebas de integración y de aceptación.
-9. Cuando el pull request es aprobado, se realiza la fusión de la rama sprint a la rama main.
-10. Se crea la tag correspondiente a la versión del proyecto.
-
-![Octavo paso](Docs/Support%20images/flujo8.png)
-![Noveno paso](Docs/Support%20images/flujo9.png)
-
-El flujo ideal se puede romper por diversas situaciones, a continuación se enlistan las más comunes y las acciones a
-tomar:
-
-- **No se pasan las pruebas unitarias (punto 5)**: Se rechazará el pull request, el desarrollador deberá corregir los
-  errores. y realizará un nuevo pull request.
-- **No se pasan las pruebas de integración o de aceptación (punto 8)**: Se rechazará el pull request, los
-  desarrolladores deberán corregir los errores y realizar un nuevo pull request.
-- **No hay suficiente tiempo para corregir errores (puntos 5 y 8)**: Se aceptará el pull request añadiendo comentarios y
-  añadiendo issues para corregir los errores en el siguiente sprint.
-- **Hotfixes**: Al ser correcciones de prioridad alta podrán pasar directamente a un pull request a la rama main desde una rama dedicada a ella, se
-  recomienda que el desarrollador que realice el hotfix sea el mismo que realizó la integración de las UT que presentan fallas.
 ## Convenciones de codigo
 
 - **Nomenclatura y formato**: Se utilizará la nomenclatura [camelCase](https://en.wikipedia.org/wiki/Camel_case) para
@@ -244,19 +208,50 @@ class DesoperacionalizadorCatodico{
 - **Idioma**: _Por definir, tal vez sea ingles..._
 
 Tratar de seguir los diseños estructurales de cada modelo que describen componentes, clases e interfaces.
+
 ## Convenciones del frontend
-La estructura del proyecto frontend se basa en el patrón de diseño [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/), el cual se basa en la creación de componentes atómicos que se van agrupando en componentes más complejos. La estructura del proyecto se basa en la siguiente jerarquía:
+
+La estructura del proyecto frontend se basa en el patrón de
+diseño [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/), el cual se basa en la creación de
+componentes atómicos que se van agrupando en componentes más complejos. La estructura del proyecto se basa en la
+siguiente jerarquía:
+
 - **Atoms**: Contiene los componentes más básicos y simples del proyecto, como botones, inputs, etc.
 - **Molecules**: Contiene componentes más complejos que se componen de componentes atómicos, como formularios, etc.
-- **Organisms**: Contiene componentes que se componen de componentes moleculares y atómicos, como la barra de navegación, etc.
-- **Pages**: Contiene componentes que se componen de componentes orgánicos, moleculares y atómicos, como la página de inicio, etc.
-- **Templates**: Contiene componentes que se componen de componentes de cualquier tipo, como la plantilla de la página, etc.
+- **Organisms**: Contiene componentes que se componen de componentes moleculares y atómicos, como la barra de
+  navegación, etc.
+- **Pages**: Contiene componentes que se componen de componentes orgánicos, moleculares y atómicos, como la página de
+  inicio, etc.
+- **Templates**: Contiene componentes que se componen de componentes de cualquier tipo, como la plantilla de la página,
+  etc.
 
-Muchas de las abstracciones pueden tener dependencias con otras abstracciones que no encajan con la jerarquía planteada, por ejemplo, un componente orgánico puede tener dependencia con agentes (clases u objetos) dedicados a la abstracción de cierta lógica. Inclusive la generalización de funcionalidades mediante hooks puede crear estas situaciones. Para ello se recomienda alojar estas abstracciones en la carpeta **utils**.
-La carpeta **assets** contiene los recursos estáticos utilizados en el proyecto, como imágenes, fuentes, etc. Serán anexados a la carpeta **public** al momento de la compilación.
+Muchas de las abstracciones pueden tener dependencias con otras abstracciones que no encajan con la jerarquía planteada,
+por ejemplo, un componente orgánico puede tener dependencia con agentes (clases u objetos) dedicados a la abstracción de
+cierta lógica. Inclusive la generalización de funcionalidades mediante hooks puede crear estas situaciones. Para ello se
+recomienda alojar estas abstracciones en la carpeta **utils**.
+La carpeta **assets** contiene los recursos estáticos utilizados en el proyecto, como imágenes, fuentes, etc. Serán
+anexados a la carpeta **public** al momento de la compilación.
+
 ### Librerías
+
 Las siguientes librerias adicionales son utilizadas en el proyecto:
+
 - **React Router**: Librería para el manejo de rutas en React.
 - **Redux**: Librería para el manejo de estado de la aplicación.
+- **Axios**: Librería para el manejo de peticiones HTTP.
 
 ## Convenciones del backend
+
+La estructura del proyecto backend se basa en una arquitectura orientada a micro-servicios, cada micro-servicio intenta
+ser lo más independiente posible de los demás, por lo que, cada micro-servicio tiene su propia base de datos y su propio
+servidor de desarrollo. La estructura del proyecto se basa en la siguiente jerarquía:
+
+- **chat**: Contiene el código fuente del micro-servicio de chat.
+- **common**: Contiene el código fuente de los micro-servicios comunes.
+
+### Librerías
+
+Las siguientes librerias adicionales son utilizadas en el proyecto:
+
+- **Django Rest Framework**: Librería para el manejo de peticiones HTTP en Django.
+- **Django Channels**: Librería para el manejo de websockets en Django.
