@@ -1,7 +1,30 @@
 import Logo from '../../assets/Logo.svg';
 import { KeyIcon, UserIcon } from "@heroicons/react/24/outline";
+import { useSession } from "../../utils/hooks/hooks.ts";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { doLogin } from "../../utils/actions/actions.ts";
+import { UserSessionData } from "../../utils/hooks/useSession.ts";
 
 const Login = () => {
+    const [session, setSession] = useSession();
+    const [username, setUsername] = useState( "" );
+    const [password, setPassword] = useState( "" );
+
+    const handleLogin = ( e: MouseEvent ) => {
+        e.preventDefault();
+        doLogin( username, password ).then( ( res ) => {
+            if ( res ) {
+                setSession( res )
+            } else {
+                alert( "Ha ocurrido un error" );
+            }
+        } ).catch( ( err ) => {
+            console.log( err.status );
+            alert( "Usuario o contraseña incorrectos" );
+        } );
+    }
+
     return (
         <div className={"w-screen h-screen bg-blue-600 flex items-center"}>
             <div
@@ -18,6 +41,7 @@ const Login = () => {
                         <label className={"flex items-center my-2 w-full"} htmlFor="username">
                             <UserIcon className={"w-6 h-6 stroke-blue-600 mr-3.5"}/>
                             <input
+                                onInput={( e ) => setUsername( e.target.value )}
                                 className={
                                     "w-full border-b-2 rounded-xl py-1 px-4 placeholder:opacity-50 placeholder-blue-600 placeholder:italic focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                                 }
@@ -26,6 +50,7 @@ const Login = () => {
                         <label className={"flex items-center my-2 w-full"} htmlFor="password">
                             <KeyIcon className={"w-6 h-6 stroke-blue-600 mr-3.5"}/>
                             <input
+                                onInput={( e ) => setPassword( e.target.value )}
                                 className={
                                     "w-full border-b-2 rounded-xl py-1 px-4 placeholder:opacity-50 placeholder-blue-600 placeholder:italic focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                                 }
@@ -33,6 +58,7 @@ const Login = () => {
                         </label>
                     </div>
                     <button
+                        onClick={handleLogin}
                         className={
                             "bg-blue-600 text-white rounded-lg py-2 px-3 w-24 h-fit self-center text-center m-2"
                         }

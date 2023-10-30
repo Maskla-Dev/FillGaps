@@ -131,11 +131,18 @@ CORS_ALLOW_CREDENTIALS = True
 # Rest Framework
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
     ],
+}
+
+# Simple JWT
+SIMPLE_JWT = {
+    "TOKEN_OBTAIN_PAIR_SERIALIZER": "common.views.CustomTokenSerializer",
+    "ACCESS_TOKEN_LIFETIME": timedelta(hours=12),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 }
 
 # ASGI

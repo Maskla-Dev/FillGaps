@@ -1,12 +1,13 @@
 from django.urls import path, include
 from . import views
-from rest_framework.urlpatterns import format_suffix_patterns
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+    TokenVerifyView
+)
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('employee/', views.EmployeeViewSet.as_view(), name='employee'),
-    path('login/', views.LoginView.as_view(), name='login'),
-    path('login_test/', views.login_test, name='login_test'),
+    path('login/', views.CustomTokenView.as_view(), name='token_obtain_pair'),
+    path('refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('verify/', TokenVerifyView.as_view(), name='token_verify'),
 ]
-
-urlpatterns = format_suffix_patterns(urlpatterns)
