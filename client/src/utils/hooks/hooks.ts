@@ -1,3 +1,3 @@
-import useUserName from "./useUserName.ts";
+import useSession from "./useSession.ts";
 
-export { useUserName };
+export { useSession };
