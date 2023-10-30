@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2023-10-11T04:25:28.451Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.7.5 Chrome/114.0.5735.289 Electron/25.8.1 Safari/537.36" etag="ZNHUoCbJaZAjVKuZaZDL" version="21.7.5" type="device" pages="7">
+<mxfile host="Electron" modified="2023-10-18T02:27:10.530Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.7.5 Chrome/114.0.5735.289 Electron/25.8.1 Safari/537.36" etag="i_LFzv2XI888_9qwTQUn" version="21.7.5" type="device" pages="7">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Mapa Conceptual">
-    <mxGraphModel dx="3088" dy="2073" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3072" dy="2057" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -1987,7 +1987,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="9rbP2n6chv4jMEekG1Dh" name="Borradores">
-    <mxGraphModel dx="2284" dy="3104" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2268" dy="3088" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -2547,20 +2547,20 @@
     </mxGraphModel>
   </diagram>
   <diagram id="YPll6GG_TTVkGbYuRFFz" name="Mapa Caracteristicas">
-    <mxGraphModel dx="2607" dy="1644" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="1658" dy="888" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-227" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;dashed=1;endArrow=none;endFill=0;" parent="1" source="DxDtgYQWEohXDoSG3V8I-216" target="DxDtgYQWEohXDoSG3V8I-212" edge="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-227" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;dashed=1;endArrow=none;endFill=0;" parent="1" source="DxDtgYQWEohXDoSG3V8I-216" target="DxDtgYQWEohXDoSG3V8I-212" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-248" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;endArrow=none;endFill=0;" parent="1" source="DxDtgYQWEohXDoSG3V8I-240" target="DxDtgYQWEohXDoSG3V8I-244" edge="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-248" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;endArrow=none;endFill=0;" parent="1" source="DxDtgYQWEohXDoSG3V8I-240" target="DxDtgYQWEohXDoSG3V8I-244" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-247" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1.025;entryY=0.633;entryDx=0;entryDy=0;dashed=1;endArrow=none;endFill=0;entryPerimeter=0;" parent="1" source="DxDtgYQWEohXDoSG3V8I-244" target="DxDtgYQWEohXDoSG3V8I-242" edge="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-247" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1.025;entryY=0.633;entryDx=0;entryDy=0;dashed=1;endArrow=none;endFill=0;entryPerimeter=0;" parent="1" source="DxDtgYQWEohXDoSG3V8I-244" target="DxDtgYQWEohXDoSG3V8I-242" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-246" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;dashed=1;endArrow=none;endFill=0;" parent="1" source="DxDtgYQWEohXDoSG3V8I-245" target="DxDtgYQWEohXDoSG3V8I-235" edge="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-246" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;dashed=1;endArrow=none;endFill=0;" parent="1" source="DxDtgYQWEohXDoSG3V8I-245" target="DxDtgYQWEohXDoSG3V8I-235" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="BDPiGiYCdVSmu1jWpiJ7-41" value="Obtener planificación de intendencia" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;" parent="1" vertex="1">
@@ -2569,7 +2569,7 @@
         <mxCell id="BDPiGiYCdVSmu1jWpiJ7-43" value="Reportar resultado de actividades de intendencia" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;" parent="1" vertex="1">
           <mxGeometry x="3030" y="570" width="130" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-4" value="Conservador" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
+        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-4" value="Conservador" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
           <mxGeometry x="180" y="10" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-7" value="Organizar el patrimonio cultural" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" parent="1" vertex="1">
@@ -2581,7 +2581,7 @@
         <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-10" value="Redactar reportes al encargado del área" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fa6800;fontColor=#000000;strokeColor=#C73500;" parent="1" vertex="1">
           <mxGeometry x="220" y="410" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-11" value="Restaurador" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
+        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-11" value="Restaurador" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
           <mxGeometry x="420" y="10" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-12" value="Reportar patrimonio cultural en condiciones anómalas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fa6800;fontColor=#000000;strokeColor=#C73500;" parent="1" vertex="1">
@@ -2605,22 +2605,22 @@
         <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-22" value="Solicitar cambios al entorno del patrimonio cultural" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" parent="1" vertex="1">
           <mxGeometry x="220" y="730" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-24" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=160;exitDy=100;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;dashed=1;" parent="1" source="sMnvsL6Ox8Q6eMEF3bpy-23" target="sMnvsL6Ox8Q6eMEF3bpy-22" edge="1">
+        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-24" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=160;exitDy=100;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;dashed=1;" parent="1" source="sMnvsL6Ox8Q6eMEF3bpy-23" target="sMnvsL6Ox8Q6eMEF3bpy-22" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-23" value="El &lt;u&gt;entorno&lt;/u&gt; del patrimonio cultural se refiere al medio ambiente, ejemplos de las variables que se controlan son la temperatura y humedad. La solicitud se hace al personal operativo" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=21;verticalAlign=bottom;" parent="1" vertex="1">
+        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-23" value="El &lt;u&gt;entorno&lt;/u&gt; del patrimonio cultural se refiere al medio ambiente, ejemplos de las variables que se controlan son la temperatura y humedad. La solicitud se hace al personal operativo" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=21;verticalAlign=bottom;rounded=1;" parent="1" vertex="1">
           <mxGeometry x="30" y="630" width="160" height="130" as="geometry" />
         </mxCell>
         <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-26" value="Registrar manipulaciones del patrimonio cultural" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" parent="1" vertex="1">
           <mxGeometry x="460" y="650" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-28" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;dashed=1;" parent="1" source="sMnvsL6Ox8Q6eMEF3bpy-27" target="sMnvsL6Ox8Q6eMEF3bpy-26" edge="1">
+        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-28" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;dashed=1;" parent="1" source="sMnvsL6Ox8Q6eMEF3bpy-27" target="sMnvsL6Ox8Q6eMEF3bpy-26" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-27" value="Procesos y técnicas de restauración" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=21;verticalAlign=bottom;" parent="1" vertex="1">
-          <mxGeometry x="360" y="570" width="80" height="70" as="geometry" />
+        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-27" value="Procesos y técnicas de restauración" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=21;verticalAlign=bottom;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="360" y="565" width="80" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-29" value="Encargado Conservadores y Restauradores" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
+        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-29" value="Encargado Conservadores y Restauradores" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
           <mxGeometry x="660" y="10" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-30" value="Generar estadísticas de actividades y avances" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" parent="1" vertex="1">
@@ -2653,25 +2653,25 @@
         <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-40" value="Generar actividades para trabajadores" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" parent="1" vertex="1">
           <mxGeometry x="770" y="250" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-43" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;dashed=1;" parent="1" source="sMnvsL6Ox8Q6eMEF3bpy-42" target="sMnvsL6Ox8Q6eMEF3bpy-40" edge="1">
+        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-43" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;dashed=1;" parent="1" source="sMnvsL6Ox8Q6eMEF3bpy-42" target="sMnvsL6Ox8Q6eMEF3bpy-40" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-42" value="Comandas para actividades del área y capacitaciones" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;verticalAlign=bottom;size=21;" parent="1" vertex="1">
+        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-42" value="Comandas para actividades del área y capacitaciones" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;verticalAlign=bottom;size=21;rounded=1;" parent="1" vertex="1">
           <mxGeometry x="910" y="190" width="100" height="80" as="geometry" />
         </mxCell>
         <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-44" value="Elaborar publicación de logros del área" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6d8764;fontColor=#ffffff;strokeColor=#3A5431;" parent="1" vertex="1">
           <mxGeometry x="770" y="490" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-46" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;dashed=1;" parent="1" source="sMnvsL6Ox8Q6eMEF3bpy-45" target="sMnvsL6Ox8Q6eMEF3bpy-44" edge="1">
+        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-46" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;dashed=1;" parent="1" source="sMnvsL6Ox8Q6eMEF3bpy-45" target="sMnvsL6Ox8Q6eMEF3bpy-44" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-45" value="Trabajos de restauración de interés al público (sitio web)" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=21;verticalAlign=bottom;" parent="1" vertex="1">
+        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-45" value="Trabajos de restauración de interés al público (sitio web)" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=21;verticalAlign=bottom;rounded=1;" parent="1" vertex="1">
           <mxGeometry x="910" y="450" width="120" height="70" as="geometry" />
         </mxCell>
         <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-47" value="Solicitar patrimonio cultural" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" parent="1" vertex="1">
           <mxGeometry x="220" y="490" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-55" value="Catalogador" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
+        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-55" value="Catalogador" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
           <mxGeometry x="1040" y="10" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-56" value="Redactar reportes al encargado del área" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fa6800;fontColor=#000000;strokeColor=#C73500;" parent="1" vertex="1">
@@ -2701,7 +2701,7 @@
         <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-66" value="Atender solicitudes de patrimonio cultural" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" parent="1" vertex="1">
           <mxGeometry x="460" y="570" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-67" value="Investigador" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
+        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-67" value="Investigador" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
           <mxGeometry x="1280" y="10" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-68" value="Generar estadísticas de solicitudes del patrimonio cultural" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" parent="1" vertex="1">
@@ -2734,7 +2734,7 @@
         <mxCell id="DxDtgYQWEohXDoSG3V8I-11" value="Solicitar asignación de laboratorios" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a0522d;strokeColor=#6D1F00;fontColor=#ffffff;" parent="1" vertex="1">
           <mxGeometry x="1250" y="410" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-12" value="Encargado de catalogadores, investigadores y servicios orientados a la educación" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-12" value="Encargado de catalogadores, investigadores y servicios orientados a la educación" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
           <mxGeometry x="1540" y="10" width="240" height="60" as="geometry" />
         </mxCell>
         <mxCell id="DxDtgYQWEohXDoSG3V8I-13" value="Generar estadísticas del estado del patrimonio cultural" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" parent="1" vertex="1">
@@ -2800,14 +2800,14 @@
         <mxCell id="DxDtgYQWEohXDoSG3V8I-42" value="Obtener estadísticas de resultados de investigación" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;" parent="1" vertex="1">
           <mxGeometry x="1670" y="650" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-44" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;dashed=1;" parent="1" source="DxDtgYQWEohXDoSG3V8I-43" target="DxDtgYQWEohXDoSG3V8I-10" edge="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-44" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;dashed=1;" parent="1" source="DxDtgYQWEohXDoSG3V8I-43" target="DxDtgYQWEohXDoSG3V8I-10" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-45" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=120.00000000000001;exitDy=45.5;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;dashed=1;" parent="1" source="DxDtgYQWEohXDoSG3V8I-43" target="DxDtgYQWEohXDoSG3V8I-16" edge="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-45" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=120.00000000000001;exitDy=45.5;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;dashed=1;" parent="1" source="DxDtgYQWEohXDoSG3V8I-43" target="DxDtgYQWEohXDoSG3V8I-16" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-43" value="Trabajos de investigación y piezas del interés público y resultados de actividades y talleres (sitio web)" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=21;verticalAlign=bottom;" parent="1" vertex="1">
-          <mxGeometry x="1370" y="590" width="120" height="140" as="geometry" />
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-43" value="Trabajos de investigación y piezas del interés público y resultados de actividades y talleres (sitio web)" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=21;verticalAlign=bottom;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="1390" y="590" width="120" height="110" as="geometry" />
         </mxCell>
         <mxCell id="DxDtgYQWEohXDoSG3V8I-46" value="Obtener inventario patrimonio cultural" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#76608a;strokeColor=#432D57;fontColor=#ffffff;" parent="1" vertex="1">
           <mxGeometry x="1530" y="730" width="120" height="60" as="geometry" />
@@ -2818,7 +2818,7 @@
         <mxCell id="DxDtgYQWEohXDoSG3V8I-48" value="Obtener histórico de solicitudes del patrimonio cultural" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" parent="1" vertex="1">
           <mxGeometry x="630" y="490" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-50" value="Guías" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-50" value="Guías" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
           <mxGeometry x="1820" y="10" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="DxDtgYQWEohXDoSG3V8I-51" value="Organizar talleres, actividades en salas, visitas guiadas y recorridos grupales" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fad7ac;strokeColor=#b46504;" parent="1" vertex="1">
@@ -2839,16 +2839,16 @@
         <mxCell id="DxDtgYQWEohXDoSG3V8I-60" value="Publicar visitas guiadas, talleres, recorridos grupales y actividades de sala" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6d8764;strokeColor=#3A5431;fontColor=#ffffff;" parent="1" vertex="1">
           <mxGeometry x="1860" y="810" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-65" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;dashed=1;endArrow=none;endFill=0;" parent="1" source="DxDtgYQWEohXDoSG3V8I-61" target="DxDtgYQWEohXDoSG3V8I-53" edge="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-65" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;dashed=1;endArrow=none;endFill=0;" parent="1" source="DxDtgYQWEohXDoSG3V8I-61" target="DxDtgYQWEohXDoSG3V8I-53" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-66" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;dashed=1;" parent="1" source="DxDtgYQWEohXDoSG3V8I-61" target="DxDtgYQWEohXDoSG3V8I-60" edge="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-66" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;dashed=1;" parent="1" source="DxDtgYQWEohXDoSG3V8I-61" target="DxDtgYQWEohXDoSG3V8I-60" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-84" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=85;exitDy=54.5;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;dashed=1;" parent="1" source="DxDtgYQWEohXDoSG3V8I-61" target="DxDtgYQWEohXDoSG3V8I-77" edge="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-84" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=85;exitDy=54.5;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;dashed=1;" parent="1" source="DxDtgYQWEohXDoSG3V8I-61" target="DxDtgYQWEohXDoSG3V8I-77" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-61" value="Información en sitio web" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=19;verticalAlign=middle;" parent="1" vertex="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-61" value="Información en sitio web" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=19;verticalAlign=middle;rounded=1;" parent="1" vertex="1">
           <mxGeometry x="1995" y="830" width="85" height="90" as="geometry" />
         </mxCell>
         <mxCell id="DxDtgYQWEohXDoSG3V8I-62" value="Redactar reportes al encargado del área" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fa6800;fontColor=#000000;strokeColor=#C73500;" parent="1" vertex="1">
@@ -2863,7 +2863,7 @@
         <mxCell id="DxDtgYQWEohXDoSG3V8I-67" value="Obtener estado de las áreas del museo" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;" parent="1" vertex="1">
           <mxGeometry x="1530" y="810" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-68" value="Educadores" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-68" value="Educadores" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
           <mxGeometry x="2060" y="10" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="DxDtgYQWEohXDoSG3V8I-69" value="Organizar talleres y actividades en salas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fad7ac;strokeColor=#b46504;" parent="1" vertex="1">
@@ -2899,13 +2899,13 @@
         <mxCell id="DxDtgYQWEohXDoSG3V8I-82" value="Obtener histórico de recursos sintéticos de difusión" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fad7ac;strokeColor=#b46504;" parent="1" vertex="1">
           <mxGeometry x="1670" y="1130" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-86" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.522;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;dashed=1;" parent="1" source="DxDtgYQWEohXDoSG3V8I-72" target="DxDtgYQWEohXDoSG3V8I-61" edge="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-86" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.522;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;dashed=1;" parent="1" source="DxDtgYQWEohXDoSG3V8I-72" target="DxDtgYQWEohXDoSG3V8I-61" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="DxDtgYQWEohXDoSG3V8I-87" value="Obtener estadísticas de talleres y actividades en salas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fad7ac;strokeColor=#b46504;" parent="1" vertex="1">
           <mxGeometry x="1530" y="1130" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-88" value="Taquillas" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-88" value="Taquillas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
           <mxGeometry x="2290" y="10" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="DxDtgYQWEohXDoSG3V8I-89" value="Redactar reportes al encargado del área" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fa6800;fontColor=#000000;strokeColor=#C73500;" parent="1" vertex="1">
@@ -2926,7 +2926,7 @@
         <mxCell id="DxDtgYQWEohXDoSG3V8I-98" value="Obtener aforo, estatus de pasillos, disponibilidad de áreas y demás salas vigiladas en tiempo real" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fad9d5;strokeColor=#ae4132;" parent="1" vertex="1">
           <mxGeometry x="2555" y="720" width="130" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-102" value="Trabajador de Mantenimiento" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-102" value="Trabajador de Mantenimiento" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
           <mxGeometry x="2760" y="10" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="DxDtgYQWEohXDoSG3V8I-103" value="Reportar resultado de actividades de mantenimiento (preventivas o correctivas)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;" parent="1" vertex="1">
@@ -2935,7 +2935,7 @@
         <mxCell id="DxDtgYQWEohXDoSG3V8I-104" value="Obtener planificación de mantenimiento" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;" parent="1" vertex="1">
           <mxGeometry x="2800" y="670" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-105" value="Aseo e intendencia" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-105" value="Aseo e intendencia" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
           <mxGeometry x="3000" y="10" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="DxDtgYQWEohXDoSG3V8I-106" value="Redactar reportes al encargado del área" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fa6800;fontColor=#000000;strokeColor=#C73500;" parent="1" vertex="1">
@@ -2956,7 +2956,7 @@
         <mxCell id="DxDtgYQWEohXDoSG3V8I-112" value="Reportar avances de actividades" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fa6800;fontColor=#000000;strokeColor=#C73500;" parent="1" vertex="1">
           <mxGeometry x="3815" y="250" width="130" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-114" value="Encargado operaciones y taquillas" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-114" value="Encargado operaciones y taquillas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
           <mxGeometry x="3240" y="10" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="DxDtgYQWEohXDoSG3V8I-115" value="Generar estadísticas de actividades y avances" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" parent="1" vertex="1">
@@ -3022,7 +3022,7 @@
         <mxCell id="DxDtgYQWEohXDoSG3V8I-142" value="Obtener áreas, equipo, sensores, mobiliario u otros sin actividad de aseo" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;" parent="1" vertex="1">
           <mxGeometry x="3350" y="870" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-143" value="Encargado personal administrativo" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-143" value="Encargado personal administrativo" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
           <mxGeometry x="3540" y="10" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="DxDtgYQWEohXDoSG3V8I-144" value="Generar actividades para trabajadores" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" parent="1" vertex="1">
@@ -3043,7 +3043,7 @@
         <mxCell id="DxDtgYQWEohXDoSG3V8I-149" value="Obtener estadísticas de evaluaciones personal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e51400;strokeColor=#B20000;fontColor=#ffffff;" parent="1" vertex="1">
           <mxGeometry x="3510" y="330" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-150" value="Administrativo" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-150" value="Administrativo" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
           <mxGeometry x="3780" y="10" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="DxDtgYQWEohXDoSG3V8I-151" value="Publicar la estructura orgánica del museo" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6d8764;strokeColor=#3A5431;fontColor=#ffffff;" parent="1" vertex="1">
@@ -3166,7 +3166,7 @@
         <mxCell id="DxDtgYQWEohXDoSG3V8I-202" value="Publicar vacantes disponibles" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6d8764;strokeColor=#3A5431;fontColor=#ffffff;" parent="1" vertex="1">
           <mxGeometry x="3510" y="570" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-203" value="Jefe de guardias de seguridad" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-203" value="Jefe de guardias de seguridad" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
           <mxGeometry x="4010" y="10" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="DxDtgYQWEohXDoSG3V8I-205" value="Generar planes de vigilancia del museo" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fad9d5;strokeColor=#ae4132;" parent="1" vertex="1">
@@ -3190,7 +3190,7 @@
         <mxCell id="DxDtgYQWEohXDoSG3V8I-215" value="Solicitar material de sensibilización del visitante" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fad7ac;strokeColor=#b46504;" parent="1" vertex="1">
           <mxGeometry x="4120" y="650" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-216" value="Los accesos permitidos a visitantes son publicados en el sitio web" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=19;verticalAlign=bottom;" parent="1" vertex="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-216" value="Los accesos permitidos a visitantes son publicados en el sitio web" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=19;verticalAlign=bottom;rounded=1;" parent="1" vertex="1">
           <mxGeometry x="4260" y="730" width="130" height="93.13" as="geometry" />
         </mxCell>
         <mxCell id="DxDtgYQWEohXDoSG3V8I-218" value="Generar reporte de supervisión&amp;nbsp; de colaboradores" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e51400;strokeColor=#B20000;fontColor=#ffffff;" parent="1" vertex="1">
@@ -3217,7 +3217,7 @@
         <mxCell id="DxDtgYQWEohXDoSG3V8I-226" value="Atender solicitud de material para sensibilización del visitante" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fad7ac;strokeColor=#b46504;" parent="1" vertex="1">
           <mxGeometry x="2100" y="1050" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-228" value="Guardia de seguridad" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-228" value="Guardia de seguridad" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
           <mxGeometry x="4290" y="10" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="DxDtgYQWEohXDoSG3V8I-229" value="Comunicarse con el personal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fa6800;strokeColor=#C73500;fontColor=#000000;" parent="1" vertex="1">
@@ -3259,16 +3259,16 @@
         <mxCell id="DxDtgYQWEohXDoSG3V8I-243" value="Controlar el registro del personal y visitantes en las salas del museo" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fad9d5;strokeColor=#ae4132;" parent="1" vertex="1">
           <mxGeometry x="4400" y="503.25" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-251" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;endArrow=none;endFill=0;" parent="1" source="DxDtgYQWEohXDoSG3V8I-244" target="DxDtgYQWEohXDoSG3V8I-243" edge="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-251" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;endArrow=none;endFill=0;" parent="1" source="DxDtgYQWEohXDoSG3V8I-244" target="DxDtgYQWEohXDoSG3V8I-243" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-269" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;dashed=1;" parent="1" source="DxDtgYQWEohXDoSG3V8I-244" target="DxDtgYQWEohXDoSG3V8I-268" edge="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-269" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;dashed=1;" parent="1" source="DxDtgYQWEohXDoSG3V8I-244" target="DxDtgYQWEohXDoSG3V8I-268" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-244" value="&lt;div&gt;Dominio del sistema de cámaras de detección&lt;br&gt;&lt;/div&gt;&amp;nbsp;automática" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=19;verticalAlign=bottom;" parent="1" vertex="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-244" value="&lt;div&gt;Dominio del sistema de cámaras de detección&lt;br&gt;&lt;/div&gt;&amp;nbsp;automática" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=19;verticalAlign=bottom;rounded=1;" parent="1" vertex="1">
           <mxGeometry x="4540" y="540" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-245" value="Hay algunas restricciones de acceso, no se permiten objetos que puedan dañar el patrimonio cultural. Excepciones médicas son permitidas" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=19;verticalAlign=bottom;" parent="1" vertex="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-245" value="Hay algunas restricciones de acceso, no se permiten objetos que puedan dañar el patrimonio cultural. Excepciones médicas son permitidas" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=19;verticalAlign=bottom;rounded=1;" parent="1" vertex="1">
           <mxGeometry x="4540" y="336.75" width="120" height="133.25" as="geometry" />
         </mxCell>
         <mxCell id="DxDtgYQWEohXDoSG3V8I-252" value="Obtener estadísticas&amp;nbsp; del flujo de visitantes y personal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fad9d5;strokeColor=#ae4132;" parent="1" vertex="1">
@@ -3286,7 +3286,7 @@
         <mxCell id="DxDtgYQWEohXDoSG3V8I-258" value="Obtener histórico y estadísticas de anomalías en revisiones" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fad9d5;strokeColor=#ae4132;" parent="1" vertex="1">
           <mxGeometry x="3980" y="810" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-259" value="Administrador del portal y sistemas informáticos" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-259" value="Administrador del portal y sistemas informáticos" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
           <mxGeometry x="4710" y="10" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="DxDtgYQWEohXDoSG3V8I-261" value="Autorizar publicaciones" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6d8764;strokeColor=#3A5431;fontColor=#ffffff;" parent="1" vertex="1">
@@ -3313,7 +3313,7 @@
         <mxCell id="DxDtgYQWEohXDoSG3V8I-268" value="Registrar actividad de la zona vigilada" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fad9d5;strokeColor=#ae4132;" parent="1" vertex="1">
           <mxGeometry x="4400" y="580" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-270" value="Técnico de sistemas informáticos" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-270" value="Técnico de sistemas informáticos" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
           <mxGeometry x="4950" y="10" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="DxDtgYQWEohXDoSG3V8I-271" value="Comunicarse con el personal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fa6800;strokeColor=#C73500;fontColor=#000000;" parent="1" vertex="1">
@@ -3352,7 +3352,7 @@
         <mxCell id="DxDtgYQWEohXDoSG3V8I-288" value="Obtener estadísticas de soluciones de mantenimiento a equipos informáticos" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6d8764;strokeColor=#3A5431;fontColor=#ffffff;" parent="1" vertex="1">
           <mxGeometry x="4680" y="570" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-289" value="Vistante" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-289" value="Vistante" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
           <mxGeometry x="5190" y="10" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="DxDtgYQWEohXDoSG3V8I-290" value="Registrarse a grupo guiado, taller o actividad educativa" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6d8764;strokeColor=#3A5431;fontColor=#ffffff;" parent="1" vertex="1">
@@ -3379,7 +3379,7 @@
         <mxCell id="DxDtgYQWEohXDoSG3V8I-301" value="Modificar contenido sitio web" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6d8764;strokeColor=#3A5431;fontColor=#ffffff;" parent="1" vertex="1">
           <mxGeometry x="4990" y="677" width="120" height="76" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-302" value="Director" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-302" value="Director" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
           <mxGeometry x="5470" y="10" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="DxDtgYQWEohXDoSG3V8I-303" value="Planificar mantenimiento de infraestructura informática" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6d8764;strokeColor=#3A5431;fontColor=#ffffff;" parent="1" vertex="1">
@@ -3394,10 +3394,10 @@
         <mxCell id="DxDtgYQWEohXDoSG3V8I-306" value="Obtener estadísticas globales del museo" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="5580" y="410" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-308" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;dashed=1;" parent="1" source="DxDtgYQWEohXDoSG3V8I-307" target="DxDtgYQWEohXDoSG3V8I-306" edge="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-308" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;dashed=1;" parent="1" source="DxDtgYQWEohXDoSG3V8I-307" target="DxDtgYQWEohXDoSG3V8I-306" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-307" value="Acceso sin restricciones a toda la información del museo" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=15;verticalAlign=bottom;" parent="1" vertex="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-307" value="Acceso sin restricciones a toda la información del museo" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=15;verticalAlign=bottom;rounded=1;" parent="1" vertex="1">
           <mxGeometry x="5715" y="371.75" width="120" height="63.25" as="geometry" />
         </mxCell>
         <mxCell id="DxDtgYQWEohXDoSG3V8I-309" value="Publicar logros y reconocimientos al personal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6d8764;fontColor=#ffffff;strokeColor=#3A5431;" parent="1" vertex="1">
@@ -3409,10 +3409,10 @@
         <mxCell id="DxDtgYQWEohXDoSG3V8I-311" value="Controlar memoria histórica del museo" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="5580" y="565" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-312" value="Actualiza sitio web" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=15;verticalAlign=bottom;" parent="1" vertex="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-312" value="Actualiza sitio web" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=15;verticalAlign=bottom;rounded=1;" parent="1" vertex="1">
           <mxGeometry x="5720" y="520" width="110" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="DxDtgYQWEohXDoSG3V8I-313" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;dashed=1;" parent="1" source="DxDtgYQWEohXDoSG3V8I-312" target="DxDtgYQWEohXDoSG3V8I-311" edge="1">
+        <mxCell id="DxDtgYQWEohXDoSG3V8I-313" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;dashed=1;" parent="1" source="DxDtgYQWEohXDoSG3V8I-312" target="DxDtgYQWEohXDoSG3V8I-311" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="5670" y="723.63" as="sourcePoint" />
             <mxPoint x="5630" y="731.63" as="targetPoint" />
@@ -3442,7 +3442,7 @@
         <mxCell id="DxDtgYQWEohXDoSG3V8I-327" value="Generar reporte de supervisión&amp;nbsp; de colaboradores" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e51400;strokeColor=#B20000;fontColor=#ffffff;" parent="1" vertex="1">
           <mxGeometry x="5580" y="330" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="MWTc4Bn-PEisfmY-GD06-1" value="Vendedor" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
+        <mxCell id="MWTc4Bn-PEisfmY-GD06-1" value="Vendedor" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontFamily=Helvetica;fontSize=14;" parent="1" vertex="1">
           <mxGeometry x="2520" y="10" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="MWTc4Bn-PEisfmY-GD06-2" value="Comunicarse con el personal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fa6800;strokeColor=#C73500;fontColor=#000000;" parent="1" vertex="1">
@@ -3484,82 +3484,82 @@
         <mxCell id="MWTc4Bn-PEisfmY-GD06-30" value="Obtener inventario artículos en venta" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;" parent="1" vertex="1">
           <mxGeometry x="1530" y="1210" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="3wgvUB8AXL-jElFyeeni-1" value="" style="group" parent="1" connectable="0" vertex="1">
+        <mxCell id="3wgvUB8AXL-jElFyeeni-1" value="" style="group;rounded=1;" parent="1" connectable="0" vertex="1">
           <mxGeometry y="100" width="200" height="510" as="geometry" />
         </mxCell>
         <mxCell id="MWTc4Bn-PEisfmY-GD06-39" value="" style="rounded=1;whiteSpace=wrap;html=1;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
           <mxGeometry width="200" height="510" as="geometry" />
         </mxCell>
-        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-48" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#fa6800;fontColor=#000000;strokeColor=#C73500;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
+        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-48" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#fa6800;fontColor=#000000;strokeColor=#C73500;rounded=1;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
           <mxGeometry x="20" y="20" width="20" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-49" value="Empleados " style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
+        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-49" value="Empleados " style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
           <mxGeometry x="50" y="10" width="140" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-50" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
+        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-50" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;rounded=1;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
           <mxGeometry x="20" y="60" width="20" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-51" value="Encargados" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
+        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-51" value="Encargados" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
           <mxGeometry x="50" y="50" width="140" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-53" value="Preservación" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
+        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-53" value="Preservación" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
           <mxGeometry x="50" y="90" width="140" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-54" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
+        <mxCell id="sMnvsL6Ox8Q6eMEF3bpy-54" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;rounded=1;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
           <mxGeometry x="20" y="100" width="20" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="MWTc4Bn-PEisfmY-GD06-17" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#6d8764;fontColor=#ffffff;strokeColor=#3A5431;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
+        <mxCell id="MWTc4Bn-PEisfmY-GD06-17" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#6d8764;fontColor=#ffffff;strokeColor=#3A5431;rounded=1;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
           <mxGeometry x="20" y="140" width="20" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="MWTc4Bn-PEisfmY-GD06-18" value="Sistemas informáticos" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
+        <mxCell id="MWTc4Bn-PEisfmY-GD06-18" value="Sistemas informáticos" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
           <mxGeometry x="50" y="130" width="140" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="MWTc4Bn-PEisfmY-GD06-21" value="Colección" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
+        <mxCell id="MWTc4Bn-PEisfmY-GD06-21" value="Colección" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
           <mxGeometry x="50" y="170" width="140" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="MWTc4Bn-PEisfmY-GD06-22" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
+        <mxCell id="MWTc4Bn-PEisfmY-GD06-22" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;rounded=1;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
           <mxGeometry x="20" y="180" width="20" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="MWTc4Bn-PEisfmY-GD06-23" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e3c800;fontColor=#000000;strokeColor=#B09500;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
+        <mxCell id="MWTc4Bn-PEisfmY-GD06-23" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e3c800;fontColor=#000000;strokeColor=#B09500;rounded=1;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
           <mxGeometry x="20" y="220" width="20" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="MWTc4Bn-PEisfmY-GD06-24" value="Difusión y educación" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
+        <mxCell id="MWTc4Bn-PEisfmY-GD06-24" value="Difusión y educación" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
           <mxGeometry x="50" y="210" width="140" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="MWTc4Bn-PEisfmY-GD06-25" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#b0e3e6;strokeColor=#0e8088;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
+        <mxCell id="MWTc4Bn-PEisfmY-GD06-25" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#b0e3e6;strokeColor=#0e8088;rounded=1;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
           <mxGeometry x="20" y="260" width="20" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="MWTc4Bn-PEisfmY-GD06-26" value="Investigación" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
+        <mxCell id="MWTc4Bn-PEisfmY-GD06-26" value="Investigación" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
           <mxGeometry x="50" y="250" width="140" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="MWTc4Bn-PEisfmY-GD06-28" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#a0522d;strokeColor=#6D1F00;fontColor=#ffffff;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
+        <mxCell id="MWTc4Bn-PEisfmY-GD06-28" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#a0522d;strokeColor=#6D1F00;fontColor=#ffffff;rounded=1;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
           <mxGeometry x="20" y="340" width="20" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="MWTc4Bn-PEisfmY-GD06-29" value="Espacios" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
+        <mxCell id="MWTc4Bn-PEisfmY-GD06-29" value="Espacios" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
           <mxGeometry x="50" y="330" width="140" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="MWTc4Bn-PEisfmY-GD06-31" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#d0cee2;strokeColor=#56517e;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
+        <mxCell id="MWTc4Bn-PEisfmY-GD06-31" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#d0cee2;strokeColor=#56517e;rounded=1;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
           <mxGeometry x="20" y="380" width="20" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="MWTc4Bn-PEisfmY-GD06-32" value="Administración del personal" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
+        <mxCell id="MWTc4Bn-PEisfmY-GD06-32" value="Administración del personal" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
           <mxGeometry x="50" y="370" width="140" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="MWTc4Bn-PEisfmY-GD06-33" value="Operatividad del museo" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
+        <mxCell id="MWTc4Bn-PEisfmY-GD06-33" value="Operatividad del museo" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
           <mxGeometry x="50" y="290" width="140" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="MWTc4Bn-PEisfmY-GD06-34" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#bac8d3;strokeColor=#23445d;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
+        <mxCell id="MWTc4Bn-PEisfmY-GD06-34" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#bac8d3;strokeColor=#23445d;rounded=1;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
           <mxGeometry x="20" y="300" width="20" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="MWTc4Bn-PEisfmY-GD06-35" value="Seguridad y vigilancia" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
+        <mxCell id="MWTc4Bn-PEisfmY-GD06-35" value="Seguridad y vigilancia" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
           <mxGeometry x="50" y="410" width="140" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="MWTc4Bn-PEisfmY-GD06-36" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#fad9d5;strokeColor=#ae4132;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
+        <mxCell id="MWTc4Bn-PEisfmY-GD06-36" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#fad9d5;strokeColor=#ae4132;rounded=1;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
           <mxGeometry x="20" y="420" width="20" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="MWTc4Bn-PEisfmY-GD06-37" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
+        <mxCell id="MWTc4Bn-PEisfmY-GD06-37" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;rounded=1;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
           <mxGeometry x="20" y="460" width="20" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="MWTc4Bn-PEisfmY-GD06-38" value="Dirección" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
+        <mxCell id="MWTc4Bn-PEisfmY-GD06-38" value="Dirección" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;" parent="3wgvUB8AXL-jElFyeeni-1" vertex="1">
           <mxGeometry x="50" y="450" width="140" height="40" as="geometry" />
         </mxCell>
         <mxCell id="3wgvUB8AXL-jElFyeeni-5" value="Obtener aforo, estatus de pasillos, disponibilidad de áreas y demás salas vigiladas en tiempo real" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fad9d5;strokeColor=#ae4132;" parent="1" vertex="1">

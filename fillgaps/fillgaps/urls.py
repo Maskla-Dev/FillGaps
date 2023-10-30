@@ -16,27 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework_simplejwt import views as jwt_views
-from rest_framework.response import Response
-from rest_framework.views import APIView
-from rest_framework.permissions import IsAuthenticated
-
-
-class Protected(APIView):
-    permission_classes = [IsAuthenticated]
-
-    @staticmethod
-    def get(request):
-        return Response({
-            'content': "Protected view"
-        })
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/token/', jwt_views.TokenObtainPairView.as_view(), name="token_obtain_pair"),
-    path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name="token_refresh"),
-    path('api/token/verify/', jwt_views.TokenVerifyView.as_view(), name="token_verify"),
-    path('api/protected', Protected.as_view()),
-    path('com/', include('com.urls'))
+    path('common/api/', include('common.urls'))
 ]
