@@ -6,6 +6,7 @@ export interface BasicEmployeeData {
     user_id: number;
     name: string;
     role: string;
+    photo: string;
 }
 
 export interface UserSessionData extends BasicEmployeeData {

@@ -23,12 +23,13 @@ export const doLogin = async ( username: string, password: string ): Promise<Use
 }
 
 export const getUserData = ( access_key: string, refresh_key: string ): UserSessionData | null => {
-    let { user_id, name, role } = jwtDecode( access_key ) as BasicEmployeeData;
+    let { user_id, name, role, photo } = jwtDecode( access_key ) as BasicEmployeeData;
     if ( user_id && name && role ) {
         return {
             user_id: user_id,
             name: name,
             role: role,
+            photo: photo,
             tokens: {
                 access: access_key,
                 refresh: refresh_key
