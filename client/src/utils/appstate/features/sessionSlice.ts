@@ -1,34 +1,58 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { doLogin, doLogout } from "../../actions/actions.ts";
+import { getSession } from "../../actions/UserSession.ts";
+
+export interface LoginData {
+    username: string;
+    password: string;
+}
+
+export interface BasicEmployeeData {
+    user_id: number;
+    name: string;
+    role: string;
+    photo: string;
+}
+
+export interface UserSessionData extends BasicEmployeeData {
+    tokens: {
+        access: string;
+        refresh: string;
+    };
+}
 
 export interface SessionState {
-    isLoggedIn: boolean;
-    first_name: string;
-    last_name: string;
+    session: UserSessionData | null;
 }
 
 const initialState: SessionState = {
-    isLoggedIn: false,
-    first_name: "",
-    last_name: ""
-}
+    session: getSession()
+};
+
+// @ts-ignore
+const loginAsync = createAsyncThunk( 'session/login', async ( loginData: LoginData, thunkAPI ) => {
+    let res = await doLogin( loginData.username, loginData.password );
+    console.log( res );
+    return res;
+} );
 
 export const sessionSlice = createSlice( {
     name: "session",
     initialState,
     reducers: {
-        login: ( state, action: PayloadAction<SessionState> ) => {
-            state.isLoggedIn = action.payload.isLoggedIn;
-            state.first_name = action.payload.first_name;
-            state.last_name = action.payload.last_name;
-        },
         logout: ( state ) => {
-            state.isLoggedIn = false;
-            state.first_name = "";
-            state.last_name = "";
+            doLogout();
+            state.session = null;
         }
+    },
+    extraReducers: ( builder ) => {
+        builder.addCase( loginAsync.fulfilled, ( state, action: PayloadAction<UserSessionData | null> ) => {
+            state.session = action.payload;
+        } );
     }
 } );
 
-export const { login, logout } = sessionSlice.actions;
+export const { logout } = sessionSlice.actions;
+export { loginAsync };
 export default sessionSlice.reducer;

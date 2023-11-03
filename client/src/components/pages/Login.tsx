@@ -1,28 +1,29 @@
 import Logo from '../../assets/Logo.svg';
 import { KeyIcon, UserIcon } from "@heroicons/react/24/outline";
-import { useSession } from "../../utils/hooks/hooks.ts";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { doLogin } from "../../utils/actions/actions.ts";
-import { UserSessionData } from "../../utils/hooks/useSession.ts";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../utils/appstate/store.ts";
+import { loginAsync } from "../../utils/appstate/features/sessionSlice.ts";
 
-const Login = () => {
-    const [session, setSession] = useSession();
+const Login = () => {    
+    const session = useSelector( ( state: RootState ) => state.session_state.session );
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [username, setUsername] = useState( "" );
     const [password, setPassword] = useState( "" );
 
+    useEffect( () => {
+        console.log( session )
+        if ( session ) {
+            navigate( "/" );
+        }
+    }, [session] );
+
     const handleLogin = ( e: MouseEvent ) => {
         e.preventDefault();
-        doLogin( username, password ).then( ( res ) => {
-            if ( res ) {
-                setSession( res )
-            } else {
-                alert( "Ha ocurrido un error" );
-            }
-        } ).catch( ( err ) => {
-            console.log( err.status );
-            alert( "Usuario o contraseña incorrectos" );
-        } );
+        // @ts-ignore
+        dispatch( loginAsync( { username, password } ) )
     }
 
     return (

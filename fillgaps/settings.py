@@ -134,9 +134,6 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ],
 }
 
 # Simple JWT
@@ -149,7 +146,7 @@ SIMPLE_JWT = {
 # ASGI
 ASGI_APPLICATION = 'fillgaps.asgi.application'
 
-#Layers
+# Layers
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels.layers.InMemoryChannelLayer"

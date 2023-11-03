@@ -1,40 +1,30 @@
-import ChannelCard, { ChannelCardProps, ChannelType } from "../molecules/ChannelCard.tsx";
-import { useEffect } from "react";
+import ChannelCard from "../molecules/ChannelCard.tsx";
+import { ReactNode, useContext } from "react";
+import { ChannelType, ChatChannel } from "../../utils/services/chat/Models.ts";
+import { ChatContext } from "../../utils/hooks/ChatProvider.tsx";
+import { useLiveQuery } from "dexie-react-hooks";
 
 interface ChannelsListProps {
-    type_allowed: keyof ChannelType;
+    type_allowed: ChannelType;
 }
 
 function ChannelsList( {
                            type_allowed,
                        }: ChannelsListProps ) {
+    const [is_online, db, log] = useContext( ChatContext );
+    const channel_containers = useLiveQuery( async () => {
+        let container: ReactNode[] = [];
+        ( await db.channels.where( 'channel_type' ).equals( type_allowed ).toArray() ).forEach( ( channel: ChatChannel ) => {
+            console.log( channel )
+            container.push( <ChannelCard key={channel.channel_name} {...channel}/> )
+        } );
+        return container;
+    }, [db, log] );
 
-    useEffect( () => {
-    }, [type_allowed] );
-
-    const channels: ChannelCardProps[] = [
-        {
-            channel_name: "Bugs",
-            channel_type: type_allowed,
-            image_msg: "https://www.catholicsingles.com/wp-content/uploads/2020/06/blog-header-3-768x464.png",
-            last_message: { message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", is_read: false }
-        },
-        {
-            channel_name: "Not bugs allowed",
-            channel_type: type_allowed,
-            image_msg: "https://www.catholicsingles.com/wp-content/uploads/2020/06/blog-header-3-768x464.png",
-            last_message: { message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", is_read: true }
-        }
-    ]
-    
     return (
         <>
             <div className={"w-full px-1 flex flex-col justify-around "}>
-                {
-                    channels.map( ( channel, index ) => (
-                        <ChannelCard key={index} {...channel}/>
-                    ) )
-                }
+                {channel_containers}
             </div>
         </>
     );

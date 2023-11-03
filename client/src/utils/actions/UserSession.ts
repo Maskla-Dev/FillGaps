@@ -2,8 +2,9 @@ import { provider } from "./Providers";
 import { BasicEmployeeData, UserSessionData } from "../hooks/useSession.ts";
 import { jwtDecode } from "jwt-decode";
 
-export const doLogout = async () => {
+export const doLogout = () => {
     sessionStorage.removeItem( "user_session" );
+    return false
 }
 
 export const doLogin = async ( username: string, password: string ): Promise<UserSessionData | null> => {

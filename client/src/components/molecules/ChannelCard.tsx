@@ -1,47 +1,57 @@
-import { ArrowRightCircleIcon} from '@heroicons/react/24/solid';
+import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import { Link } from "react-router-dom";
+import { ChannelType, ChatChannel, ChatMessage, Employee } from "../../utils/services/chat/Models.ts";
+import { useContext, useEffect, useMemo, useState } from "react";
+import { ChatContext } from "../../utils/hooks/ChatProvider.tsx";
+import { useLiveQuery } from "dexie-react-hooks";
 
-export interface ChannelType {
-    global: string;
-    group: string;
-    private: string;
-}
+function ChannelCard( { channel_name, channel_type }: ChatChannel ) {
+    const [is_online, db, log] = useContext( ChatContext );
+    const [last_message, setLastMessage] = useState<ChatMessage>();
+    const [employee_data, setEmployeeData] = useState<Employee>();
+    const query = useLiveQuery( async () => {
+        let last_message = await db.messages.get( { channel: channel_name } );
+        console.log( last_message )
+        if ( !last_message ) return ( { last_message: undefined, employee_data: undefined } );
+        let employee_data = await db.employees.get( { employee_id: last_message?.sender } );
+        return { last_message, employee_data };
+    }, [db, log] );
 
-export interface ChannelCardProps {
-    channel_name: string;
-    last_message: {
-        message: string;
-        is_read: boolean;
-    };
-    image_msg: string;
-    channel_type: keyof ChannelType;
-}
+    useEffect( () => {
+        if ( query ) {
+            console.log( query.last_message, query.employee_data )
+            setLastMessage( query.last_message );
+            setEmployeeData( query.employee_data );
+        }
+    }, [query] );
 
-function ChannelCard( { channel_name, last_message, image_msg, channel_type, }: ChannelCardProps ) {
-    function getChannelClass( type: keyof ChannelType ) {
+    function getChannelClass( type: ChannelType ) {
         switch ( type ) {
-            case 'private':
+            case 'PRIVATE':
                 return 'bg-teal-700';
-            case 'group':
+            case 'GROUP':
                 return 'bg-cyan-700';
-            case 'global':
+            case 'PUBLIC':
                 return 'bg-sky-700';
             default:
                 return '';
         }
     }
 
+    if ( !employee_data ) return ( <div>loading...</div> );
     return (
         <>
             <div
                 className={`flex flex-row items-center rounded-xl h-fit max-w-full pb-3 pt-3 pl-2 pr-1 m-1 ${getChannelClass( channel_type )}`}>
                 <div className={"min-h-fit min-w-fit"}>
-                    <img className={`h-12 w-12 bg-contain rounded-full object-cover object-center`} src={image_msg} alt="profile"/>
+                    <img className={`h-12 w-12 bg-contain rounded-full object-cover object-center`}
+                         src={employee_data.photo_link}
+                         alt="profile"/>
                 </div>
                 <div className="flex flex-col ml-3 w-full">
                     <h3 className={"font-bold text-zinc-200 truncate"}>{channel_name}</h3>
                     <div className={"flex flex-row items-center w-full h-fit"}>
-                        <p className={`text-xs line-clamp-2${last_message.is_read ? "font-light text-stone-100" : "font-semibold text-orange-300"}`}>{last_message.message}</p>
+                        <p className={`text-xs line-clamp-2 font-semibold text-orange-300`}>{last_message?.content}</p>
                     </div>
                 </div>
                 <Link to={`channel/${channel_name}`}>
