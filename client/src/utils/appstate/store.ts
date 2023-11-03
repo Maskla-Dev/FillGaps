@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { sessionSlice } from "./features/sessionSlice.ts";
+import { SessionSlice, ChatSlice } from "./features/Features.ts";
 
 export const store = configureStore( {
     reducer: {
-        session: sessionSlice.reducer
+        session_state: SessionSlice,
+        chat_state: ChatSlice
     }
 } );
 

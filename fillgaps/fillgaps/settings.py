@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'daphne',
     'common.apps.CommonConfig',
     'rest_framework',
+    'chat',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -147,3 +148,10 @@ SIMPLE_JWT = {
 
 # ASGI
 ASGI_APPLICATION = 'fillgaps.asgi.application'
+
+# Channels
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+}

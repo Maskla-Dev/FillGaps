@@ -8,6 +8,15 @@ class CustomTokenSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
+        employee = models.Employee.objects.get(user=user)
         token['name'] = user.first_name + ' ' + user.last_name
-        token['role'] = models.Employee.objects.get(user=user).role.role_name
+        token['role'] = employee.role
+        token['photo'] = employee.photo_link
         return token
+
+
+class EmployeeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Employee
+        fields = '__all__'
+        depth = 1

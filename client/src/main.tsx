@@ -10,6 +10,9 @@ import { store } from "./utils/appstate/store.ts";
 import { Provider } from "react-redux"
 import Chat from "./components/pages/Chat.tsx";
 import Channel from "./components/pages/Channel.tsx";
+import NewChannel from "./components/pages/NewChannel.tsx";
+import NewChannelEmployee from "./components/organisms/NewChannelEmployee.tsx";
+import NewChannelManager from "./components/organisms/NewChannelManager.tsx";
 
 const router = createBrowserRouter( [
     {
@@ -22,7 +25,21 @@ const router = createBrowserRouter( [
             },
             {
                 path: 'chat',
-                element: <Chat/>
+                element: <Chat/>,
+            },
+            {
+                path: 'chat/new/',
+                element: <NewChannel/>,
+                children: [
+                    {
+                        path: 'manager',
+                        element: <NewChannelManager/>
+                    },
+                    {
+                        path: 'employee',
+                        element: <NewChannelEmployee/>
+                    }
+                ]
             },
             {
                 path: 'chat/channel/:channel_name',
