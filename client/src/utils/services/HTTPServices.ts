@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from "axios";
 
-const provider: AxiosInstance = axios.create( {
+const RESTAPIProvider: AxiosInstance = axios.create( {
     baseURL: import.meta.env.VITE_SERVER_URL,
 } );
 
-export { provider };
+export { RESTAPIProvider };

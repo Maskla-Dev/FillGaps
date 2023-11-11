@@ -1,3 +1,3 @@
-import useSession from "./useSession.ts";
+import ChatProvider from "./ChatProvider.tsx";
 
-export { useSession };
+export { ChatProvider };

@@ -14,6 +14,7 @@ function Channel() {
     const { channel_name } = useParams();
     const navigate = useNavigate();
     const [message, setMessage] = useState( "" );
+    // @ts-ignore
     const [is_online, db, log, send] = useContext( ChatContext );
     const user_id = useSelector( ( state: RootState ) => state.session_state.session?.user_id );
     const channel = useLiveQuery( async () => {
