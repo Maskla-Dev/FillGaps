@@ -5,8 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../utils/appstate/store.ts";
 import { loginAsync } from "../../utils/appstate/features/sessionSlice.ts";
+import InputText from "../atoms/InputText.tsx";
+import PasswordInput from "../atoms/InputPassword.tsx";
+import FormButton from "../atoms/FormButton.tsx";
 
-const Login = () => {    
+const Login = () => {
     const session = useSelector( ( state: RootState ) => state.session_state.session );
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -20,7 +23,7 @@ const Login = () => {
         }
     }, [session] );
 
-    const handleLogin = ( e: MouseEvent ) => {
+    const handleLogin = ( e: React.MouseEvent<HTMLButtonElement> ) => {
         e.preventDefault();
         // @ts-ignore
         dispatch( loginAsync( { username, password } ) )
@@ -39,33 +42,17 @@ const Login = () => {
                 <form className={"flex flex-col w-full"}>
                     <h2 className={"hidden sm:inline-block text-3xl text-blue-600 m-3 text-center"}>Iniciar Sesión</h2>
                     <div className={"flex flex-col mb-2 w-full px-4"}>
-                        <label className={"flex items-center my-2 w-full"} htmlFor="username">
-                            <UserIcon className={"w-6 h-6 stroke-blue-600 mr-3.5"}/>
-                            <input
-                                onInput={( e ) => setUsername( e.target.value )}
-                                className={
-                                    "w-full border-b-2 rounded-xl py-1 px-4 placeholder:opacity-50 placeholder-blue-600 placeholder:italic focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-                                }
-                                type="text" id="username" placeholder="Username"/>
-                        </label>
-                        <label className={"flex items-center my-2 w-full"} htmlFor="password">
-                            <KeyIcon className={"w-6 h-6 stroke-blue-600 mr-3.5"}/>
-                            <input
-                                onInput={( e ) => setPassword( e.target.value )}
-                                className={
-                                    "w-full border-b-2 rounded-xl py-1 px-4 placeholder:opacity-50 placeholder-blue-600 placeholder:italic focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-                                }
-                                type="password" id="password" placeholder="Password"/>
-                        </label>
+                        <InputText label={<UserIcon className={"w-6 h-6 stroke-blue-600 mr-3.5"}/>}
+                                   placeholder={"Username"} id={"username"}
+                                   onInput={( e ) => setUsername( e.currentTarget.value )}
+                                   value={username}/>
+                        <PasswordInput label={<KeyIcon className={"w-6 h-6 stroke-blue-600 mr-3.5"}/>}
+                                       placeholder={"Password"} id={"password"}
+                                       value={password}
+                                       onInput={e => setPassword( e.currentTarget.value )}
+                                       showPassword={false}/>
                     </div>
-                    <button
-                        onClick={handleLogin}
-                        className={
-                            "bg-blue-600 text-white rounded-lg py-2 px-3 w-24 h-fit self-center text-center m-2"
-                        }
-                        type="submit">
-                        Login
-                    </button>
+                    <FormButton onClick={handleLogin} text={"Login"}/>
                 </form>
             </div>
         </div>

@@ -1,6 +1,19 @@
-import { provider } from "./Providers";
-import { BasicEmployeeData, UserSessionData } from "../hooks/useSession.ts";
+import { RESTAPIProvider } from "../services/HTTPServices.ts";
 import { jwtDecode } from "jwt-decode";
+
+export interface BasicEmployeeData {
+    user_id: number;
+    name: string;
+    role: string;
+    photo: string;
+}
+
+export interface UserSessionData extends BasicEmployeeData {
+    tokens: {
+        access: string;
+        refresh: string;
+    }
+}
 
 export const doLogout = () => {
     sessionStorage.removeItem( "user_session" );
@@ -8,7 +21,7 @@ export const doLogout = () => {
 }
 
 export const doLogin = async ( username: string, password: string ): Promise<UserSessionData | null> => {
-    let response = await provider.post( "common/login/", {
+    let response = await RESTAPIProvider.post( "common/login/", {
         username: username,
         password: password
     } );
