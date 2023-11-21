@@ -10,6 +10,12 @@ from common.models import Employee
 
 class ChatConsumer(JsonWebsocketConsumer):
     def connect(self):
+        # In a success connection
+        # 1. Client sends its employee_id
+        # 1.1 If employee_id is not valid, refuse the connection
+        # 2. Get channels where employee belongs to
+        # 3. Connect employee to general group
+        # 4. Connect employee to every channel group      
         employee_id = self.scope["url_route"]["kwargs"]["employee_id"]
         employee_channels = self.get_channels_for(employee_id)
         messages_for = self.connect_employee_to_channels(employee_channels)
@@ -65,30 +71,78 @@ class ChatConsumer(JsonWebsocketConsumer):
         pass
 
     def receive(self, text_data=None, **kwargs):
+        # Basic format:
+        # - employee_id
+        # - type
+        # Allowed types
+        # - SEND_MESSAGE
+        # - DELETE_MESSAGE
+        # - CREATE_CHANNEL
+        # - UPDATE_CHANNEL
+        # - DELETE_CHANNEL
+        # - JOIN_TO_CHANNEL
+        # - SYNC_MESSAGES
+        # - SYNC_DIRECTORY
+        # - SYNC_CHANNELS
         text_data_json = json.loads(text_data)
         type = text_data_json["type"]
         self.employee_id = text_data_json["employee_id"]
         if (type == "SEND_MESSAGE"):
+            # 1. Receive SEND_MESSAGE instruction
+            # 2. Verify if source (employee) belongs to the channel
+            # 2.1 If source does not belong, return error_denied
+            # 3. Update database
+            # 4. Propagate the message throughout channel group
             self.message = text_data_json["message"]
             self.send_message()
         elif (type == "DELETE_MESSAGE"):
+            # 1. Verify if source (employee) belong to the channel and the message_id
+            # 2. Verify if source (employee) is the sender of the message_id
+            # 3. Update database
+            # 4. Propagate the state throughout channel group
             self.message_id = text_data_json["message_id"]
             self.delete_message()
         elif (type == "CREATE_CHANNEL"):
+            # 1. Verify source type (employee role)
+            # 1.1 If employee role is manager, employee list is allowed
+            # 2. Verify if channel does exist
+            # 3. If channel is 1 to 1, verify if members are related in the channel
+            # 4. Verify if members can join to channel
+            # 5. Update database
+            # 6. Propagate the state throughout general group
             self.channel = text_data_json["channel"]
             self.employees = text_data_json["employees"]
             self.employees.append(self.employee_id)
             self.create_channel()
         elif (type == "UPDATE_CHANNEL"):
+            # 1. Verify source type(employee role)
+            # 1.1 If employee role is not manager, refuse request
+            # 2. Verify if employee is owner of the channel
+            # 3. Update database
+            # 4. Propagate the state throughout general group and channel group
             self.channel = text_data_json["channel"]
             self.update_channel()
         elif (type == "DELETE_CHANNEL"):
+            # 1. Verify source type(employee role)
+            # 1.1 If employee role is not manager, refuse request
+            # 2. Verify if employee is owner of the channel
+            # 3. Update database
+            # 4. Propagate the state throughout general group and channel group
             self.channel_id = text_data_json["channel_id"]
             self.delete_channel()
         elif (type == "JOIN_TO_CHANNEL"):
+            # 1. Verify if employee belongs to channel
+            # 1.1 Refuse request if employee does not belong to channel
+            # 2. Join the employee to the channel group
             self.channel_id = text_data_json["channel_id"]
             employee_channel = ChannelEmployee.objects.get(channel_id=self.channel_id, employee_id=self.employee_id)
             self.connect_employee_to_channel(employee_channel)
+        elif (type == "SYNC_MESSAGES"):
+            self.employee = text_data_json["employee_id"];
+        elif (type == "SYNC_DIRECTORY"):
+            self.employee = text_data_json["employee_id"];
+        elif (type == "SYNC_CHANNELS":
+            self.employee = text_data_json["employee_id"];
         else:
             self.send_json({
                 "type": "ERROR",
