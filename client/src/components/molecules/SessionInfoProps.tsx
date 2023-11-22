@@ -1,4 +1,4 @@
-export interface SessionInfo {
+export interface SessionInfoProps {
     image: string;
     name: string;
     position: string;
@@ -8,7 +8,7 @@ function SessionInfo( {
                              image,
                              name,
                              position
-                         }: SessionInfo ) {
+                         }: SessionInfoProps ) {
     return (
         <div className={"flex p-2 items-center min-w-fit min-h-fit select-none"}>
             <div className={`min-w-14 min-h-14 mr-3`}>

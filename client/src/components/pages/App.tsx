@@ -1,5 +1,5 @@
-import { Link, Outlet, useNavigate } from "react-router-dom";
-import SessionInfo from "../molecules/SessionInfo.tsx";
+import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
+import SessionInfo from "../molecules/SessionInfoProps.tsx";
 import AppNav from "../molecules/AppNav.tsx";
 import { useEffect } from "react";
 import { ArrowLeftOnRectangleIcon } from "@heroicons/react/24/outline";
@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../utils/appstate/store.ts";
 import { logout } from "../../utils/appstate/features/sessionSlice.ts";
 import ChatProvider from "../../utils/hooks/ChatProvider.tsx";
+import SessionStatus from "../molecules/SessionStatus.tsx";
+import { BuildingOfficeIcon, ChatBubbleLeftRightIcon } from "@heroicons/react/24/solid";
 
 function App() {
     const session = useSelector( ( state: RootState ) => state.session_state.session );
@@ -24,16 +26,12 @@ function App() {
         return (
             <>
                 <ChatProvider employee_id={session.user_id}>
-                    <header
-                        className={"w-full h-fit bg-blue-600 flex items-center justify-between pr-2 shadow-black shadow-sm"}>
-                        <SessionInfo image={session.photo} name={session.name} position={session.role}/>
-                        <ArrowLeftOnRectangleIcon className={"h-8 w-8 text-white"} onClick={() => {
-                            dispatch( logout() );
-                            navigate( "/login" );
-                        }}/>
-                    </header>
-                    <AppNav/>
-                    <Outlet/>
+                    <div className={"w-full h-full flex flex-col"}>
+                        <AppNav image={session.photo} name={session.name} position={session.role}/>
+                        <div className={"grow overflow-y-scroll pt-1.5"}>
+                            <Outlet/>
+                        </div>
+                    </div>
                 </ChatProvider>
             </>
         )

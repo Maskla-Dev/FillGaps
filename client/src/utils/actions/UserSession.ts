@@ -21,17 +21,30 @@ export const doLogout = () => {
 }
 
 export const doLogin = async ( username: string, password: string ): Promise<UserSessionData | null> => {
-    let response = await RESTAPIProvider.post( "common/login/", {
-        username: username,
-        password: password
-    } );
-    if ( response.status === 200 ) {
+    try {
+        let response = await RESTAPIProvider.post( "common/login/", {
+            username: username,
+            password: password
+        } );
         let { access, refresh } = response.data;
         let result = getUserData( access, refresh );
         if ( result ) {
             sessionStorage.setItem( "user_session", JSON.stringify( result ) );
             return result;
         }
+    } catch ( error ) {
+        switch ( error.response.status ) {
+            case 401:
+                alert( "Invalid username or password" );
+                break;
+            case 500:
+                alert( "Something went wrong in server side" );
+                break;
+            default:
+                alert( "Error" );
+                return null;
+        }
+        return null;
     }
     return null;
 }

@@ -14,7 +14,7 @@ function Chat() {
         <>
             {
                 is_online ? <>
-                    <div className={"w-full h-full overflow-y-scroll relative"}>
+                    <div className={"w-full h-full relative"}>
                         <ChannelsList type_allowed={"PUBLIC"}/>
                         <ChannelsList type_allowed={"GROUP"}/>
                         <ChannelsList type_allowed={"PRIVATE"}/>

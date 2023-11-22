@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ChevronLeftIcon, DocumentTextIcon, PhotoIcon } from "@heroicons/react/24/outline";
 import { ExclamationCircleIcon, PaperAirplaneIcon } from "@heroicons/react/24/solid";
 import Messages from "../organisms/Messages.tsx";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../utils/appstate/store.ts";
 import { ChatMessage } from "../../utils/services/chat/Models.ts";
@@ -17,6 +17,7 @@ function Channel() {
     // @ts-ignore
     const [is_online, db, log, send] = useContext( ChatContext );
     const user_id = useSelector( ( state: RootState ) => state.session_state.session?.user_id );
+    
     const channel = useLiveQuery( async () => {
         return await db.channels.where( 'channel_name' ).equals( channel_name ).first();
     }, [db, log] );
@@ -42,8 +43,11 @@ function Channel() {
         }
     }
 
+    useEffect( () => {
+    }, [] );
+
     return (
-        <div className={"flex flex-col w-full bg-teal-100 overflow-y-scroll"}>
+        <div className={"flex flex-col w-full bg-teal-100 h-full overflow-y-scroll"}>
             <header className={"flex flex-row justify-between w-full px-5 items-center bg-teal-300 py-2"}>
                 <nav className={"flex p-0.5 h-7 w-7 rounded-full bg-teal-700"} onClick={() => navigate( -1 )}>
                     <ChevronLeftIcon className={"self-center w-full h-full stroke-white"}/>

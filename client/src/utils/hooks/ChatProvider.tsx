@@ -1,10 +1,10 @@
-import { useEffect, createContext, useState, useRef } from "react";
+import React, { useEffect, createContext, useState, useRef } from "react";
 import * as ChatIO from "../services/chat/ChatIO.ts";
 import DBChatService from "../services/chat/DBChatService.ts";
 import { ChatChannel, ChatMessage } from "../services/chat/Models.ts";
 
 export interface ChatArgs {
-    children: React.ReactNode[];
+    children: React.ReactNode[] | React.ReactNode;
     employee_id: number;
 }
 
@@ -14,7 +14,9 @@ export interface ChatContextValues {
     send: any;
 }
 
-export const ChatContext = createContext<[boolean, any, any, () => void]>( [false, null, null, () => {
+type SendFunction = () => void;
+
+export const ChatContext = createContext<[boolean, any, any, SendFunction]>( [false, null, null, () => {
 }] );
 
 function ChatProvider( {
@@ -134,7 +136,7 @@ function ChatProvider( {
         }
         socket.onclose = ( event ) => {
             console.log( event );
-            setIsOnline( false )
+            setIsOnline( false );
             console.log( "Websocket closed" )
         }
 

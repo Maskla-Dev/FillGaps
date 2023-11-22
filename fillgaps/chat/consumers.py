@@ -9,29 +9,103 @@ from common.models import Employee
 
 
 class ChatConsumer(JsonWebsocketConsumer):
+    def __init__(self, *args, **kwargs):
+        super().__init__(args, kwargs)
+        self.employee_id = None
+
     def connect(self):
-        employee_id = self.scope["url_route"]["kwargs"]["employee_id"]
-        employee_channels = self.get_channels_for(employee_id)
-        messages_for = self.connect_employee_to_channels(employee_channels)
+        # In a success connection
+        # 1. Client sends its employee_id
+        # 1.1 If employee_id is not valid, refuse the connection
+        # 2. Get channels where employee belongs to
+        # 3. Connect the employee to general group
+        # 4. Connect the employee to every channel group.
+        self.employee_id = self.scope["url_route"]["kwargs"]["employee_id"]
+        if self.employee_id is None:
+            self.send_json({
+                "type": "ERROR",
+                "employee_id": self.employee_id,
+                "error": "Employee ID is required"
+            })
+            self.close()
+        employee_channels = self.get_channels_for(self.employee_id)
+        print(f"Connecting employee {self.employee_id} to channels...")
+        self.connect_employee_to_channels(employee_channels)
         async_to_sync(self.channel_layer.group_add)(f"channel_listing", self.channel_name)
         directory = self.get_employee_s_directory()
-        print(self.channel_name)
+        print(f"Employee {self.employee_id} connected in channel: {self.channel_name}")
         self.accept()
-        channels = []
-        for channel in employee_channels:
-            channels.append({
-                "channel_id": channel.channel.id,
-                "channel_name": channel.channel.channel_name,
-                "description": channel.channel.channel_description,
-                "channel_type": channel.channel.chat_type
+
+    def disconnect(self, close_code):
+        pass
+
+    def receive(self, text_data=None, **kwargs):
+        # text_data format:
+        # - employee_id
+        # - type
+        # Allowed types
+        # - SEND_MESSAGE
+        # - DELETE_MESSAGE
+        # - CREATE_CHANNEL
+        # - UPDATE_CHANNEL
+        # - DELETE_CHANNEL
+        # - JOIN_TO_CHANNEL
+        # - SYNC_MESSAGES
+        # - SYNC_DIRECTORY
+        # - SYNC_CHANNELS
+        text_data_json = json.loads(text_data)
+        request_type = text_data_json["type"]
+        if request_type == "SEND_MESSAGE":
+            self.message = text_data_json["message"]
+            self.send_message()
+        elif request_type == "DELETE_MESSAGE":
+            message_id = text_data_json["message_id"]
+            self.delete_message()
+        elif request_type == "CREATE_CHANNEL":
+            self.channel = text_data_json["channel"]
+            self.employees = text_data_json["employees"]
+            self.employees.append(self.employee_id)
+            self.create_channel()
+        elif request_type == "UPDATE_CHANNEL":
+            channel = text_data_json["channel"]
+            self.update_channel()
+        elif request_type == "DELETE_CHANNEL":
+            channel_id = text_data_json["channel_id"]
+            if ChannelAdmin.objects.filter(channel_id=channel_id, admin_id=self.employee_id).exists():
+                self.delete_channel(channel_id)
+            else:
+                self.send_json({
+                    "type": "ERROR",
+                    "employee_id": self.employee_id,
+                    "error": "You are not admin of this channel"
+                })
+        elif request_type == "JOIN_TO_CHANNEL":
+            channel_id = text_data_json["channel_id"]
+            employee_channel = ChannelEmployee.objects.get(channel_id=channel_id, employee_id=self.employee_id)
+            if employee_channel is not None:
+                self.connect_employee_to_channel(employee_channel)
+            else:
+                self.send_json({
+                    "type": "ERROR",
+                    "employee_id": self.employee_id,
+                    "error": "You are not in this channel"
+                })
+        elif request_type == "SYNC_MESSAGES":
+            self.sync_messages()
+        elif request_type == "SYNC_DIRECTORY":
+            self.sync_directory()
+        elif request_type == "SYNC_CHANNELS":
+            self.sync_channels()
+        else:
+            self.send_json({
+                "type": "ERROR",
+                "employee_id": self.employee_id,
+                "error": "Invalid request"
             })
-        self.send_json({
-            "type": "CHANNELS",
-            "employee_id": employee_id,
-            "channels": channels
-        })
-        messages = []
-        for message_query in messages_for:
+
+    def sync_messages(self):
+        messages = self.get_messages_for(self.employee_id)
+        for message_query in messages:
             for message in message_query:
                 messages.append({
                     "message_id": message.id,
@@ -42,9 +116,12 @@ class ChatConsumer(JsonWebsocketConsumer):
                 })
         self.send_json({
             "type": "MESSAGES",
-            "employee_id": employee_id,
+            "employee_id": self.employee_id,
             "messages": messages
         })
+
+    def sync_directory(self):
+        directory = self.get_employee_s_directory()
         employees = []
         for employee in directory:
             employees.append({
@@ -57,44 +134,25 @@ class ChatConsumer(JsonWebsocketConsumer):
             })
         self.send_json({
             "type": "DIRECTORY",
-            "employee_id": employee_id,
+            "employee_id": self.employee_id,
             "employees": employees
         })
 
-    def disconnect(self, close_code):
-        pass
-
-    def receive(self, text_data=None, **kwargs):
-        text_data_json = json.loads(text_data)
-        type = text_data_json["type"]
-        self.employee_id = text_data_json["employee_id"]
-        if (type == "SEND_MESSAGE"):
-            self.message = text_data_json["message"]
-            self.send_message()
-        elif (type == "DELETE_MESSAGE"):
-            self.message_id = text_data_json["message_id"]
-            self.delete_message()
-        elif (type == "CREATE_CHANNEL"):
-            self.channel = text_data_json["channel"]
-            self.employees = text_data_json["employees"]
-            self.employees.append(self.employee_id)
-            self.create_channel()
-        elif (type == "UPDATE_CHANNEL"):
-            self.channel = text_data_json["channel"]
-            self.update_channel()
-        elif (type == "DELETE_CHANNEL"):
-            self.channel_id = text_data_json["channel_id"]
-            self.delete_channel()
-        elif (type == "JOIN_TO_CHANNEL"):
-            self.channel_id = text_data_json["channel_id"]
-            employee_channel = ChannelEmployee.objects.get(channel_id=self.channel_id, employee_id=self.employee_id)
-            self.connect_employee_to_channel(employee_channel)
-        else:
-            self.send_json({
-                "type": "ERROR",
-                "employee_id": self.employee_id,
-                "error": "Invalid request"
+    def sync_channels(self):
+        channels = self.get_channels_for(self.employee_id)
+        channels_list = []
+        for channel in channels:
+            channels_list.append({
+                "channel_id": channel.channel.id,
+                "channel_name": channel.channel.channel_name,
+                "description": channel.channel.channel_description,
+                "channel_type": channel.channel.chat_type
             })
+        self.send_json({
+            "type": "CHANNELS",
+            "employee_id": self.employee_id,
+            "channels": channels_list
+        })
 
     def send_message(self):
         # Validate message, if valid, send to channel
@@ -143,8 +201,11 @@ class ChatConsumer(JsonWebsocketConsumer):
     def update_channel(self):
         pass
 
-    def delete_channel(self):
-        pass
+    @staticmethod
+    def delete_channel(channel_id):
+        channel = ChatChannel.objects.get(id=channel_id)
+        channel.status = False
+        channel.save()
 
     def confirm_message_sent(self):
         channel_id = self.message["channel"]
@@ -211,22 +272,20 @@ class ChatConsumer(JsonWebsocketConsumer):
         return channels
 
     @staticmethod
-    def get_messages_for(channel_employee):
-        messages = ChannelMessage.objects.filter(channel_id=channel_employee.channel.id)
+    def get_messages_for(employee_id):
+        messages = ChannelMessage.objects.filter(channel__in=ChannelEmployee.objects.filter(employee_id=employee_id))
         return messages
 
     def connect_employee_to_channel(self, channel_employee):
-        print(f"{channel_employee.channel.id}_{channel_employee.channel.channel_name}")
+        print(
+            f"Employee {self.employee_id} in {channel_employee.channel.id}_{channel_employee.channel.channel_name} channel")
         async_to_sync(self.channel_layer.group_add)(
             f"{channel_employee.channel.id}_{channel_employee.channel.channel_name.replace(' ', '_')}",
             self.channel_name)
 
     def connect_employee_to_channels(self, employee_channels):
-        messages_for = []
         for channel in employee_channels:
             self.connect_employee_to_channel(channel)
-            messages_for.append(ChatConsumer.get_messages_for(channel))
-        return messages_for
 
     @staticmethod
     def get_employee_s_directory():
