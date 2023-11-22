@@ -68,16 +68,14 @@ class ChatConsumer(JsonWebsocketConsumer):
             self.create_channel()
         elif request_type == "UPDATE_CHANNEL":
             channel = text_data_json["channel"]
-            self.update_channel(channel)
-            self.confirm_channel_updated(channel["channel_id"])
+            if self.can_change_channel(channel):
+                self.update_channel(channel)
+                self.confirm_channel_updated(channel)
         elif request_type == "DELETE_CHANNEL":
             channel_id = text_data_json["channel_id"]
-            if ChannelAdmin.objects.filter(channel_id=channel_id, admin_id=self.employee_id).exists():
+            if self.can_change_channel(channel_id):
                 self.delete_channel(channel_id)
-            elif ChannelEmployee.objects.filter(channel_id=channel_id, employee_id=self.employee_id).exists():
-                # Verify only two employee in channel
-                if ChannelEmployee.objects.filter(channel_id=channel_id).count() == 2:
-                    self.delete_channel(channel_id)
+                self.confirm_channel_deleted()
             else:
                 self.send_json({
                     "type": "ERROR",
@@ -282,6 +280,17 @@ class ChatConsumer(JsonWebsocketConsumer):
 
     def confirm_channel_deleted(self):
         pass
+
+    def can_change_channel(self, channel):
+        return ChannelAdmin.objects.filter(channel=channel, admin_id=self.employee_id).exists()
+
+    def one_to_one_channel(self, channel):
+        if ChannelEmployee.objects.filter(channel=channel, employee_id=self.employee_id).exists():
+            return ChannelEmployee.objects.filter(channel_id=channel.channel_id).count() == 2
+        return False
+
+    def am_i_manager(self):
+        return Employee.objects.get(id=self.employee_id).role.contains("Manager")
 
     @staticmethod
     def get_channels_for(employee_id):
