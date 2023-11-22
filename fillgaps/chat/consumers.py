@@ -68,11 +68,16 @@ class ChatConsumer(JsonWebsocketConsumer):
             self.create_channel()
         elif request_type == "UPDATE_CHANNEL":
             channel = text_data_json["channel"]
-            self.update_channel()
+            self.update_channel(channel)
+            self.confirm_channel_updated(channel["channel_id"])
         elif request_type == "DELETE_CHANNEL":
             channel_id = text_data_json["channel_id"]
             if ChannelAdmin.objects.filter(channel_id=channel_id, admin_id=self.employee_id).exists():
                 self.delete_channel(channel_id)
+            elif ChannelEmployee.objects.filter(channel_id=channel_id, employee_id=self.employee_id).exists():
+                # Verify only two employee in channel
+                if ChannelEmployee.objects.filter(channel_id=channel_id).count() == 2:
+                    self.delete_channel(channel_id)
             else:
                 self.send_json({
                     "type": "ERROR",
@@ -198,8 +203,20 @@ class ChatConsumer(JsonWebsocketConsumer):
                                                employee=Employee.objects.get(id=employee))
             self.confirm_channel_created()
 
-    def update_channel(self):
-        pass
+    @staticmethod
+    def update_channel(channel_data):
+        # Extract channel data
+        # Validate channel data
+        # Update channel
+        channel = ChatChannel.objects.get(id=channel_data["channel_id"])
+        channel.channel_name = channel_data["channel_name"]
+        channel.channel_description = channel_data["description"]
+        channel.chat_type = channel_data["channel_type"]
+        # Update channel members
+        for employee in channel_data["employees"]:
+            if not ChannelEmployee.objects.filter(channel=channel, employee=employee).exists():
+                ChannelEmployee.objects.create(channel=channel, employee=employee)
+        channel.save()
 
     @staticmethod
     def delete_channel(channel_id):
@@ -260,7 +277,7 @@ class ChatConsumer(JsonWebsocketConsumer):
             }
         })
 
-    def confirm_channel_updated(self):
+    def confirm_channel_updated(self, channel_id):
         pass
 
     def confirm_channel_deleted(self):
