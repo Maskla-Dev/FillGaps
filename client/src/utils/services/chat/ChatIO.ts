@@ -1,4 +1,5 @@
 import * as models from "./Models.ts";
+import { ChatChannel, ChatMessage } from "./Models.ts";
 
 // Types
 export type RequestType = "SEND_MESSAGE" |
@@ -24,8 +25,7 @@ export interface ChatServiceReceive {
     employee_id: number;
 }
 
-export interface MessageSent extends ChatServiceReceive {
-    data: models.ChatMessage;
+export interface MessageSent extends ChatServiceReceive, ChatMessage {
 }
 
 export interface Messages extends ChatServiceReceive {
@@ -36,12 +36,10 @@ export interface MessageDeleted extends ChatServiceReceive {
     message_id: number;
 }
 
-export interface ChannelCreated extends ChatServiceReceive {
-    data: models.ChatChannel;
+export interface ChannelCreated extends ChatServiceReceive, ChatChannel {
 }
 
-export interface ChannelUpdated extends ChatServiceReceive {
-    data: models.ChatChannel;
+export interface ChannelUpdated extends ChatServiceReceive, ChatChannel {
 }
 
 export interface ChannelDeleted extends ChatServiceReceive {

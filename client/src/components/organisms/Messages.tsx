@@ -1,11 +1,13 @@
-import MessageCard, { MessageCardProps } from "../molecules/MessageCard.tsx";
+import MessageCard from "../molecules/MessageCard.tsx";
 import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { ChatContext } from "../../utils/hooks/ChatProvider.tsx";
 import { ChatMessage, Employee } from "../../utils/services/chat/Models.ts";
 
-function Messages( { channel_name }: { channel_name: string } ) {
-    const [is_online, db, log] = useContext( ChatContext );
+function Messages( { channel_name }: {
+    channel_name: string
+} ) {
+    const [chat_state, db] = useContext( ChatContext );
     const [messages, setMessages] = useState<ChatMessage[]>( [] );
     const [directory, setDirectory] = useState<Employee[]>( [] );
 
@@ -13,7 +15,7 @@ function Messages( { channel_name }: { channel_name: string } ) {
         let messages = await db.messages.where( 'channel' ).equals( channel_name ).toArray();
         let directory = await db.employees.toArray();
         return { directory, messages };
-    }, [db, log] );
+    }, [chat_state.logs.message_logs] );
 
     useEffect( () => {
         if ( query ) {

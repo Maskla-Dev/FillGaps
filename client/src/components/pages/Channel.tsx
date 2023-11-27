@@ -15,21 +15,21 @@ function Channel() {
     const navigate = useNavigate();
     const [message, setMessage] = useState( "" );
     // @ts-ignore
-    const [is_online, db, log, send] = useContext( ChatContext );
+    const [chat_state, db, send] = useContext( ChatContext );
     const user_id = useSelector( ( state: RootState ) => state.session_state.session?.user_id );
-    
+
     const channel = useLiveQuery( async () => {
         return await db.channels.where( 'channel_name' ).equals( channel_name ).first();
-    }, [db, log] );
+    }, [chat_state.logs.channel_logs] );
 
     function sendButton( event: React.MouseEvent<SVGSVGElement> ) {
         event.preventDefault();
-        if ( channel ) {
+        if ( channel && user_id ) {
             let to_send: ChatMessage = {
                 channel: channel.channel_id,
                 sender: user_id,
                 message_id: 0,
-                message_content: message,
+                content: message,
                 date: 0,
             }
             let request: SendMessageRequest = {
@@ -45,6 +45,10 @@ function Channel() {
 
     useEffect( () => {
     }, [] );
+
+    if ( channel_name === undefined ) {
+        return <div className={""}>Channel not found</div>
+    }
 
     return (
         <div className={"flex flex-col w-full bg-teal-100 h-full overflow-y-scroll"}>

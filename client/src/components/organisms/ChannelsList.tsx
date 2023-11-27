@@ -11,7 +11,7 @@ interface ChannelsListProps {
 function ChannelsList( {
                            type_allowed,
                        }: ChannelsListProps ) {
-    const [is_online, db, log] = useContext( ChatContext );
+    const [chat_state, db] = useContext( ChatContext );
     const channel_containers = useLiveQuery( async () => {
         let container: ReactNode[] = [];
         ( await db.channels.where( 'channel_type' ).equals( type_allowed ).toArray() ).forEach( ( channel: ChatChannel ) => {
@@ -19,7 +19,7 @@ function ChannelsList( {
             container.push( <ChannelCard key={channel.channel_name} {...channel}/> )
         } );
         return container;
-    }, [db, log] );
+    }, [db, chat_state.logs.channel_logs] );
 
     return (
         <>

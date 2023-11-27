@@ -1,44 +1,78 @@
 import React, { useEffect, createContext, useState, useRef } from "react";
 import * as ChatIO from "../services/chat/ChatIO.ts";
 import DBChatService from "../services/chat/DBChatService.ts";
-import { ChatChannel, ChatMessage } from "../services/chat/Models.ts";
+
+export type ChatTask = "SYNC_MESSAGES" | "SYNC_CHANNELS" | "SYNC_DIRECTORY" | "NOTHING";
 
 export interface ChatArgs {
     children: React.ReactNode[] | React.ReactNode;
     employee_id: number;
 }
 
-export interface ChatContextValues {
-    is_online: boolean;
-    db: any;
-    send: any;
+export interface ChatLogs {
+    message_logs: string[];
+    channel_logs: string[];
+    directory_log: string;
+    error_log: string;
 }
+
+export interface ChatState {
+    is_online: boolean;
+    current_task: ChatTask;
+    error?: string;
+    logs: ChatLogs;
+}
+
+type ChatContextType = [ChatState, any, SendFunction];
 
 type SendFunction = () => void;
 
-export const ChatContext = createContext<[boolean, any, any, SendFunction]>( [false, null, null, () => {
-}] );
+const initial_chat_state: ChatState = {
+    is_online: false,
+    current_task: "NOTHING",
+    logs: {
+        message_logs: [],
+        channel_logs: [],
+        error_log: "",
+        directory_log: "",
+    },
+}
+
+export const ChatContext = createContext<ChatContextType>( [
+    initial_chat_state,
+    null,
+    () => {
+    }] );
+
 
 function ChatProvider( {
                            children,
                            employee_id
                        }: ChatArgs ) {
-    const [is_online, setIsOnline] = useState( false );
+    const [chat_state, setChatState] = useState<ChatState>( initial_chat_state );
     const ws = useRef( null );
     const db = useRef( new DBChatService( employee_id ) );
-    const log = useRef( [] as string[] );
 
 
     useEffect( () => {
         const socket = new WebSocket( `ws://127.0.0.1:8000/ws/chat/${employee_id}` );
         socket.onopen = ( event ) => {
             console.log( event )
-            setIsOnline( true );
+            setChatState( current => ( {
+                ...current,
+                current_task: "SYNC_MESSAGES",
+                is_online: true,
+            } ) );
             console.log( "Websocket opened" )
             console.log( db.current )
+            socket.send( JSON.stringify( {
+                type: "SYNC_MESSAGES",
+                employee_id: employee_id,
+            } ) );
         }
+
         socket.onmessage = ( event ) => {
-            const messageSentHandler = ( receipt: ChatMessage ) => {
+            const messageSentHandler = ( receipt: ChatIO.MessageSent ) => {
                 console.log( receipt );
                 db.current.messages.put( {
                     message_id: receipt.message_id,
@@ -48,7 +82,10 @@ function ChatProvider( {
                     document: receipt.document,
                     date: receipt.date,
                 } );
-                log.current.push( `Message sent: ${receipt}` );
+                setChatState( current => {
+                    current.logs.message_logs.push( `Message ${receipt.message_id.toString()} added` );
+                    return current;
+                } );
             }
             const messageReadHandler = ( data: ChatIO.Messages ) => {
                 console.log( data.messages );
@@ -56,11 +93,24 @@ function ChatProvider( {
                     db.current.messages.put( message )
                     console.log( "Added message to database", message.message_id )
                 } );
+                setChatState( current => ( {
+                    ...current,
+                    current_task: "SYNC_CHANNELS",
+                } ) );
+                socket.send( JSON.stringify( {
+                    type: "SYNC_CHANNELS",
+                    employee_id: employee_id,
+                } ) );
             }
             const messageDeletedHandler = ( data: ChatIO.MessageDeleted ) => {
                 console.log( data )
+                db.current.messages.delete( data.message_id );
+                setChatState( current => {
+                    current.logs.message_logs.push( `Message ${data.message_id.toString()} deleted` );
+                    return current;
+                } );
             }
-            const channelCreatedHandler = ( data: ChatChannel ) => {
+            const channelCreatedHandler = ( data: ChatIO.ChannelCreated ) => {
                 console.log( data )
                 db.current.channels.put( {
                     channel_id: data.channel_id,
@@ -68,6 +118,10 @@ function ChatProvider( {
                     channel_type: data.channel_type,
                     description: data.description,
                 } )
+                setChatState( current => {
+                    current.logs.channel_logs.push( `Channel ${data.channel_id.toString()} created` );
+                    return current;
+                } );
                 socket.send( JSON.stringify( {
                     type: "JOIN_TO_CHANNEL",
                     employee_id: employee_id,
@@ -76,9 +130,24 @@ function ChatProvider( {
             }
             const channelUpdatedHandler = ( data: ChatIO.ChannelUpdated ) => {
                 console.log( data )
+                db.current.channels.put( {
+                    channel_id: data.channel_id,
+                    channel_name: data.channel_name,
+                    channel_type: data.channel_type,
+                    description: data.description,
+                } )
+                setChatState( current => {
+                    current.logs.channel_logs.push( `Channel ${data.channel_id.toString()} updated` );
+                    return current;
+                } );
             }
             const channelDeletedHandler = ( data: ChatIO.ChannelDeleted ) => {
                 console.log( data )
+                db.current.channels.delete( data.channel_id );
+                setChatState( current => {
+                    current.logs.channel_logs.push( `Channel ${data.channel_id.toString()} deleted` );
+                    return current;
+                } );
             }
             const channelReadHandler = ( data: ChatIO.Channels ) => {
                 console.log( data.channels );
@@ -86,6 +155,10 @@ function ChatProvider( {
                     db.current.channels.put( channel );
                     console.log( "Added channel to database", channel.channel_id )
                 } );
+                setChatState( current => ( {
+                    ...current,
+                    current_task: "SYNC_DIRECTORY",
+                } ) );
             }
             const channelDirectoryHandler = ( data: ChatIO.Directory ) => {
                 console.log( data.employees )
@@ -93,14 +166,23 @@ function ChatProvider( {
                     db.current.employees.put( employee );
                     console.log( "Added employee to directory", employee.employee_id )
                 } );
+                setChatState( current => {
+                    current.logs.directory_log = `Directory synced with ${data.employees.length.toString()} employees`;
+                    current.current_task = "NOTHING";
+                    return current;
+                } );
             }
             const channelErrorHandler = ( data: ChatIO.Error ) => {
                 console.log( data )
+                setChatState( current => ( {
+                    ...current,
+                    error: data.error,
+                } ) );
             }
             const receipt = JSON.parse( event.data ) as ChatIO.ChatServiceReceive;
             switch ( receipt.type ) {
                 case "MESSAGE_SENT":
-                    messageSentHandler( receipt as ChatMessage );
+                    messageSentHandler( receipt as ChatIO.MessageSent );
                     break;
                 case "MESSAGES":
                     messageReadHandler( receipt as ChatIO.Messages );
@@ -109,7 +191,7 @@ function ChatProvider( {
                     messageDeletedHandler( receipt as ChatIO.MessageDeleted );
                     break;
                 case "CHANNEL_CREATED":
-                    channelCreatedHandler( receipt as ChatChannel );
+                    channelCreatedHandler( receipt as ChatIO.ChannelCreated );
                     break;
                 case "CHANNEL_DELETED":
                     channelDeletedHandler( receipt as ChatIO.ChannelDeleted );
@@ -136,7 +218,7 @@ function ChatProvider( {
         }
         socket.onclose = ( event ) => {
             console.log( event );
-            setIsOnline( false );
+            setChatState( initial_chat_state );
             console.log( "Websocket closed" )
         }
 
@@ -148,7 +230,7 @@ function ChatProvider( {
     }, [] );
 
     // @ts-ignore
-    const ret: [boolean, any, any, () => void] = [is_online, db.current, log.current, ws.current?.send.bind( ws.current )];
+    const ret: ChatContextType = [chat_state, db.current, ws.current?.send.bind( ws.current )];
 
     return (
         <ChatContext.Provider value={ret}>

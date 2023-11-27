@@ -1,18 +1,12 @@
-import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
-import SessionInfo from "../molecules/SessionInfoProps.tsx";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import AppNav from "../molecules/AppNav.tsx";
 import { useEffect } from "react";
-import { ArrowLeftOnRectangleIcon } from "@heroicons/react/24/outline";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "../../utils/appstate/store.ts";
-import { logout } from "../../utils/appstate/features/sessionSlice.ts";
 import ChatProvider from "../../utils/hooks/ChatProvider.tsx";
-import SessionStatus from "../molecules/SessionStatus.tsx";
-import { BuildingOfficeIcon, ChatBubbleLeftRightIcon } from "@heroicons/react/24/solid";
 
 function App() {
     const session = useSelector( ( state: RootState ) => state.session_state.session );
-    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     useEffect( () => {

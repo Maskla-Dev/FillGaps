@@ -3,7 +3,6 @@ import { ChatChannel, Employee } from "../../utils/services/chat/Models.ts";
 import EmployeeCard from "../molecules/EmployeeCard.tsx";
 import React, { ReactNode, useContext, useEffect, useMemo, useState } from "react";
 import { ChatContext } from "../../utils/hooks/ChatProvider.tsx";
-import { send } from "vite";
 import { CreateChannelRequest } from "../../utils/services/chat/ChatIO.ts";
 import { useSelector } from "react-redux";
 import { RootState } from "../../utils/appstate/store.ts";
@@ -14,7 +13,7 @@ export interface SelectableEmployee extends Employee {
 
 function NewChannelManager() {
     const id = useSelector( ( state: RootState ) => state.session_state.session?.user_id )
-    const [is_online, db, log, send] = useContext( ChatContext );
+    const [chat_state, db, send] = useContext( ChatContext );
     const [employees, setEmployees] = useState<SelectableEmployee[]>( [] );
     const [channel_name, setChannelName] = useState<string>( "" );
     const [channel_description, setChannelDescription] = useState<string>( "" );
@@ -24,7 +23,7 @@ function NewChannelManager() {
         return _employees.map( ( employee: Employee ) => {
             return ( { ...employee, is_selected: false } );
         } );
-    }, [db, log] );
+    }, [chat_state.logs.directory_log] );
 
     useEffect( () => {
         setEmployees( query )
