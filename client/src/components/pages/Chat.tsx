@@ -6,6 +6,7 @@ import { ChatContext } from "../../utils/hooks/ChatProvider.tsx";
 
 function Chat() {
     const [chat_state, db] = useContext( ChatContext );
+
     useEffect( () => {
         console.log( chat_state.is_online, db );
     }, [chat_state.is_online] );

@@ -12,6 +12,7 @@ class ChatChannel(models.Model):
     # Options for channel
     channel_name = models.CharField(max_length=50, unique=True)
     open_date = models.DateTimeField(auto_now_add=True)
+    # channel_banner = models.CharField(max_length=1000)
     channel_description = models.CharField(max_length=1000)
     chat_type = models.CharField(max_length=30, choices=ChannelType.choices, default=ChannelType.PUBLIC)
     status = models.BooleanField(default=True)

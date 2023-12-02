@@ -2,10 +2,11 @@ import MessageCard from "../molecules/MessageCard.tsx";
 import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { ChatContext } from "../../utils/hooks/ChatProvider.tsx";
-import { ChatMessage, Employee } from "../../utils/services/chat/Models.ts";
+import { ChatMessage, Employee, ChannelType } from "../../utils/services/chat/Models.ts";
 
-function Messages( { channel_name }: {
-    channel_name: string
+function Messages( { channel_name, channel_type }: {
+    channel_name: string;
+    channel_type: ChannelType;
 } ) {
     const [chat_state, db] = useContext( ChatContext );
     const [messages, setMessages] = useState<ChatMessage[]>( [] );
@@ -36,8 +37,8 @@ function Messages( { channel_name }: {
     const message_containers = useMemo( () => {
         return messages.map( ( message, index ) => {
             let employee = directory.find( employee => employee.employee_id == message.sender );
-            console.log( message )
-            return <MessageCard key={index} {...message} {...employee}/>
+            console.log( message, channel_type )
+            return <MessageCard key={index} type={channel_type} {...message} {...employee}/>
         } );
     }, [messages, directory] );
 

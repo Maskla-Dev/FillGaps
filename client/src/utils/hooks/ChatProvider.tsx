@@ -159,6 +159,10 @@ function ChatProvider( {
                     ...current,
                     current_task: "SYNC_DIRECTORY",
                 } ) );
+                socket.send( JSON.stringify( {
+                    type: "SYNC_DIRECTORY",
+                    employee_id: employee_id,
+                } ) );
             }
             const channelDirectoryHandler = ( data: ChatIO.Directory ) => {
                 console.log( data.employees )
@@ -167,9 +171,10 @@ function ChatProvider( {
                     console.log( "Added employee to directory", employee.employee_id )
                 } );
                 setChatState( current => {
-                    current.logs.directory_log = `Directory synced with ${data.employees.length.toString()} employees`;
-                    current.current_task = "NOTHING";
-                    return current;
+                let state = {...current}
+                    state.logs.directory_log = `Directory synced with ${data.employees.length.toString()} employees`;
+                    state.current_task = "NOTHING";
+                    return state;
                 } );
             }
             const channelErrorHandler = ( data: ChatIO.Error ) => {

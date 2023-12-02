@@ -23,7 +23,7 @@ function ChannelsList( {
 
     return (
         <>
-            <div className={"w-full px-1 flex flex-col justify-around "}>
+            <div className={"w-full flex flex-col justify-around"}>
                 {channel_containers}
             </div>
         </>

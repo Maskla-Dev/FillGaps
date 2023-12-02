@@ -22,7 +22,7 @@ function App() {
                 <ChatProvider employee_id={session.user_id}>
                     <div className={"w-full h-full flex flex-col"}>
                         <AppNav image={session.photo} name={session.name} position={session.role}/>
-                        <div className={"grow overflow-y-scroll pt-1.5"}>
+                        <div className={"grow overflow-y-scroll"}>
                             <Outlet/>
                         </div>
                     </div>

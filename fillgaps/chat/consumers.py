@@ -54,17 +54,22 @@ class ChatConsumer(JsonWebsocketConsumer):
         # - SYNC_CHANNELS
         text_data_json = json.loads(text_data)
         request_type = text_data_json["type"]
+        # @TODO: Result debe de ser sustituido por NONE
         if request_type == "SEND_MESSAGE":
             message = text_data_json["message"]
             result = self.send_message(message)
-            if result["type"] != "ERROR":
+            if not None:
                 self.confirm_message_sent(result, message["channel"])
             else:
-                self.send_error(result)
+                self.send_error({
+                    "type": "ERROR",
+                    "employee_id": self.employee_id,
+                    "error": "You are not in this channel"
+                })
         elif request_type == "DELETE_MESSAGE":
             message_id = text_data_json["message_id"]
             result = self.delete_message(message_id)
-            if result["type"] != "ERROR":
+            if None:
                 self.confirm_message_deleted(message_id)
             else:
                 self.send_error(result)
@@ -113,8 +118,10 @@ class ChatConsumer(JsonWebsocketConsumer):
             })
 
     def sync_messages(self):
-        messages = self.get_messages_for(self.employee_id)
-        for message_query in messages:
+        employee_channels = self.get_channels_for(self.employee_id)
+        messages = []
+        for channel in employee_channels:
+            message_query = ChannelMessage.objects.filter(channel_id=channel.channel_id)
             for message in message_query:
                 messages.append({
                     "message_id": message.id,
@@ -171,16 +178,12 @@ class ChatConsumer(JsonWebsocketConsumer):
                                           employee_id=message["sender"]).exists():
             embed_channel = ChatChannel.objects.get(id=message["channel"])
             sender = common_models.Employee.objects.get(id=message["sender"])
-            to_confirm = ChannelMessage.objects.create(message_content=message["message_content"],
+            to_confirm = ChannelMessage.objects.create(message_content=message["content"],
                                                        channel=embed_channel,
                                                        sender=sender)
             return to_confirm
         else:
-            return {
-                "type": "ERROR",
-                "employee_id": self.employee_id,
-                "error": "You are not in this channel"
-            }
+            return None
 
     def delete_message(self, message_id):
         message = ChannelMessage.objects.get(id=message_id)

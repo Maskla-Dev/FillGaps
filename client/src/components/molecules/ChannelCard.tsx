@@ -28,11 +28,11 @@ function ChannelCard( { channel_name, channel_type }: ChatChannel ) {
     function getChannelClass( type: ChannelType ) {
         switch ( type ) {
             case 'PRIVATE':
-                return 'bg-teal-700';
+                return 'bg-teal-700/40 border-indigo-800 border-b-2 hover:bg-teal-700';
             case 'GROUP':
-                return 'bg-cyan-700';
+                return 'bg-cyan-700/40 border-emerald-800 border-b-2 hover:bg-cyan-700';
             case 'PUBLIC':
-                return 'bg-sky-700';
+                return 'bg-sky-700/40 border-sky-800 border-b-2 hover:bg-sky-700';
             default:
                 return '';
         }
@@ -41,23 +41,22 @@ function ChannelCard( { channel_name, channel_type }: ChatChannel ) {
     if ( !employee_data ) return ( <div>loading...</div> );
     return (
         <>
-            <div
-                className={`flex flex-row items-center rounded-xl h-fit max-w-full pb-3 pt-3 pl-2 pr-1 my-1.5 mx-1 ${getChannelClass( channel_type )}`}>
-                <div className={"min-h-fit min-w-fit"}>
-                    <img className={`h-12 w-12 bg-contain rounded-full object-cover object-center`}
-                         src={employee_data.photo_link}
-                         alt="profile"/>
+            <Link to={`channel/${channel_name}`}>
+                <div
+                    className={`flex flex-row items-center h-fit max-w-full py-4 pl-2 pr-1 ${getChannelClass( channel_type )}`}>
+                    <div className={"min-h-fit min-w-fit"}>
+                        <img className={`h-12 w-12 bg-contain rounded-full object-cover object-center`}
+                             src={employee_data.photo_link}
+                             alt="profile"/>
+                    </div>
+                    <div className="flex flex-col ml-3 w-full">
+                        <h3 className={"font-bold text-zinc-200 truncate"}>{channel_name}</h3>
+                        {last_message ? ( <div className={"flex flex-row items-center w-full h-fit"}>
+                            <p className={`text-xs line-clamp-2 font-semibold text-orange-300`}>{last_message.content}</p>
+                        </div> ) : ( <></> )}
+                    </div>
                 </div>
-                <div className="flex flex-col ml-3 w-full">
-                    <h3 className={"font-bold text-zinc-200 truncate"}>{channel_name}</h3>
-                    {last_message ? ( <div className={"flex flex-row items-center w-full h-fit"}>
-                        <p className={`text-xs line-clamp-2 font-semibold text-orange-300`}>{last_message.content}</p>
-                    </div> ) : ( <></> )}
-                </div>
-                <Link to={`channel/${channel_name}`}>
-                    <ArrowRightCircleIcon className={"ml-3 h-8 w-8 text-amber-50 hover:text-amber-400"}/>
-                </Link>
-            </div>
+            </Link>
         </>
     );
 }
