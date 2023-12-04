@@ -58,7 +58,7 @@ class ChatConsumer(JsonWebsocketConsumer):
         if request_type == "SEND_MESSAGE":
             message = text_data_json["message"]
             result = self.send_message(message)
-            if not None:
+            if result is not None:
                 self.confirm_message_sent(result, message["channel"])
             else:
                 self.send_error({
@@ -69,7 +69,7 @@ class ChatConsumer(JsonWebsocketConsumer):
         elif request_type == "DELETE_MESSAGE":
             message_id = text_data_json["message_id"]
             result = self.delete_message(message_id)
-            if None:
+            if result is not None:
                 self.confirm_message_deleted(message_id)
             else:
                 self.send_error(result)
@@ -77,21 +77,37 @@ class ChatConsumer(JsonWebsocketConsumer):
             channel = text_data_json["channel"]
             employees = text_data_json["employees"]
             employees.append(self.employee_id)
-            self.create_channel(channel, employees)
+            result = self.create_channel(channel, employees)
+            if result is not None:
+                self.confirm_channel_created(result)
+            else:
+                self.send_error({
+                    "type": "ERROR",
+                    "employee_id": self.employee_id,
+                    "error": "You are not allowed to create this channel"
+                })
         elif request_type == "UPDATE_CHANNEL":
             channel = text_data_json["channel"]
             result = self.update_channel(channel)
-            if result["type"] != "ERROR":
+            if result is not None:
                 self.confirm_channel_updated(channel)
             else:
-                self.send_error(result)
+                self.send_error({
+                    "type": "ERROR",
+                    "employee_id": self.employee_id,
+                    "error": "You are not allowed to update this channel"
+                })
         elif request_type == "DELETE_CHANNEL":
             channel_id = text_data_json["channel_id"]
             result = self.delete_channel(channel_id)
-            if result["type"] != "ERROR":
+            if result is not None:
                 self.confirm_channel_deleted(channel_id)
             else:
-                self.send_error(result)
+                self.send_error({
+                    "type": "ERROR",
+                    "employee_id": self.employee_id,
+                    "error": "You are not allowed to delete this channel"
+                })
         elif request_type == "JOIN_TO_CHANNEL":
             channel_id = text_data_json["channel_id"]
             employee_channel = ChannelEmployee.objects.get(channel_id=channel_id, employee_id=self.employee_id)

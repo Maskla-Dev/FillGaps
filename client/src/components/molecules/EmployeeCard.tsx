@@ -12,7 +12,7 @@ function EmployeeCard( {
         <div
             onClick={onClick}
             id={name}
-            className={"flex flex-row w-full h-fit items-center my-3 overflow-y-scroll rounded-xl bg-amber-500 px-2 py-3"}>
+            className={"flex flex-row w-full h-fit items-center bg-amber-400/40 hover:bg-amber-500 border-b-2 px-2 border-amber-500 cursor-pointer py-3"}>
             {is_selected != undefined ? <input type="checkbox" checked={is_selected}/> : <></>}
             <img className={"w-12 h-12 rounded-full object-cover object-center ml-3"} src={photo_link} alt={name}/>
             <div className={"ml-3 w-full h-fit"}>

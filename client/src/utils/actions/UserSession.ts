@@ -20,7 +20,7 @@ export const doLogout = () => {
     return false
 }
 
-export const doLogin = async ( username: string, password: string ): Promise<UserSessionData | null> => {
+export const doLogin = async ( username: string, password: string ): Promise<UserSessionData | string> => {
     try {
         let response = await RESTAPIProvider.post( "common/login/", {
             username: username,
@@ -32,21 +32,17 @@ export const doLogin = async ( username: string, password: string ): Promise<Use
             sessionStorage.setItem( "user_session", JSON.stringify( result ) );
             return result;
         }
-    } catch ( error ) {
+    } catch ( error: any ) {
         switch ( error.response.status ) {
             case 401:
-                alert( "Invalid username or password" );
-                break;
+                throw "Invalid username or password";
             case 500:
-                alert( "Something went wrong in server side" );
-                break;
+                throw "Something went wrong in server side";
             default:
-                alert( "Error" );
-                return null;
+                throw "Error";
         }
-        return null;
     }
-    return null;
+    throw "Error";
 }
 
 export const getUserData = ( access_key: string, refresh_key: string ): UserSessionData | null => {
