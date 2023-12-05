@@ -3,9 +3,12 @@ from django.contrib.auth.models import User
 
 
 class EmployeeState(models.TextChoices):
-    ACTIVE = 'ACTIVE'
-    INACTIVE = 'INACTIVE'
-
+    ACTIVE = 'Active'
+    INACTIVE = 'Inactive'
+    HOIDAYS = "In Holidays"
+    MATERNITY = "Maternity"
+    PATERNITY = "Paternity"
+    SICK = "Sick"
 
 class EmployeeRoles(models.TextChoices):
     IT_MANAGER = 'IT Manager'
