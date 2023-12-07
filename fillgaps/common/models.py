@@ -5,10 +5,11 @@ from django.contrib.auth.models import User
 class EmployeeState(models.TextChoices):
     ACTIVE = 'Active'
     INACTIVE = 'Inactive'
-    HOIDAYS = "In Holidays"
+    HOLIDAYS = "In Holidays"
     MATERNITY = "Maternity"
     PATERNITY = "Paternity"
     SICK = "Sick"
+
 
 class EmployeeRoles(models.TextChoices):
     IT_MANAGER = 'IT Manager'
@@ -30,6 +31,7 @@ class EmployeeRoles(models.TextChoices):
     RESTORER = 'Restorer'
     CURATOR = 'Curator'
     IDLE = 'Idle'
+
 
 class EmployeeDepartment(models.TextChoices):
     IT = 'IT'
@@ -67,47 +69,3 @@ class Employee(models.Model):
 
     def __str__(self):
         return self.user.first_name + ' ' + self.user.last_name + ' | ' + self.department + ' : ' + self.role
-
-
-class EmployeeDocuments(models.Model):
-    employee = model.OneToOneField(Employee, on_delete=models.PROTECT)
-    photo_link = models.CharField(max_length=1000)
-    cv = models.CharField(max_length=1000)
-    address_proof = models.CharField(max_length=1000)
-    id_proof = models.CharField(max_length=1000)
-    bacherlor_degree_proof = models.CharField(max_length=1000)
-
-class EmployeeDocumentsCertificates(models.Model):
-    employee_documents = models.ForeignKey(EmployeeDocuments, on_delete=models.PROTECT)
-    document = models.CharField(max_length=1000)
-
-class MedicalFiles(models.Model):
-    employee = models.OneToOneField(Employee, on_delete=models.PROTECT)
-    NSS = models.PositiveIntergerField()
-
-class MedicalAlergy(models.Model):
-    medical_file = models.ForeignKey(MedicalFile, on_delete=models.PROTECT)
-    alergy = models.CharField(max_length=100)
-
-class MedicalIlment(models.Model):
-    medical_file = models.ForeignKey(MedicalFilem on_delete=models.PROTECT)
-    ilment= model.CharField(max_length=100)
-
-class PrivateMedicalInsurance(models.Model):
-    medical_file = models.OneToOneField(MedicalFiles, on_delete=models.PROTECT)
-    name = models.CharField(max_length=100)
-    document = models.CharField(max_length=1000)
-
-class DropType(models.TextChoices):
-    RESIGNATION = "Resignation"
-    DISMISSAL = "Dismissal"
-
-class EmployeeDrop(model.Model):
-    employee = models.OneToOneField(Employee)
-    date = models.DateField(auto_now=True)
-    description = models.CharField(max_length=1000)
-    employee_letter = models.CharField(max_length=1000, null=True)
-    museum_letter = models.CharField(max:length=1000, null=True)
-    drop_type = models.CharField(max_length=100, choices=DropType.choices, default=DropType.RESIGNATION)
-    
-class DropProofs(models.Model):
