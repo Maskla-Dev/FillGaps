@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     'common.apps.CommonConfig',
     'chat',
     'rest_framework',
-    'humanresources',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
