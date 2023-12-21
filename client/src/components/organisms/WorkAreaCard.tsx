@@ -12,7 +12,8 @@ const WorkAreaCard = ( { name, illustration }: WorkAreaData | WorkAreaCardProps 
 
     const onClick = () => {
         actor.send({
-            type: "Get Employee List"
+            type: "Get Employee List",
+            work_area: name
         })
     }
 
