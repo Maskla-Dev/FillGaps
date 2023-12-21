@@ -1,11 +1,17 @@
 import { assign, fromPromise, setup } from "xstate";
-import { doLogin } from "../utils/actions/UserSession.ts";
+import {
+    doLogin, doLogout,
+    getPhoto,
+    getUserDataFromCache,
+    refreshCredentials,
+    validateCredentials
+} from "./actions/UserSessionActions.ts";
 
 export interface BasicEmployeeData {
     user_id: number;
     name: string;
     role: string;
-    photo: string;
+    photo: any;
 }
 
 export interface UserSessionData extends BasicEmployeeData {
@@ -17,52 +23,123 @@ export interface UserSessionData extends BasicEmployeeData {
 
 export interface AppMachineContext {
     user_data: UserSessionData;
-    error: string;
+    message: string;
 }
 
 interface AppMachineTypes {
     context: AppMachineContext;
-    guards: {
-        isManager: ( payload: AppMachineContext & { event: any } ) => boolean;
-    },
     events: {
         type: "logging-in";
         password: string;
         user: string;
+    } | {
+        type: "Get user data";
+        user_data: UserSessionData;
     } | any;
 }
 
 const BaseAppMachine = setup( {
     types: {} as AppMachineTypes,
+    actions: {
+        clearCache: () => {
+            console.log( "Cleaning cache" )
+            return doLogout();
+        }
+    },
 } );
 
-const AppMachine = BaseAppMachine.createMachine( {
-    guards: {
-        isManager: ( { context }: { context: AppMachineContext } ) => {
-            return context.user_data.name.endsWith( "Manager" )
+const initial_context_data: AppMachineContext = {
+    user_data: {
+        name: "",
+        user_id: 0,
+        tokens: {
+            access: "",
+            refresh: "",
         },
+        role: "",
+        photo: "",
     },
+    message: "",
+}
+
+const AppMachine = BaseAppMachine.createMachine( {
     actions: {},
     actors: {},
     delays: {
         "login-delay": 1200,
     },
     id: "app",
-    initial: "logged-out",
+    initial: "App Init",
     context: {
-        user_data: {
-            name: "",
-            user_id: 0,
-            tokens: {
-                access: "",
-                refresh: "",
-            },
-            role: "",
-            photo: "",
-        },
-        error: "",
+        ...initial_context_data
     },
     states: {
+        "App Init": {
+            always: {
+                target: "Get user data"
+            }
+        },
+        "Get user data": {
+            invoke: {
+                src: fromPromise( () => getUserDataFromCache() ),
+                onDone: {
+                    target: "Validate credentials",
+                    actions: assign( {
+                        user_data: ( { event } ) => {
+                            console.log( event.output )
+                            return event.output;
+                        }
+                    } )
+                },
+                onError: {
+                    target: "logged-out",
+                }
+            }
+        },
+        "Validate credentials": {
+            invoke: {
+                src: fromPromise( ( { input } ) => validateCredentials( input.user_data.tokens.access ) ),
+                input: ( { context: { user_data } } ) => {
+                    return {
+                        user_data: user_data
+                    }
+                },
+                onDone: {
+                    target: "get-photo",
+                },
+                onError: {
+                    target: "Refresh Credentials",
+                }
+            }
+        },
+        "Refresh Credentials": {
+            invoke: {
+                src: fromPromise( ( { input } ) => refreshCredentials( input.user_data.tokens.refresh ) ),
+                input: ( { context: { user_data } } ) => {
+                    return {
+                        user_data: user_data
+                    }
+                },
+                onDone: {
+                    target: "get-photo",
+                    actions: assign( {
+                        user_data: ( { context, event } ) => {
+                            console.log( event.output )
+                            return {
+                                ...context.user_data,
+                                tokens: {
+                                    ...context.user_data.tokens,
+                                    access: event.output.access
+                                }
+                            }
+                        }
+                    } )
+                },
+                onError: {
+                    target: "logged-out"
+                }
+            }
+        },
         "logged-out": {
             on: {
                 "LOGIN": {
@@ -72,7 +149,6 @@ const AppMachine = BaseAppMachine.createMachine( {
         },
         "logging-in": {
             invoke: {
-                id: "doLogin",
                 src: fromPromise( ( { input } ) => doLogin( input.user, input.password ) ),
                 input: ( { event } ) => {
                     console.log( event );
@@ -82,7 +158,7 @@ const AppMachine = BaseAppMachine.createMachine( {
                     }
                 },
                 onDone: {
-                    target: "fillgaps-app",
+                    target: "get-photo",
                     actions: assign( {
                         user_data: ( { event } ) => {
                             console.log( event.output )
@@ -93,7 +169,7 @@ const AppMachine = BaseAppMachine.createMachine( {
                 onError: {
                     target: "logging-error",
                     actions: assign( {
-                        error: ( { event } ) => {
+                        message: ( { event } ) => {
                             console.log( event )
                             return String( event.error );
                         }
@@ -112,9 +188,67 @@ const AppMachine = BaseAppMachine.createMachine( {
                     target: "logging-in",
                 },
             },
-            exit: assign( { error: "" } )
+            exit: assign( { message: "" } )
         },
-        "fillgaps-app": {}
+        "get-photo": {
+            invoke: {
+                id: "get-photo",
+                src: fromPromise( ( { input }: any ) => getPhoto( input.user_data.tokens.access ) ),
+                input: ( { context: { user_data } } ) => {
+                    return {
+                        user_data: user_data
+                    }
+                },
+                onDone: {
+                    target: "fillgaps-app",
+                    actions: assign( {
+                        user_data: ( { context, event } ) => {
+                            console.log( event.output )
+                            return {
+                                ...context.user_data,
+                                photo: URL.createObjectURL( event.output )
+                            }
+                        }
+                    } )
+                },
+                onError: {
+                    target: "wrong-user-data",
+                    actions: assign( {
+                        message: ( { event } ) => {
+                            console.log( event )
+                            return String( event.error );
+                        }
+                    } )
+                }
+            }
+        },
+        "wrong-user-data": {
+            on: {
+                "CLOSE_ERROR": {
+                    target: "fillgaps-app",
+                }
+            }
+        },
+        "fillgaps-app": {
+            on: {
+                "OPEN_PROFILE": {
+                    target: "profile-info",
+                },
+            }
+        },
+        "profile-info": {
+            on: {
+                "CLOSE_PROFILE": {
+                    target: "fillgaps-app",
+                },
+                "LOGOUT": {
+                    target: "logged-out",
+                    actions: [assign( {
+                        ...initial_context_data
+                    } ), "clearCache"]
+                }
+            }
+        }
     }
 } );
 

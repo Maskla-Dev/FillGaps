@@ -25,4 +25,25 @@ interface Employee {
     photo_link: string;
 }
 
-export type { ChatChannel, ChatMessage, ChannelType, Employee };
+type EmployeeRoles =
+    'IT Manager' |
+    'IT Technical' |
+    'Caretakers Manager' |
+    'Caretaker' |
+    'Administrative Manager' |
+    'Administrative' |
+    'Operations Manager' |
+    'Cleaning' |
+    'Maintenance' |
+    'Salesman' |
+    'Ticket Taker' |
+    'Collection, Research & Education Manager' |
+    'Educator' |
+    'Tour Guide' |
+    'Researcher' |
+    'Preservation Manager' |
+    'Restorer' |
+    'Curator' |
+    'Idle';
+
+export type { ChatChannel, ChatMessage, ChannelType, Employee, EmployeeRoles };

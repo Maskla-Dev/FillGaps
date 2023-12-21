@@ -30,6 +30,8 @@ def employee_photo(request):
         return FileResponse(open(photo_path, 'rb'))
     except Employee.DoesNotExist:
         return response.Response(status=status.HTTP_404_NOT_FOUND)
+    except EmployeeDocuments.DoesNotExist:
+        return response.Response(status=status.HTTP_404_NOT_FOUND)
 
 
 @decorators.api_view(['GET'])

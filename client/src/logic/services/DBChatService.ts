@@ -1,5 +1,5 @@
 import Dexie, { Table } from "dexie";
-import * as models from "./Models.ts"
+import * as models from "../../utils/services/chat/Models.ts"
 
 class DBChatService extends Dexie {
     messages!: Table<models.ChatMessage>;

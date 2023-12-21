@@ -1,6 +1,6 @@
 import React, { useEffect, createContext, useState, useRef } from "react";
 import * as ChatIO from "../services/chat/ChatIO.ts";
-import DBChatService from "../services/chat/DBChatService.ts";
+import DBChatService from "../../logic/services/DBChatService.ts";
 
 export type ChatTask = "SYNC_MESSAGES" | "SYNC_CHANNELS" | "SYNC_DIRECTORY" | "NOTHING";
 

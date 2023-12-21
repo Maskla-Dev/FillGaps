@@ -5526,7 +5526,7 @@
         <mxCell id="z_Rzj-I9qVrY_AAOP6y7-26" value="" style="fontColor=#0066CC;verticalAlign=top;verticalLabelPosition=bottom;labelPosition=center;align=center;html=1;outlineConnect=0;fillColor=#CCCCCC;strokeColor=#6881B3;gradientColor=none;gradientDirection=north;strokeWidth=2;shape=mxgraph.networks.pc;" parent="1" vertex="1">
           <mxGeometry x="140" y="-650" width="100" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="z_Rzj-I9qVrY_AAOP6y7-27" value="PWA App" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Browser.svg;" parent="1" vertex="1">
+        <mxCell id="z_Rzj-I9qVrY_AAOP6y7-27" value="PWA AppRoot" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Browser.svg;" parent="1" vertex="1">
           <mxGeometry x="322.5" y="-582" width="65" height="52" as="geometry" />
         </mxCell>
         <mxCell id="z_Rzj-I9qVrY_AAOP6y7-36" value="REST" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;dashed=1;startArrow=classic;startFill=1;" parent="1" source="HlpcmfibCBvsTTaFLXWb-1" target="z_Rzj-I9qVrY_AAOP6y7-27" edge="1">

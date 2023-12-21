@@ -9,10 +9,8 @@ class CustomTokenSerializer(TokenObtainPairSerializer):
     def get_token(cls, user):
         token = super().get_token(user)
         employee = models.Employee.objects.get(user=user)
-        employee_basics = models.EmployeeDocuments.objects.get(employee=employee)
         token['name'] = user.first_name + ' ' + user.last_name
         token['role'] = employee.role
-        token['photo'] = employee_basics.photo.path
         return token
 
 

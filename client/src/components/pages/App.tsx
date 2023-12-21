@@ -1,25 +1,27 @@
 import AppNav from "../molecules/AppNav.tsx";
-import ChatProvider from "../../utils/hooks/ChatProvider.tsx";
-import { AppContext } from "../../fullstate.tsx";
-import Chat from "./Chat.tsx";
+import SessionCard from "../organisms/SessionCard.tsx";
+import { AppContext, FeaturesContext } from "../../logic/ActorContexts.ts";
+import AppRouter from "./AppRouter.tsx";
 
 function App() {
     const session = AppContext.useSelector( state => state.context.user_data );
-    const state = AppContext.useSelector( state => state );
+
     return (
         <>
-            <ChatProvider employee_id={session.user_id}>
+            <FeaturesContext.Provider options={{
+                input: {
+                    role: session.role,
+                    access_token: session.tokens.access,
+                }
+            }}>
                 <div className={"w-full h-full flex flex-col"}>
                     <AppNav image={session.photo} name={session.name} position={session.role}/>
-                    <div className={"grow overflow-y-scroll"}>
-                        {
-                            state.matches( "fillgaps-app" ) ?
-                                <></> :
-                                <Chat/>
-                        }
+                    <SessionCard image={session.photo} name={session.name} position={session.role}/>
+                    <div className={"p-2 h-full"}>
+                        <AppRouter/>
                     </div>
                 </div>
-            </ChatProvider>
+            </FeaturesContext.Provider>
         </>
     );
 }
