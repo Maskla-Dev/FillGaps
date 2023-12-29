@@ -1,11 +1,11 @@
-import PanelIcon from "../molecules/PanelIcon.tsx";
+import PanelIcon from "../../molecules/PanelIcon.tsx";
 import { UsersIcon } from "@heroicons/react/24/solid";
-import { FeaturesContext } from "../../logic/ActorContexts.ts";
+import { AppContext } from "../../../logic/ActorContexts.ts";
 
 const AdministrativePanel = () => {
-    const actorRef = FeaturesContext.useActorRef();
+    const actorRef = AppContext.useActorRef();
     const onEmployeeClick = () => {
-        actorRef.send( { type: "GO-EMPLOYEES" } );
+        actorRef.send( { type: "Go Employees Management" } );
     }
 
     return (

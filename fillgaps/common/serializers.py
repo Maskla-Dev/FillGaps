@@ -21,6 +21,21 @@ class EmployeeSerializer(serializers.ModelSerializer):
         depth = 1
 
 
+class EmployeeCardSerializer(serializers.ModelSerializer):
+    first_name = serializers.CharField(source='user.first_name')
+    last_name = serializers.CharField(source='user.last_name')
+    photo = serializers.ImageField(source='employeedocuments.photo')
+
+    class Meta:
+        model = models.Employee
+        fields = ('first_name', 'last_name', 'department', 'photo', 'role')
+
+    def get_photo(self, obj):
+        if hasattr(obj, 'employeedocuments') and obj.employeedocuments.photo:
+            return obj.employeedocuments.photo.url
+        return ''
+
+
 class EmployeeDocumentsCertificatesSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.EmployeeDocumentsCertificates

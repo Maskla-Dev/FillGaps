@@ -1,4 +1,4 @@
-import building from "../../assets/building.svg";
+import building from "../../../assets/building.svg";
 
 const NoActivitiesPanel = () => {
     return (

@@ -5,7 +5,7 @@ from rest_framework import decorators, response, status
 from rest_framework.permissions import AllowAny, IsAuthenticated
 
 from .models import Employee, EmployeeDepartment, EmployeeDocuments
-from .serializers import CustomTokenSerializer, AllEmployeeDataSerializer, EmployeeSerializer
+from .serializers import CustomTokenSerializer, AllEmployeeDataSerializer, EmployeeSerializer, EmployeeCardSerializer
 from rest_framework import serializers as rest_serializers
 from rest_framework.views import APIView
 from rest_framework_simplejwt.authentication import JWTAuthentication
@@ -78,5 +78,17 @@ def create_employee_data(request):
             serializer.save()
             return response.Response(serializer.data, status=status.HTTP_201_CREATED)
         return response.Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    except Employee.DoesNotExist:
+        return response.Response(status=status.HTTP_404_NOT_FOUND)
+
+
+@decorators.api_view(['GET'])
+@decorators.permission_classes([IsAuthenticated])
+def get_employees_by_work_area(request, work_area):
+    print(work_area)
+    try:
+        employees = Employee.objects.filter(department=work_area)
+        serializer = EmployeeCardSerializer(employees, many=True)
+        return response.Response(serializer.data, status=status.HTTP_200_OK)
     except Employee.DoesNotExist:
         return response.Response(status=status.HTTP_404_NOT_FOUND)

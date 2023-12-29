@@ -1,4 +1,12 @@
-const ProfilePhoto = ( { image, is_online, is_small }: { image: string, is_online?: boolean, is_small?: boolean } ) => {
+import { AppContext } from "../../logic/ActorContexts.ts";
+
+const ProfilePhoto = ( { is_small }: { is_small?: boolean } ) => {
+    const { image, is_online } = AppContext.useSelector( state => {
+        let image = state.context.user_data.photo;
+        let is_online = state.context.data.chat.is_online;
+        return { image, is_online };
+    } );
+
     return (
         <div className={`${is_online != undefined ? ( is_online ? "border-green-600 " : "border-rose-600" ) : ""}`}>
             <img src={image} alt={"Employee avatar"}

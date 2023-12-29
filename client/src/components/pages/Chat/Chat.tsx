@@ -1,7 +1,7 @@
-import ChannelsList from "../organisms/ChannelsList.tsx";
-import NewChannelButton from "../atoms/NewChannelButton.tsx";
+import ChannelsList from "../../organisms/ChannelsList.tsx";
+import NewChannelButton from "../../atoms/NewChannelButton.tsx";
 import { useContext, useEffect } from "react";
-import { ChatContext } from "../../utils/hooks/ChatProvider.tsx";
+import { ChatContext } from "../../../utils/hooks/ChatProvider.tsx";
 
 
 function Chat() {

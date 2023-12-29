@@ -2,10 +2,10 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../utils/appstate/store.ts";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useLiveQuery } from "dexie-react-hooks";
-import { ChatContext } from "../../utils/hooks/ChatProvider.tsx";
+import { ChatContext } from "../../../utils/hooks/ChatProvider.tsx";
 import { useCallback, useContext, useEffect, useMemo, useState } from "react";
-import EmployeeCard from "../molecules/EmployeeCard.tsx";
-import { Employee } from "../../utils/services/chat/Models.ts";
+import EmployeeCard from "../../molecules/EmployeeCard.tsx";
+import { Employee } from "../../../utils/services/chat/Models.ts";
 
 function NewChannel() {
     const navigator = useNavigate();

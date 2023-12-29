@@ -13,5 +13,6 @@ urlpatterns = [
     path('users/directory/<int:employee_id>', views.directory, name='directory'),
     path('users/employee_photo/', views.employee_photo, name='employee_photo'),
     path('hr/', views.get_employee_data, name='hr'),
-    path('hr/new', views.create_employee_data, name='hr_new')
+    path('hr/new', views.create_employee_data, name='hr_new'),
+    path('hr/employees/<str:work_area>', views.get_employees_by_work_area, name='employees_by_work_area'),
 ]

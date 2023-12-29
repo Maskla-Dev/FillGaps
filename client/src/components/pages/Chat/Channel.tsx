@@ -1,14 +1,14 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { ChevronLeftIcon, DocumentTextIcon, PhotoIcon } from "@heroicons/react/24/outline";
 import { ExclamationCircleIcon, PaperAirplaneIcon } from "@heroicons/react/24/solid";
-import Messages from "../organisms/Messages.tsx";
+import Messages from "../../organisms/Messages.tsx";
 import React, { useContext, useState, useMemo } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../utils/appstate/store.ts";
-import { ChatMessage, ChannelType } from "../../utils/services/chat/Models.ts";
+import { ChatMessage, ChannelType } from "../../../utils/services/chat/Models.ts";
 import { useLiveQuery } from "dexie-react-hooks";
-import { ChatContext } from "../../utils/hooks/ChatProvider.tsx";
-import { SendMessageRequest } from "../../utils/services/chat/ChatIO.ts";
+import { ChatContext } from "../../../utils/hooks/ChatProvider.tsx";
+import { SendMessageRequest } from "../../../utils/services/chat/ChatIO.ts";
 
 function getChannelColor(type: ChannelType){
     switch ( type ) {

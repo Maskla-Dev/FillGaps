@@ -1,20 +1,16 @@
 import { WorkAreaData } from "../../logic/models/EmployeesManagementModels.ts";
 import { useHover } from "@uidotdev/usehooks";
-import { FeaturesContext } from "../../logic/ActorContexts.ts";
+import { AppContext } from "../../logic/ActorContexts.ts";
 
-interface WorkAreaCardProps {
-    to_move: string;
-}
-
-const WorkAreaCard = ( { name, illustration }: WorkAreaData | WorkAreaCardProps ) => {
+const WorkAreaCard = ( { name, illustration }: WorkAreaData ) => {
     const [ref, hovering] = useHover<HTMLDivElement>();
-    const actor = FeaturesContext.useActorRef();
+    const actor = AppContext.useActorRef();
 
     const onClick = () => {
-        actor.send({
-            type: "Get Employee List",
+        actor.send( {
+            type: "Go Next",
             work_area: name
-        })
+        } )
     }
 
     return (

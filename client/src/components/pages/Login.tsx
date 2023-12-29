@@ -17,7 +17,7 @@ const Login = () => {
 
     const handleLogin = ( e: React.MouseEvent<HTMLButtonElement> ) => {
         e.preventDefault();
-        actorRef.send( { type: "LOGIN", username: username, password: password } );
+        actorRef.send( { type: "Send Credentials", username: username, password: password } );
     }
 
     return (
@@ -32,7 +32,8 @@ const Login = () => {
                         <h1 className={"text-4xl text-blue-600 m-3 md:hidden"}>FRAGMent</h1>
                     </header>
                     {
-                        <ErrorMessage error={state.context.message} show={state.matches( "logging-error" )}/>
+                        <ErrorMessage error={state.context.cache.dialog_message}
+                                      show={state.matches( "Logging Error" )}/>
                     }
                     <form className={"flex flex-col w-full"}>
                         <h2 className={"hidden sm:inline-block text-3xl text-blue-600 m-3 text-center"}>Iniciar
@@ -49,26 +50,26 @@ const Login = () => {
                                            showPassword={false}/>
                         </div>
                         {
-                            state.matches( "logging-in" ) ?
+                            state.matches( "Logging In" ) ?
                                 <Loader/> :
                                 <FormButton onClick={handleLogin} text={"Login"}/>
                         }
                     </form>
                 </div>
                 {
-                    state.matches( "wrong-user-data" ) ?
+                    state.matches( "Wrong User Data" ) ?
                         <ErrorModal
                             error_header={`Your data is not complete`}
                             error_body={[
                                 "Your data is not complete, go to the administrative to update your profile",
                                 "If you are an administrative employee, please contact the developers",
-                                `${state.context.message}`,
+                                `${state.context.cache.dialog_message}`,
                                 `${!state.context.user_data.name.trim() ? "No name" : ""}`,
                                 `${!state.context.user_data.photo ? "No photo" : ""}`,
                                 `${!state.context.user_data.role ? "No role" : ""}`
                             ]}
                             onClose={() => {
-                                actorRef.send( { type: "CLOSE_ERROR" } );
+                                actorRef.send( { type: "Ok" } );
                             }}/> : ( <></> )
                 }
             </div>
