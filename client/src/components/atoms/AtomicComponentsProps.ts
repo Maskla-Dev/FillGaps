@@ -33,4 +33,5 @@ export type SVGIconProps = React.ForwardRefExoticComponent<React.PropsWithoutRef
 export interface FormButtonProps {
     onClick: ( event: React.MouseEvent<HTMLButtonElement> ) => void;
     text: string;
+    isDisabled?: boolean;
 }

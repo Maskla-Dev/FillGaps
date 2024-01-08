@@ -1,66 +1,38 @@
-import { AppContext } from "../../../../logic/ActorContexts.ts";
+import { AppContext, EditEmployeeContext, EmployeeManagementContext } from "../../../../logic/ActorContexts.ts";
 import { useEffect } from "react";
-import WorkAreas from "../../../organisms/WorkAreas.tsx";
-import Loader from "../../../atoms/Loader.tsx";
-import EmployeeList from "./EmployeeList.tsx";
-import NewEmployee from "./New Employee/NewEmployee.tsx";
-import MessageModal from "../../../organisms/ModalMessage.tsx";
+import EditEmployee from "./EditEmployee/EditEmployee.tsx";
+import EmployeeBrief from "./EmployeeBrief/EmployeeBrief.tsx";
+import EmployeeManagementHome from "./EmployeeManagementHome.tsx";
 
 const EmployeeManagementRouter = () => {
-    const actor = AppContext.useActorRef();
-    const state = AppContext.useSelector( state => {
-        if ( typeof ( state.value ) == "object" ) {
-            if ( state.value["FillGaps App"] ) {
-                if ( state.value["FillGaps App"].Panel ) {
-                    if ( typeof ( state.value["FillGaps App"]["Panel"] ) == "object" ) {
-                        if ( typeof ( state.value["FillGaps App"]["Panel"]["Employees Management"] ) == "object" )
-                            return state.value["FillGaps App"]["Panel"]["Employees Management"]["New Employee"] ? "New Employee" : ( state.value["FillGaps App"]["Panel"]["Employees Management"]["Employee Brief"] ? "Employee Brief" : "" );
-                        return state.value["FillGaps App"]["Panel"]["Employees Management"];
-                    }
-                }
-            }
-        }
-        return "";
-    } );
+    const state = EmployeeManagementContext.useSelector( state => state.value );
+    const current_employee = EmployeeManagementContext.useSelector( state => state.context.current_employee );
+    const key = AppContext.useSelector( state => state.context.user_data.tokens.access );
 
     useEffect( () => {
         console.log( "Employee Management Router", state )
     }, [state] );
 
     switch ( state ) {
-        case "Employees":
         case "Work Areas":
-            return <WorkAreas/>;
         case "Get Employees List":
-        case "Save Employee":
-        case "Get Employee Brief":
-            return <Loader/>
-        case "Employees List":
-            return <EmployeeList/>;
-        case "New Employee":
-            return <NewEmployee/>;
-        case "Cancel New Employee":
-            return <MessageModal message={"Are you sure you want to cancel?"} onConfirm={() => {
-                actor.send( {
-                    type: "Cancel"
-                } )
-            }} onCancel={() => {
-                actor.send( {
-                    type: "Ok"
-                } )
-            }}/>;
-        case "Save New Employee":
-            return <MessageModal message={"Are you sure you want to upload?"} onConfirm={() => {
-                actor.send( {
-                    type: "Cancel"
-                } )
-            }} onCancel={() => {
-                actor.send( {
-                    type: "Save"
-                } )
-            }}/>;
+        case "Edit Employee Error":
+        case "Employee List Error":
+        case "Employee Brief Error":
+            return <EmployeeManagementHome/>
+        case "Edit Employee":
+            return <EditEmployeeContext.Provider options={
+                {
+                    input: {
+                        employee_id: current_employee,
+                        key: key
+                    }
+                }
+            }>
+                <EditEmployee/>;
+            </EditEmployeeContext.Provider>
         case "Employee Brief":
-            return <div>Employee Brief</div>;
+            return <EmployeeBrief/>;
         default:
             return <div>Not Found</div>;
     }

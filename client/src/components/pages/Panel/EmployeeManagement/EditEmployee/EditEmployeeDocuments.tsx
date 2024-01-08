@@ -1,9 +1,8 @@
-import { AppContext } from "../../../../../logic/ActorContexts.ts";
-import React, { useState } from "react";
-import FormButton from "../../../../atoms/FormButton.tsx";
+import { useEffect, useState } from "react";
 import ImageUpload from "../../../../molecules/ImageUpload.tsx";
 import SelectInput from "../../../../molecules/SelectInput.tsx";
 import PDFUpload from "../../../../molecules/PDFUpload.tsx";
+import EditEmployeeNavigator from "../../../../organisms/EditEmployeeNavigator.tsx";
 
 const IDTypes = [
     "DNI",
@@ -12,12 +11,12 @@ const IDTypes = [
     "Other"
 ]
 
-export interface NewEmployeeChildProps {
+export interface EditEmployeeChildProps {
     state: string;
+    actor: any;
 }
 
-const NewEmployeeDocuments = ( { state }: NewEmployeeChildProps ) => {
-    const actor = AppContext.useActorRef();
+const EditEmployeeDocuments = () => {
     const [photo, setPhoto] = useState<string | ArrayBuffer | null>( null );
     const [CV, setCV] = useState<string | ArrayBuffer | null>( null );
     const [ID, setID] = useState<string | ArrayBuffer | null>( null );
@@ -27,10 +26,15 @@ const NewEmployeeDocuments = ( { state }: NewEmployeeChildProps ) => {
     const [bacherlorDegree, setBacherlorDegree] = useState<string | ArrayBuffer | null>( null );
     const [masterDegree, setMasterDegree] = useState<string | ArrayBuffer | null>( null );
     const [phdDegree, setPhdDegree] = useState<string | ArrayBuffer | null>( null );
+    const [data, setData] = useState<any>( {} );
+
+    useEffect( () => {
+
+    }, [photo, CV, ID, idType, idNumber, addressProof, bacherlorDegree, masterDegree, phdDegree] );
 
     return (
-        <div>
-            <h2 className={"font-semibold text-center mt-2 text-white"}>Documents</h2>
+        <div className={"h-full"}>
+            <EditEmployeeNavigator data={data}/>
             <ImageUpload onImageSelect={setPhoto}/>
             <PDFUpload onPDFSelect={setCV}/>
             <PDFUpload onPDFSelect={setID}/>
@@ -45,33 +49,8 @@ const NewEmployeeDocuments = ( { state }: NewEmployeeChildProps ) => {
             <PDFUpload onPDFSelect={setAddressProof}/>
             <PDFUpload onPDFSelect={setBacherlorDegree}/>
             <PDFUpload onPDFSelect={setMasterDegree}/>
-            <FormButton text={"Back"} onClick={( event: React.MouseEvent<HTMLButtonElement, MouseEvent> ) => {
-                event.preventDefault();
-                actor.send(
-                    { type: "Go Back" }
-                )
-            }}/>
-            <FormButton text={"Cancel"} onClick={( event: React.MouseEvent<HTMLButtonElement, MouseEvent> ) => {
-                event.preventDefault();
-                actor.send(
-                    { type: "Cancel" }
-                )
-            }}/>
-            <FormButton text={state == "Medical File" ? "Save" : "Next"}
-                        onClick={( event: React.MouseEvent<HTMLButtonElement, MouseEvent> ) => {
-                            event.preventDefault();
-                            if ( state == "Medical File" ) {
-                                actor.send(
-                                    { type: "Save Employee" }
-                                )
-                            } else {
-                                actor.send(
-                                    { type: "Go Next" }
-                                )
-                            }
-                        }}/>
         </div>
     );
 }
 
-export default NewEmployeeDocuments;
+export default EditEmployeeDocuments;

@@ -1,4 +1,4 @@
-import { EmployeeBrief } from "./EmployeesManagementModels.ts";
+import { Employee } from "./EmployeesManagementModels.ts";
 
 export const ChannelTypes = ["PUBLIC", "GROUP", "PRIVATE"] as const;
 export type ChannelType = typeof ChannelTypes[number];
@@ -21,5 +21,5 @@ export interface ChatChannel {
     description: string;
     channel_type: ChannelType;
     messages: ChatMessage[];
-    chat_members: EmployeeBrief[];
+    chat_members: Employee[];
 }

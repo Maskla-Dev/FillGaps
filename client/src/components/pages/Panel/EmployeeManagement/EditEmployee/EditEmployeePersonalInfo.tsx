@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BoldText from "../../../../atoms/BoldText.tsx";
-import DatePick from "../../../../organisms/DatePick.tsx";
+import InputDate from "../../../../organisms/InputDate.tsx";
 import SelectInput from "../../../../molecules/SelectInput.tsx";
 import InputText from "../../../../atoms/InputText.tsx";
-import FormButton from "../../../../atoms/FormButton.tsx";
-import { AppContext } from "../../../../../logic/ActorContexts.ts";
-import { NewEmployeeChildProps } from "./NewEmployeeDocuments.tsx";
+import { EditEmployeeChildProps } from "./EditEmployeeDocuments.tsx";
+import EditEmployeeNavigator from "../../../../organisms/EditEmployeeNavigator.tsx";
 
 const NATIONALITIES: string[] = [
     "Afghan", "Albanian", "Algerian", "American",
@@ -55,8 +54,7 @@ const NATIONALITIES: string[] = [
     "Vincentian", "Wallisian", "Welsh", "Yemeni", "Zambian", "Zimbabwean"
 ];
 
-const NewEmployeePersonalInfo = ( { state }: NewEmployeeChildProps ) => {
-    const actor = AppContext.useActorRef();
+const EditEmployeePersonalInfo = ( { state, actor }: EditEmployeeChildProps ) => {
     const [first_name, setFirstName] = useState( "" );
     const [last_name, setLastName] = useState( "" );
     const [date, setDate] = useState<Date>();
@@ -66,17 +64,22 @@ const NewEmployeePersonalInfo = ( { state }: NewEmployeeChildProps ) => {
     const [phone, setPhone] = useState<string>( "" );
     const [email, setEmail] = useState<string>( "" );
     const [zip, setZIP] = useState<string>( "" );
+    const [data, setData] = useState<any>( {} );
+
+    useEffect( () => {
+
+    }, [first_name, last_name, date, nationality, province, address, phone, email, zip] );
 
     return (
-        <div>
-            <h2 className={"font-semibold text-center mt-2 text-white"}>Personal Info</h2>
+        <div className={"h-full"}>
+            <EditEmployeeNavigator data={data}/>
             <InputText placeholder={"Alberto"} value={first_name} onInput={( e ) => {
                 setFirstName( e.target.value );
             }} label={<BoldText text={"First Name"}/>} id={"FIRST_NAME"}/>
             <InputText placeholder={"Alberto"} value={last_name} onInput={( e ) => {
                 setLastName( e.target.value );
             }} label={<BoldText text={"Last Name"}/>} id={"LAST_NAME"}/>
-            <DatePick/>
+            <InputDate/>
             <SelectInput options={NATIONALITIES} value={nationality} placeholder={"Nationality"} onChange={
                 ( option: string | null ) => {
                     setNationality( option );
@@ -99,27 +102,8 @@ const NewEmployeePersonalInfo = ( { state }: NewEmployeeChildProps ) => {
             <InputText placeholder={"ZIP"} value={zip} onInput={( e: React.FormEvent<HTMLInputElement> ) => {
                 setZIP( e.target.value );
             }} label={<BoldText text={"ZIP"}/>} id={"ZIP"}/>
-            <FormButton text={"Cancel"} onClick={( event: React.MouseEvent<HTMLButtonElement, MouseEvent> ) => {
-                event.preventDefault();
-                actor.send(
-                    { type: "Cancel" }
-                )
-            }}/>
-            <FormButton text={state == "Medical File" ? "Save" : "Next"}
-                        onClick={( event: React.MouseEvent<HTMLButtonElement, MouseEvent> ) => {
-                            event.preventDefault();
-                            if ( state == "Medical File" ) {
-                                actor.send(
-                                    { type: "Save Employee" }
-                                )
-                            } else {
-                                actor.send(
-                                    { type: "Go Next" }
-                                )
-                            }
-                        }}/>
         </div>
     )
 }
 
-export default NewEmployeePersonalInfo;
+export default EditEmployeePersonalInfo;

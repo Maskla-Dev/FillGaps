@@ -15,4 +15,5 @@ urlpatterns = [
     path('hr/', views.get_employee_data, name='hr'),
     path('hr/new', views.create_employee_data, name='hr_new'),
     path('hr/employees/<str:work_area>', views.get_employees_by_work_area, name='employees_by_work_area'),
+    path('hr/employee_brief/<int:employee_id>', views.get_employee_brief, name='employee_brief'),
 ]

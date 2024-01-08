@@ -1,31 +1,37 @@
 import { WorkAreaData } from "../../logic/models/EmployeesManagementModels.ts";
 import { useHover } from "@uidotdev/usehooks";
-import { AppContext } from "../../logic/ActorContexts.ts";
+import { AppContext, EmployeeManagementContext } from "../../logic/ActorContexts.ts";
 
-const WorkAreaCard = ( { name, illustration }: WorkAreaData ) => {
+const WorkAreaCard = ( { name, illustration, is_current }: WorkAreaData ) => {
     const [ref, hovering] = useHover<HTMLDivElement>();
-    const actor = AppContext.useActorRef();
+    const key = AppContext.useSelector( state => {
+        return state.context.user_data.tokens.access;
+    } );
+    const actor = EmployeeManagementContext.useActorRef();
 
     const onClick = () => {
+        if ( is_current ) return;
         actor.send( {
             type: "Go Next",
-            work_area: name
+            // @ts-ignore
+            work_area: name,
+            access: key
         } )
     }
 
     return (
         <div ref={ref}
-             className={"border-l-8 hover:bg-zinc-900 py-3 hover:border-blue-600 md:p-0 md:border-0 md:m-0 md:relative w-full h-fit flex flex-row items-center md:w-52 md:h-52 md:rounded-xl md:overflow-hidden cursor-pointer"}
+             className={`w-full flex flex-row items-center ${hovering ? "bg-zinc-200 border-r-8 border-r-blue-600" : ( is_current ? "border-r-4 border-r-emerald-400" : "bg-zinc-900" )} cursor-pointer`}
              onClick={onClick}
         >
             <img
-                className={`ml-3 md:m-0 w-1/4 rounded-full md:rounded-none md:absolute md:w-full md:h-full md:object-scale-down md:object-center transition-all duration-300 ${hovering ? "md:transform scale-110" : "md:grayscale"}`}
+                className={`w-1/4 object-scale-down object-center transition-all duration-300 ${hovering ? "w-2/6" : ( is_current ? "" : "grayscale" )}`}
                 alt={name}
                 src={illustration}
             />
             <div
-                className={`ml-10 md:m-0 md:absolute bottom-0 w-full py-0.5 ${hovering ? "md:bg-blue-600" : "md:bg-green-900"}`}>
-                <h3 className={"text-white font-semibold md:text-center"}>{name}</h3>
+                className={`ml-10 bottom-0 w-full py-0.5`}>
+                <h3 className={`font-semibold text-center ${hovering ? "text-black" : "text-white "}`}>{name}</h3>
             </div>
         </div>
     );

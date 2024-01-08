@@ -1,14 +1,16 @@
 from django.db import models
+from django.utils import timezone
 from django.contrib.auth.models import User
 
 
 class EmployeeState(models.TextChoices):
     ACTIVE = 'Active'
-    INACTIVE = 'Inactive'
-    HOLIDAYS = "In Holidays"
-    MATERNITY = "Maternity"
-    PATERNITY = "Paternity"
-    SICK = "Sick"
+    DISABILITY_LEAVE = "Disability Leave"
+    PARENTAL_LEAVE = "Parental Leave"
+    TEMPORAL_LEAVE = "Temporal Leave"
+    DISMISSAL = "Dismissal"
+    RESIGNATION = "Resignation"
+    MEDICAL_LEAVE = "Medical Leave"
 
 
 class EmployeeRoles(models.TextChoices):
@@ -66,6 +68,13 @@ class Employee(models.Model):
     phone = models.PositiveIntegerField()
     cellphone = models.PositiveIntegerField()
     bachelor_degree = models.CharField(max_length=100)
+    since = models.DateField(default=timezone.now)
+    init_journey = models.TimeField(null=True, blank=True)
+    end_journey = models.TimeField(null=True, blank=True)
+    salary = models.PositiveIntegerField(default=0)
+    bank_account = models.PositiveIntegerField(default=123456789012345678)
+    bank = models.CharField(max_length=100, default="Banamex")
+    clabe = models.PositiveIntegerField(default=123456789012345678)
 
     def __str__(self):
         return self.user.first_name + ' ' + self.user.last_name + ' | ' + self.department + ' : ' + self.role
@@ -109,6 +118,7 @@ class PrivateMedicalInsurance(models.Model):
 class DropType(models.TextChoices):
     RESIGNATION = "Resignation"
     DISMISSAL = "Dismissal"
+    DISABILITY = "Disability"
 
 
 class EmployeeDrop(models.Model):

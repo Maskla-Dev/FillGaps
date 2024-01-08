@@ -22,18 +22,32 @@ class EmployeeSerializer(serializers.ModelSerializer):
 
 
 class EmployeeCardSerializer(serializers.ModelSerializer):
-    first_name = serializers.CharField(source='user.first_name')
-    last_name = serializers.CharField(source='user.last_name')
     photo = serializers.ImageField(source='employeedocuments.photo')
+    employee_id = serializers.IntegerField(source='id')
+    name = serializers.SerializerMethodField()
+    email = serializers.EmailField(source='user.email')
 
     class Meta:
         model = models.Employee
-        fields = ('first_name', 'last_name', 'department', 'photo', 'role')
+        fields = ('employee_id', 'name', 'email', 'department', 'photo', 'role')
 
     def get_photo(self, obj):
         if hasattr(obj, 'employeedocuments') and obj.employeedocuments.photo:
             return obj.employeedocuments.photo.url
         return ''
+
+    def get_name(self, obj):
+        return f"{obj.user.first_name} {obj.user.last_name}"
+
+
+class EmployeeBriefSerializer(EmployeeCardSerializer):
+    state = serializers.CharField()
+    since = serializers.DateField()
+    init_journey = serializers.TimeField()
+    end_journey = serializers.TimeField()
+
+    class Meta(EmployeeCardSerializer.Meta):
+        fields = EmployeeCardSerializer.Meta.fields + ('state', 'since', 'init_journey', 'end_journey')
 
 
 class EmployeeDocumentsCertificatesSerializer(serializers.ModelSerializer):

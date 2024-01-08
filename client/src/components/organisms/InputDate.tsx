@@ -18,7 +18,16 @@ const MONTHS = [
     "December"
 ];
 
-const DatePick = () => {
+
+interface InputDateProps {
+    label: string;
+    value: Date;
+    onChange: ( date: Date ) => void;
+    placeholder: string;
+    options: {};
+}
+
+const InputDate = ( { value, label, onChange, placeholder, options }: InputDateProps ) => {
     const [date, setDate] = useState( new Date() )
     const [open, setOpen] = useState( false )
     const ref = useClickAway( () => setOpen( false ) )
@@ -62,8 +71,7 @@ const DatePick = () => {
             <div
 
                 className={"flex flex-row items-center py-1.5 px-2.5 justify-center w-fit h-fit rounded-full bg-violet-800 cursor-pointer"}
-                onClick={() => setOpen( !open )}
-            >
+                onClick={() => setOpen( !open )}>
                 <CalendarIcon className={"w-6 h-6 text-white mr-2"}/>
                 <span className={"text-sm font-bold text-white mr-2"}>
                     {date ? date.toLocaleDateString() : "DATE"}
@@ -88,4 +96,4 @@ const DatePick = () => {
     )
 }
 
-export default DatePick;
+export default InputDate;

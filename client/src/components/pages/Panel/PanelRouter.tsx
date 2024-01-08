@@ -24,7 +24,7 @@ const PanelRouter = () => {
     switch ( role ) {
         case 'Administrative Manager':
         case 'Administrative':
-            return <AdministrativeRouter/>
+            return <AdministrativeRouter/>;
         case 'IT Manager':
         case 'IT Technical':
         case 'Caretakers Manager':

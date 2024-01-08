@@ -1,13 +1,10 @@
-import FormButton from "../../../../atoms/FormButton.tsx";
-import React from "react";
-import { AppContext } from "../../../../../logic/ActorContexts.ts";
+import React, { useEffect } from "react";
 import PDFUpload from "../../../../molecules/PDFUpload.tsx";
 import StackableInput from "../../../../molecules/StackableInput.tsx";
 import BoldText from "../../../../atoms/BoldText.tsx";
-import { NewEmployeeChildProps } from "./NewEmployeeDocuments.tsx";
+import EditEmployeeNavigator from "../../../../organisms/EditEmployeeNavigator.tsx";
 
-const NewEmployeeMedicalFiles = ( { state }: NewEmployeeChildProps ) => {
-    const actor = AppContext.useActorRef();
+const EditEmployeeMedicalFiles = () => {
     const [Ailments, setAilments] = React.useState<string[]>( [] );
     const [allergies, setAllergies] = React.useState<string[]>( [] );
     const [SSN, setSSN] = React.useState<string>( "" );
@@ -19,10 +16,18 @@ const NewEmployeeMedicalFiles = ( { state }: NewEmployeeChildProps ) => {
     const [externalMedicalInsuranceProof, setExternalMedicalInsuranceProof] = React.useState<string | ArrayBuffer | null>( null );
     const [externalMedicalInsuranceName, setExternalMedicalInsuranceName] = React.useState<string>( "" );
     const [externalMedicalInsuranceNumber, setExternalMedicalInsuranceNumber] = React.useState<string>( "" );
+    const [data, setData] = React.useState<any>( {} );
 
+    useEffect( () => {
+
+    }, [
+        Ailments, allergies, SSN, bloodType, emergencyContactName, emergencyContactNumber,
+        emergencyContactRelationship, hasExternalMedicalInsurance, externalMedicalInsuranceName,
+        setExternalMedicalInsuranceNumber
+    ] );
     return (
-        <div>
-            <h2 className={"font-semibold text-center mt-2 text-white"}>Medical Files</h2>
+        <div className={"h-full"}>
+            <EditEmployeeNavigator data={data}/>
             <StackableInput onChange={
                 ( value ) => {
                     if ( value ) {
@@ -84,28 +89,8 @@ const NewEmployeeMedicalFiles = ( { state }: NewEmployeeChildProps ) => {
                     </> :
                     <></>
             }
-
-            <FormButton text={"Cancel"} onClick={( event: React.MouseEvent<HTMLButtonElement, MouseEvent> ) => {
-                event.preventDefault();
-                actor.send(
-                    { type: "Cancel" }
-                )
-            }}/>
-            <FormButton text={state == "Medical File" ? "Save" : "Next"}
-                        onClick={( event: React.MouseEvent<HTMLButtonElement, MouseEvent> ) => {
-                            event.preventDefault();
-                            if ( state == "Medical File" ) {
-                                actor.send(
-                                    { type: "Save Employee" }
-                                )
-                            } else {
-                                actor.send(
-                                    { type: "Go Next" }
-                                )
-                            }
-                        }}/>
         </div>
     )
 }
 
-export default NewEmployeeMedicalFiles;
+export default EditEmployeeMedicalFiles;

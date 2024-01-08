@@ -2,16 +2,18 @@ import { FormButtonProps } from "./AtomicComponentsProps.ts";
 
 const FormButton = ( {
                          text,
-                         onClick
+                         onClick,
+                         isDisabled
                      }: FormButtonProps ) => {
     return (
         <>
             <button
                 onClick={onClick}
                 className={
-                    "bg-blue-600 text-white rounded-lg py-2 px-3 w-24 h-fit self-center text-center my-2"
+                    ` text-white rounded-lg py-2 px-3 w-24 h-fit self-center text-center my-2 bg-blue-600 disabled:bg-blue-900`
                 }
-                type="submit">
+                type="submit"
+                disabled={isDisabled}>
                 {text}
             </button>
         </>

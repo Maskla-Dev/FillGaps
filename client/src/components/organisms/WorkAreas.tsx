@@ -1,21 +1,23 @@
 import { WorkAreasList } from "../../logic/models/EmployeesManagementModels.ts";
 import { useMemo } from "react";
 import WorkAreaCard from "./WorkAreaCard.tsx";
+import { EmployeeManagementContext } from "../../logic/ActorContexts.ts";
 
 const WorkAreas = () => {
+    const current_work_area = EmployeeManagementContext.useSelector( state => state.context.work_area );
     const cards = useMemo( () => {
         return WorkAreasList.map( ( workArea, index ) => {
             return (
-                <WorkAreaCard {...workArea} key={`WorkAreaCard${index}`}/>
+                <WorkAreaCard {...workArea} key={`WorkAreaCard${index}`}
+                              is_current={current_work_area == workArea.name}/>
             );
         } );
-    }, [] );
+    }, [current_work_area] );
 
     return (
         <>
-            <h1 className={"text-white font-bold text-center leading-10 my-2"}>Work Areas</h1>
             <div
-                className={"w-full h-full overflow-y-auto flex flex-col md:flex-row md:flex-wrap md:justify-between md:px-3"}>
+                className={"w-full h-full overflow-y-auto flex flex-col"}>
                 {cards}
             </div>
         </>

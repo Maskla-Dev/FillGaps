@@ -1,4 +1,4 @@
-import { AppContext } from "../../../../logic/ActorContexts.ts";
+import { AppContext, EmployeeManagementContext } from "../../../../logic/ActorContexts.ts";
 import { useEffect } from "react";
 import AdministrativePanel from "../AdministrativePanel.tsx";
 import EmployeesManagement from "./EmployeesManagement.tsx";
@@ -22,7 +22,11 @@ const AdministrativeRouter = () => {
 
     switch ( state ) {
         case "Employees Management":
-            return <EmployeesManagement/>
+            return (
+                <EmployeeManagementContext.Provider>
+                    <EmployeesManagement/>
+                </EmployeeManagementContext.Provider>
+            );
         case "Main":
             return <AdministrativePanel/>;
     }

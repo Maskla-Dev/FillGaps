@@ -1,18 +1,19 @@
-import { EmployeeBrief, EmployeeData } from "./EmployeesManagementModels.ts";
+import { Employee } from "./EmployeesManagementModels.ts";
 import { ChatChannel } from "./ChatModels.ts";
+import { EmployeeData } from "./EditEmployeeMachineModels";
 
 export interface AccessKeys {
     access: string;
     refresh: string;
 }
 
-export interface UserSessionData extends EmployeeBrief {
+export interface UserSessionData extends Employee {
     tokens: AccessKeys;
 }
 
 export interface EmployeeManagement {
     work_area: string;
-    employee_list: EmployeeBrief[];
+    employee_list: Employee[];
     current_employee: number;
     employee_data: EmployeeData | null;
 }
@@ -98,7 +99,10 @@ export interface AppMachineTypes {
         { type: "Message Deleted" } |
         { type: "Channel Created" } |
         { type: "Channel Deleted" } |
-        { type: "Channel Updated" },
+        { type: "Channel Updated" } |
+        { type: "Edit Success" } |
+        { type: "Edit Error" } |
+        { type: "Edit Employee" },
     input:
         { tokens: AccessKeys } |
         { credentials: UserCredentials };

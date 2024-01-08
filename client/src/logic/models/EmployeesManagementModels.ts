@@ -1,3 +1,5 @@
+import { EmployeeState } from "./EmployeeBriefModels";
+
 export const Departments = ['IT', 'Administrative', 'Operations', 'Collection', 'Research',
     'Education', 'Preservation', 'Security', 'External'] as const;
 export type DepartmentName = typeof Departments[number];
@@ -8,12 +10,10 @@ export const Roles = ['IT Manager', 'IT Technical', 'Caretakers Manager', 'Caret
     'Preservation Manager', 'Restorer', 'Curator', 'Idle'] as const;
 export type RoleName = typeof Roles[number];
 
-export const EmployeeStates = ['Active', 'Inactive', "In Holidays", "Maternity", "Paternity", "Sick"] as const;
-export type EmployeeState = typeof EmployeeStates[number];
-
 export interface WorkAreaData {
     name: DepartmentName;
     illustration: string;
+    is_current?: boolean;
 }
 
 export const WorkAreasList: WorkAreaData[] = [
@@ -55,25 +55,13 @@ export const WorkAreasList: WorkAreaData[] = [
     }
 ];
 
-export interface EmployeeBrief {
+export interface Employee {
     employee_id: number;
     name: string;
     email: string;
     role: string;
     department: string;
     photo: string;
-}
-
-export interface Employee extends EmployeeBrief {
-
-}
-
-export interface EmployeeData {
-
-}
-
-export interface EmployeeReinstate {
-
 }
 
 export interface EmployeeStatus {

@@ -79,7 +79,7 @@ const Calendar = forwardRef<Ref<any>, CalendarProps>( ( {
     }, [calendar_date] );
 
     return (
-        <div className={"w-fit bg-zinc-600 absolute top-full"} ref={ref}>
+        <div className={"w-fit bg-zinc-600 absolute top-full z-30"} ref={ref}>
             <div className={"flex flex-row items-center justify-evenly"}>
                 <div className={"flex flex-row items-center"}>
                     <SelectRoulette options={MONTHS} placeholder={"Month"} value={MONTHS[calendar_date.getMonth()]}
