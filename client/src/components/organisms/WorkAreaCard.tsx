@@ -21,7 +21,7 @@ const WorkAreaCard = ( { name, illustration, is_current }: WorkAreaData ) => {
 
     return (
         <div ref={ref}
-             className={`w-full flex flex-row items-center ${hovering ? "bg-zinc-200 border-r-8 border-r-blue-600" : ( is_current ? "border-r-4 border-r-emerald-400" : "bg-zinc-900" )} cursor-pointer`}
+             className={`w-full flex flex-row items-center ${hovering ? "bg-zinc-200 border-r-8 border-r-blue-600" : ( is_current ? "border-r-4 bg-zinc-400/50 shadow-inner border-r-emerald-400" : "bg-zinc-900" )} cursor-pointer`}
              onClick={onClick}
         >
             <img

@@ -13,9 +13,9 @@ function ProfileInfo() {
     const { name, role } = AppContext.useSelector( state => state.context.user_data );
 
     return (
-        <div className={"flex flex-col px-2 py-4 items-center min-w-fit min-h-fit select-none"}>
+        <div className={"flex flex-row items-center select-none px-4"}>
             <ProfilePhoto/>
-            <div className={"flex flex-col text-center mt-3"}>
+            <div className={"flex flex-col ml-5"}>
                 <BolderText text={name != " " ? name : "No employee name"}/>
                 <BoldText text={role ? role : "No employee position"}/>
             </div>

@@ -23,6 +23,10 @@ const Login = () => {
     return (
         <>
             <div className={"w-screen h-screen bg-blue-600 flex items-center relative"}>
+                {
+                    <ErrorMessage error={state.context.cache.dialog_message}
+                                  show={state.matches( "Logging Error" )}/>
+                }
                 <div
                     className={"w-10/12 flex flex-col items-center bg-white rounded-3xl m-auto p-3 sm:flex-row md:w-[620px] md:p-0 md:overflow-hidden"}>
                     <header className={`md:w-4/5 md:h-72 md:bg-[url("/img/carlo_nicoli.jpg")] md:bg-cover`}>
@@ -31,10 +35,6 @@ const Login = () => {
                             src={Logo} alt="Logo"/>
                         <h1 className={"text-4xl text-blue-600 m-3 md:hidden"}>FRAGMent</h1>
                     </header>
-                    {
-                        <ErrorMessage error={state.context.cache.dialog_message}
-                                      show={state.matches( "Logging Error" )}/>
-                    }
                     <form className={"flex flex-col w-full"}>
                         <h2 className={"hidden sm:inline-block text-3xl text-blue-600 m-3 text-center"}>Iniciar
                             Sesión</h2>

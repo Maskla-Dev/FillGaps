@@ -27,7 +27,7 @@ const SessionStatus = () => {
             onClick={onClick}>
             <ProfilePhoto is_small={true}/>
             <Bars2Icon
-                className={`shadow-2xl shadow-slate-800 w-5 h-5 absolute bottom-0 right-0 rounded-full bg-zinc-600 p-0.5 text-white rounded-full`}/>
+                className={`shadow-2xl shadow-slate-800 w-6 h-6 absolute bottom-0 right-0 rounded-full bg-zinc-600 p-0.5 text-white rounded-full`}/>
         </div>
     )
 }

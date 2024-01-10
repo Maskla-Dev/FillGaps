@@ -10,20 +10,21 @@ interface AppNavProps {
 function AppNav( { is_panel, onButtonClick }: AppNavProps ) {
 
     return (
-        <nav className={"w-full h-fit bg-blue-900 flex px-4 items-center justify-between shadow-black shadow-sm py-2"}>
+        <nav
+            className={"w-full h-24 max-h-24 bg-blue-800 flex px-4 items-center justify-between shadow-black shadow-sm py-2"}>
             <SessionStatus/>
             <div className={"flex flex-row w-fit"}>
                 <button className={"flex flex-col items-center justify-between mx-4 h-full"}
                         onClick={() => {
                             onButtonClick( true );
                         }}>
-                    <HomeIcon className={`w-6 h-6 ${is_panel ? "text-white" : ""}`}/>
+                    <HomeIcon className={`w-8 h-8 ${is_panel ? "text-white" : ""}`}/>
                 </button>
                 <button className={"flex flex-col items-center justify-between mx-2.5 h-full"}
                         onClick={() => {
                             onButtonClick( false );
                         }}>
-                    <ChatBubbleLeftRightIcon className={`w-6 h-6  ${is_panel ? "" : "text-white"}`}/>
+                    <ChatBubbleLeftRightIcon className={`w-8 h-8  ${is_panel ? "" : "text-white"}`}/>
                 </button>
             </div>
         </nav>

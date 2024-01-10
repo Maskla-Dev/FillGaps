@@ -10,7 +10,7 @@ const FormButton = ( {
             <button
                 onClick={onClick}
                 className={
-                    ` text-white rounded-lg py-2 px-3 w-24 h-fit self-center text-center my-2 bg-blue-600 disabled:bg-blue-900`
+                    ` text-white rounded-lg py-2 px-3 h-fit w-fit self-center text-center my-2 bg-blue-600 disabled:bg-blue-900`
                 }
                 type="submit"
                 disabled={isDisabled}>

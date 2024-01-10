@@ -71,7 +71,7 @@ export const getPhoto = async ( access_key: string ) => {
                 Authorization: `Bearer ${access_key}`
             }
         } );
-        image_data = response.data.blob();
+        image_data = response.data.photo
         if ( image_data ) {
             return image_data;
         }

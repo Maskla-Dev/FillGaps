@@ -26,14 +26,13 @@ const SessionCard = () => {
 
     return (
         // @ts-ignore
+
         <div ref={ref}
-             className={`absolute bg-black bg-opacity-50 transition-all w-fit z-20 ${state.match( "Profile Shown" ) ? "animate-grow-width" : "max-w-0"} overflow-x-hidden h-full`}>
-            <div className={`bg-blue-600 h-fit flex flex-col px-6 py-3`}>
-                <ProfileInfo/>
-            </div>
+             className={`absolute shadow-xl top-20 left-4 flex flex-row justify-center bg-zinc-800 rounded-lg transition-all w-fit z-20 ${state.match( "Profile Shown" ) ? "animate-jump-in animate-duration-100 animate-ease-in" : "animate-jump-out animate-duration-100 animate-ease-in"} h-28 overflow-hidden`}>
+            <ProfileInfo/>
             <ArrowLeftOnRectangleIcon
                 onClick={logout}
-                className={"absolute right-2.5 top-3.5 text-slate-200/70 w-8 h-8 cursor-pointer"}/>
+                className={"mt-auto mb-2 mx-2 text-slate-200/70 w-8 h-8 cursor-pointer"}/>
         </div>
     );
 }

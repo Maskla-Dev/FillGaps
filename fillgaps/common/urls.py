@@ -13,7 +13,7 @@ urlpatterns = [
     path('users/directory/<int:employee_id>', views.directory, name='directory'),
     path('users/employee_photo/', views.employee_photo, name='employee_photo'),
     path('hr/', views.get_employee_data, name='hr'),
-    path('hr/new', views.create_employee_data, name='hr_new'),
+    path('hr/employee_edit/', views.edit_employee_data, name='hr_employee_edit'),
     path('hr/employees/<str:work_area>', views.get_employees_by_work_area, name='employees_by_work_area'),
     path('hr/employee_brief/<int:employee_id>', views.get_employee_brief, name='employee_brief'),
 ]

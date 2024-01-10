@@ -1,14 +1,8 @@
-import { useEffect, useMemo, useState } from "react";
-import { AppContext, EmployeeManagementContext } from "../../../../logic/ActorContexts.ts";
+import { useEffect, useMemo } from "react";
+import { EmployeeManagementContext } from "../../../../logic/ActorContexts.ts";
 import {
-    BarsArrowDownIcon,
-    BarsArrowUpIcon,
-    MagnifyingGlassIcon,
+    CursorArrowRaysIcon,
 } from "@heroicons/react/24/solid";
-import SelectInput from "../../../molecules/SelectInput.tsx";
-import ToggleButton from "../../../atoms/ToggleButton.tsx";
-import InputDate from "../../../organisms/InputDate.tsx";
-import { EmployeeState, EmployeeStates } from "../../../../logic/models/EmployeeBriefModels.ts";
 
 const EmployeeList = () => {
     const { employees, work_area } = EmployeeManagementContext.useSelector( state => {
@@ -18,15 +12,11 @@ const EmployeeList = () => {
         }
     } );
     const actor = EmployeeManagementContext.useActorRef();
-    const [upperSort, setUpperSort] = useState( false );
-    const [matchFilter, setMatchFilter] = useState( "" );
-    const [dateFilter, setDateFilter] = useState<Date | null>( null );
-    const [stateFilter, setStateFilter] = useState<null | EmployeeState>( null );
     const employees_cards = useMemo( () => {
         return employees.map( ( employee, index ) => {
             return (
                 <div
-                    className={"flex flex-row items-center justify-between w-full h-12 px-2.5 py-1.5 bg-zinc-800 rounded-lg"}
+                    className={"flex flex-col items-center justify-between px-2.5 m-2 py-2 bg-emerald-50 hover:bg-emerald-400 rounded cursor-pointer"}
                     key={`EmployeeCard${index}`}
                     onClick={() => {
                         console.log( "Want get Employee Brief", employee )
@@ -35,19 +25,16 @@ const EmployeeList = () => {
                             employee_id: employee.employee_id
                         } )
                     }}>
-                    <div className={"flex flex-row items-center"}>
-                        <img src={employee.photo} alt={"Employee Photo"}
-                             className={"w-8 h-8 rounded-full mr-2.5"}/>
-                        <span className={"text-white text-sm font-bold"}>{employee.name}</span>
-                    </div>
-                    <div className={"flex flex-row items-center"}>
-                        <span className={"text-white text-sm font-bold"}>{employee.date}</span>
-                        <span className={"text-white text-sm font-bold ml-2"}>{employee.state}</span>
-                    </div>
+                    <img
+                        src={`${!employee.photo ? "https://coenterprises.com.au/wp-content/uploads/2018/02/male-placeholder-image.jpeg" : `http://127.0.0.1:8000${employee.photo}`}`}
+                        alt={"Employee Photo"}
+                        className={"w-12 h-12 rounded-full"}/>
+                    <span className={"text-center text-green-900 text-sm font-bold"}>{employee.name}</span>
+                    <span className={"text-center text-green-900 text-sm font-bold"}>{employee.role}</span>
                 </div>
             );
         } );
-    }, [upperSort, matchFilter, dateFilter, stateFilter] );
+    }, [] );
 
     useEffect( () => {
         console.log( "Employee List", employees, work_area );
@@ -56,25 +43,18 @@ const EmployeeList = () => {
     if ( employees.length === 0 ) {
         return (
             <>
-                <div>Choose a work area</div>
+                <div className={"w-full h-full flex flex-col items-center justify-center"}>
+                    <h1 className={"text-center text-4xl overflow-y-auto font-extrabold uppercase text-zinc-900/60"}>Choose
+                        work
+                        area</h1>
+                    <CursorArrowRaysIcon className={"w-3/4 text-zinc-900/30"}/>
+                </div>
             </>
         )
     } else {
         return (
-            <div>
-                <div className={"flex flex-row items-center w-full justify-evenly"}>
-                    <InputDate/>
-                    <SelectInput options={EmployeeStates} placeholder={"State"} value={stateFilter}
-                                 onChange={( option: string | null ) => setStateFilter( option )}/>
-                    <div className={"flex flex-row items-center justify-evenly"}>
-                        <ToggleButton first={<BarsArrowDownIcon className={"w-6 h-6 text-white mx-2 cursor-pointer"}/>}
-                                      second={<BarsArrowUpIcon className={"w-6 h-6 text-white mx-2 cursor-pointer"}/>}/>
-                        <MagnifyingGlassIcon className={"w-6 h-6 text-white mx-2 cursor-pointer"}/>
-                    </div>
-                </div>
-                <div className={"flex flex-col"}>
-                    {employees_cards}
-                </div>
+            <div className={"w-full h-full overflow-y-auto grid auto-rows-min grid-cols-4"}>
+                {employees_cards}
             </div>
         )
     }

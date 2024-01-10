@@ -1,5 +1,5 @@
 import Days from "../atoms/Days.tsx";
-import { forwardRef, Ref, useMemo } from "react";
+import { forwardRef, Ref, useEffect, useMemo, useState } from "react";
 import SelectRoulette from "../molecules/SelectRoulette.tsx";
 import NumberRoulette from "../molecules/NumberRoulette.tsx";
 
@@ -29,16 +29,15 @@ const MONTHS = [
 ];
 
 interface CalendarProps {
-    calendar_date: Date;
+    calendar_date: Date | null;
     onDayChange: ( Event: any ) => void;
     onMonthChange: ( Event: any ) => void;
     onYearChange: ( Event: any ) => void;
+    max_year?: number;
+    min_year?: number;
 }
 
-const Calendar = forwardRef<Ref<any>, CalendarProps>( ( {
-                                                            calendar_date, onMonthChange,
-                                                            onDayChange, onYearChange
-                                                        }, ref ) => {
+const Calendar = ( { calendar_date, onMonthChange, onDayChange, onYearChange, min_year, max_year }: CalendarProps ) => {
 
     const DAYS_HEADERS = useMemo( () => {
         return DAYS.map( ( day, index ) => {
@@ -50,10 +49,11 @@ const Calendar = forwardRef<Ref<any>, CalendarProps>( ( {
 
 
     const DAYS_CALENDAR = useMemo( () => {
+        let date = calendar_date == null ? new Date() : calendar_date
         const days = [];
         let days_counter = 0;
-        const tmp_month = new Date( calendar_date.getFullYear(), calendar_date.getMonth(), 1 );
-        const prev_month = new Date( calendar_date.getFullYear(), calendar_date.getMonth() - 1, 1 );
+        const tmp_month = new Date( date.getFullYear(), date.getMonth(), 1 );
+        const prev_month = new Date( date.getFullYear(), date.getMonth() - 1, 1 );
         let day = tmp_month.getDay();
         prev_month.setDate( 0 );
         tmp_month.setDate( 0 );
@@ -65,7 +65,7 @@ const Calendar = forwardRef<Ref<any>, CalendarProps>( ( {
         tmp_month.setDate( 0 );
         for ( let i = 1; i <= tmp_month.getDate(); ++i ) {
             days.push( <Days key={`Day${days_counter++}`} day={i.toString()} isHeader={false}
-                             isSelected={i == calendar_date.getDate()}
+                             isSelected={i == date.getDate()}
                              isCurrentMonth={true}
                              onClick={onDayChange}
             /> );
@@ -79,13 +79,18 @@ const Calendar = forwardRef<Ref<any>, CalendarProps>( ( {
     }, [calendar_date] );
 
     return (
-        <div className={"w-fit bg-zinc-600 absolute top-full z-30"} ref={ref}>
+        <div className={"w-fit bg-zinc-600 absolute top-full -left-full z-30"}>
             <div className={"flex flex-row items-center justify-evenly"}>
                 <div className={"flex flex-row items-center"}>
-                    <SelectRoulette options={MONTHS} placeholder={"Month"} value={MONTHS[calendar_date.getMonth()]}
+                    <SelectRoulette options={MONTHS} placeholder={"Month"}
+                                    value={MONTHS[calendar_date ? calendar_date.getMonth() : new Date().getMonth()]}
                                     onChange={onMonthChange} default_value={MONTHS[new Date().getMonth()]}/>
-                    <NumberRoulette value={calendar_date.getFullYear()} onChange={onYearChange} min={2000}
-                                    max={2023}/>
+                    <SelectRoulette
+                        default_value={( calendar_date ? calendar_date.getFullYear() : new Date().getFullYear() ).toString()}
+                        placeholder={"Year"}
+                        options={new Array( ( max_year ? max_year : 2024 ) - ( min_year ? min_year : 1960 ) ).fill( 0 ).map( ( _, index ) => ( ( ( min_year ? min_year : 1960 ) ) + index + 1 ).toString() )}
+                        value={( calendar_date ? calendar_date.getFullYear() : new Date().getFullYear() ).toString()}
+                        onChange={onYearChange}/>
                 </div>
             </div>
             <div className={"px-2 grid grid-cols-7"}>
@@ -96,6 +101,6 @@ const Calendar = forwardRef<Ref<any>, CalendarProps>( ( {
             </div>
         </div>
     );
-} );
+};
 
 export default Calendar;

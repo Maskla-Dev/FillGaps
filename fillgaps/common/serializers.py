@@ -9,6 +9,7 @@ class CustomTokenSerializer(TokenObtainPairSerializer):
     def get_token(cls, user):
         token = super().get_token(user)
         employee = models.Employee.objects.get(user=user)
+        print(user.first_name + ' ' + user.last_name)
         token['name'] = user.first_name + ' ' + user.last_name
         token['role'] = employee.role
         return token

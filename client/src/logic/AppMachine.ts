@@ -215,7 +215,7 @@ const AppMachine = BaseAppMachine.createMachine( {
                             console.log( event.output )
                             return {
                                 ...context.user_data,
-                                photo: URL.createObjectURL( event.output )
+                                photo: `http://127.0.0.1:8000${event.output}`
                             }
                         }
                     } )

@@ -6,11 +6,11 @@ import EmployeeManagementHome from "./EmployeeManagementHome.tsx";
 
 const EmployeeManagementRouter = () => {
     const state = EmployeeManagementContext.useSelector( state => state.value );
-    const current_employee = EmployeeManagementContext.useSelector( state => state.context.current_employee );
+    const employee_id = EmployeeManagementContext.useSelector( state => state.context.current_employee );
     const key = AppContext.useSelector( state => state.context.user_data.tokens.access );
 
     useEffect( () => {
-        console.log( "Employee Management Router", state )
+        console.log( "Employee Management Router", state, employee_id )
     }, [state] );
 
     switch ( state ) {
@@ -21,14 +21,12 @@ const EmployeeManagementRouter = () => {
         case "Employee Brief Error":
             return <EmployeeManagementHome/>
         case "Edit Employee":
-            return <EditEmployeeContext.Provider options={
-                {
-                    input: {
-                        employee_id: current_employee,
-                        key: key
-                    }
+            return <EditEmployeeContext.Provider options={{
+                input: {
+                    employee_id: employee_id,
+                    key: key
                 }
-            }>
+            }}>
                 <EditEmployee/>;
             </EditEmployeeContext.Provider>
         case "Employee Brief":

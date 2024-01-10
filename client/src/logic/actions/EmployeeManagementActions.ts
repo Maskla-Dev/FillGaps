@@ -42,15 +42,36 @@ export async function getEmployeeData( key: string, employee_id: number ) {
 
 export async function saveEmployeeData( key: string, data: EmployeeData ) {
     // throw "Not implemented yet";
-    return new Promise( ( resolve ) => {
-        setTimeout( () => {
-            console.log( data );
-            resolve( { key, data } );
-        }, 1200 );
-    } );
+    console.log( data );
+    try {
+        const response = await RESTAPIProvider.post( `common/hr/employee_edit/`, data, {
+            headers: {
+                Authorization: `Bearer ${key}`
+            }
+        } );
+        console.log( response.data )
+        return response.data;
+    } catch ( error: any ) {
+        console.log( error );
+        switch ( error.response.status ) {
+            case 404:
+                console.log( "Employee not found" );
+                throw "Employee not found";
+            case 500:
+                console.log( "Internal server error" );
+                throw "Internal server error, please try again later or contact the administrator";
+            case 403:
+                console.log( "Forbidden, user not allowed" );
+                throw "Current user is not allowed to edit employees";
+            default:
+                console.log( "Unknown error" );
+                throw "Unknown error";
+        }
+    }
 }
 
 export async function getEmployeeBrief( key: string, employee_id: number ) {
+    console.log( employee_id )
     try {
         const response = await RESTAPIProvider.get( `common/hr/employee_brief/${employee_id}`, {
             headers: {
@@ -60,6 +81,7 @@ export async function getEmployeeBrief( key: string, employee_id: number ) {
         console.log( response.data )
         return response.data;
     } catch ( error: any ) {
+        console.log( error );
         switch ( error.response.status ) {
             case 404:
                 console.log( "Employee not found" );

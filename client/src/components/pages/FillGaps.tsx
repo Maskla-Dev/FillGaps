@@ -14,7 +14,7 @@ function FillGaps() {
                             setIsPanel( isPanel );
                         }}/>
                 <SessionCard/>
-                <div className={"p-2 h-full"}>
+                <div className={"h-full w-full"}>
                     <FillGapsRouter isPanel={isPanel}/>
                 </div>
             </div>

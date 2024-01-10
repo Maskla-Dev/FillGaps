@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import BoldText from "../../../../atoms/BoldText.tsx";
 import InputDate from "../../../../organisms/InputDate.tsx";
 import SelectInput from "../../../../molecules/SelectInput.tsx";
 import InputText from "../../../../atoms/InputText.tsx";
-import { EditEmployeeChildProps } from "./EditEmployeeDocuments.tsx";
-import EditEmployeeNavigator from "../../../../organisms/EditEmployeeNavigator.tsx";
+import { GeneralData } from "../../../../../logic/models/EditEmployeeMachineModels.ts";
+import { EditEmployeeContext } from "../../../../../logic/ActorContexts.ts";
+import EditEmployeeWrapper from "../../../../organisms/EditEmployeeWrapper.tsx";
+import { UserIcon, EnvelopeIcon, MapPinIcon, PhoneIcon } from "@heroicons/react/24/solid";
 
 const NATIONALITIES: string[] = [
     "Afghan", "Albanian", "Algerian", "American",
@@ -54,55 +55,205 @@ const NATIONALITIES: string[] = [
     "Vincentian", "Wallisian", "Welsh", "Yemeni", "Zambian", "Zimbabwean"
 ];
 
-const EditEmployeePersonalInfo = ( { state, actor }: EditEmployeeChildProps ) => {
-    const [first_name, setFirstName] = useState( "" );
-    const [last_name, setLastName] = useState( "" );
-    const [date, setDate] = useState<Date>();
-    const [nationality, setNationality] = useState<string | null>( null );
-    const [province, setProvince] = useState<string>( "" );
-    const [address, setAddress] = useState<string>( "" );
-    const [phone, setPhone] = useState<string>( "" );
-    const [email, setEmail] = useState<string>( "" );
-    const [zip, setZIP] = useState<string>( "" );
-    const [data, setData] = useState<any>( {} );
+const EditEmployeePersonalInfo = () => {
+    const context = EditEmployeeContext.useSelector( state => state.context );
+    const actor = EditEmployeeContext.useActorRef();
+    const [data, setData] = useState<GeneralData | null>( context.general_data ? context.general_data : null );
+    const [first_name, setFirstName] = useState( () => {
+        if ( context.general_data != null ) {
+            return context.general_data.first_name;
+        }
+        return "";
+    } );
+    const [last_name, setLastName] = useState( () => {
+        if ( context.general_data != null ) {
+            return context.general_data.last_name;
+        }
+        return "";
+    } );
+    const [date, setDate] = useState<Date | null>( () => {
+        if ( context.general_data != null ) {
+            return context.general_data.birthday;
+        }
+        return null;
+    } );
+    const [nationality, setNationality] = useState<string | null>( () => {
+        return "Mexican"
+    } );
+    const [province, setProvince] = useState<string>( () => {
+        if ( context.general_data != null ) {
+            return context.general_data.province;
+        }
+        return "";
+    } );
+    const [phone, setPhone] = useState<string>( () => {
+        if ( context.general_data != null ) {
+            return context.general_data.phone;
+        }
+        return "";
+    } );
+    const [email, setEmail] = useState<string>( () => {
+        if ( context.general_data != null ) {
+            return context.general_data.email;
+        }
+        return "";
+    } );
+    const [zip, setZIP] = useState<string>( () => {
+        if ( context.general_data != null ) {
+            return context.general_data.zip;
+        }
+        return "";
+    } );
+    const [city, setCity] = useState<string>( context.general_data?.city || "" );
+    const [ext, setExt] = useState<number>( context.general_data?.ext || 0 );
+    const [street, setStreet] = useState<string>( context.general_data?.street || "" );
+    const [cellphone, setCellphone] = useState<number>( context.general_data?.cellphone || 0 );
+    const [country, setCountry] = useState<string>( context.general_data?.country || "" );
+    const [int, setInt] = useState<number>( context.general_data?.int || 0 );
+    const [settlement, setSettlement] = useState<string>( context.general_data?.settlement || "" );
 
     useEffect( () => {
+        console.log( "Edit Employee Personal Info", data )
+        setData( {
+            birthday: date,
+            email: email,
+            first_name: first_name,
+            last_name: last_name,
+            nationality: nationality,
+            phone: phone,
+            province: province,
+            zip: zip,
+            city: city,
+            ext: ext,
+            street: street,
+            cellphone: cellphone,
+            country: country,
+            int: int,
+            settlement: settlement
+        } )
+    }, [first_name, last_name, date, nationality, province, phone, email, zip, city, ext, street, cellphone, country, int, settlement] );
 
-    }, [first_name, last_name, date, nationality, province, address, phone, email, zip] );
+    useEffect( () => {
+        console.log( "Personal Info Saved" )
+        actor.send( {
+            type: "Go Personal Info",
+            data: data as GeneralData
+        } )
+    }, [data] );
 
     return (
-        <div className={"h-full"}>
-            <EditEmployeeNavigator data={data}/>
-            <InputText placeholder={"Alberto"} value={first_name} onInput={( e ) => {
-                setFirstName( e.target.value );
-            }} label={<BoldText text={"First Name"}/>} id={"FIRST_NAME"}/>
-            <InputText placeholder={"Alberto"} value={last_name} onInput={( e ) => {
-                setLastName( e.target.value );
-            }} label={<BoldText text={"Last Name"}/>} id={"LAST_NAME"}/>
-            <InputDate/>
-            <SelectInput options={NATIONALITIES} value={nationality} placeholder={"Nationality"} onChange={
-                ( option: string | null ) => {
-                    setNationality( option );
-                }
-            }/>
-            <InputText placeholder={"Alvaro Obregon"} value={province}
-                       onInput={( e: React.FormEvent<HTMLInputElement> ) => {
-                           setProvince( e.target.value );
-                       }} label={<BoldText text={"Province"}/>} id={"PROVINCE"}/>
-            <InputText placeholder={"Calle Olmo"} value={address} onInput={( e: React.FormEvent<HTMLInputElement> ) => {
-                setAddress( e.target.value );
-            }} label={<BoldText text={"Address"}/>} id={"ADDRESS"}/>
-            <InputText placeholder={"555-555-5555"} value={phone} onInput={( e: React.FormEvent<HTMLInputElement> ) => {
-                setPhone( e.target.value );
-            }} label={<BoldText text={"Phone"}/>} id={"PHONE"}/>
-            <InputText placeholder={"Correo@correo.com"} value={email}
-                       onInput={( e: React.FormEvent<HTMLInputElement> ) => {
-                           setEmail( e.target.value );
-                       }} label={<BoldText text={"Email"}/>} id={"EMAIL"}/>
-            <InputText placeholder={"ZIP"} value={zip} onInput={( e: React.FormEvent<HTMLInputElement> ) => {
-                setZIP( e.target.value );
-            }} label={<BoldText text={"ZIP"}/>} id={"ZIP"}/>
-        </div>
+        <EditEmployeeWrapper data={data}>
+            <div className={"font-bold w-fit mx-auto text-blue-700 text-lg mt-8"}>
+                <UserIcon
+                    className={"m-auto inline w-6 h-6 ml-6 mr-4"}/>
+                <span>Basic</span>
+            </div>
+            <div className={"flex flex-row p-5 w-full items-center justify-evenly"}>
+                <div className={"flex flex-col justify-center items-center grow px-6"}>
+                    <InputText placeholder={"Alberto"} value={first_name} onInput={( e ) => {
+                        setFirstName( e.currentTarget.value );
+                    }} label={<span className={"font-semibold text-blue-700 select-none"}>First Name</span>}
+                               id={"FIRST_NAME"}/>
+                    <InputText placeholder={"Fernandez"} value={last_name} onInput={( e ) => {
+                        setLastName( e.currentTarget.value );
+                    }} label={<span className={"font-semibold text-blue-700 select-none"}>Last Name</span>}
+                               id={"LAST_NAME"}/>
+                </div>
+                <div className={"flex flex-col items-center px-10 justify-center"}>
+                    <div className={"my-5"}>
+                        <InputDate value={date} label={"Birthday"} placeholder={"Enter a date"}
+                                   onChange={( date: Date | null ) => {
+                                       setDate( current => {
+                                           if ( date == null ) {
+                                               return null;
+                                           } else {
+                                               current = date;
+                                               return new Date( current.getFullYear(), current.getMonth(), current.getDate() );
+                                           }
+                                       } );
+                                   }} options={{
+                            canBeEmpty: true,
+                            max_year: ( new Date().getFullYear() ) - 18,
+                            min_year: ( new Date().getFullYear() ) - 82
+                        }}/>
+                    </div>
+                    <div className={"my-5"}>
+                        <SelectInput options={NATIONALITIES} default_value={"Mexican"} value={nationality}
+                                     placeholder={"Nationality"} onChange={
+                            ( option: string | null ) => {
+                                setNationality( option );
+                            }
+                        }/>
+                    </div>
+                </div>
+            </div>
+            <div className={"font-bold w-fit mx-auto text-blue-700 text-lg mb-4"}>
+                <PhoneIcon
+                    className={"m-auto inline w-6 h-6 ml-6 mr-4"}/>
+                <span>Contact</span>
+            </div>
+            <div className={"flex flex-row px-10 items-center"}>
+                <div className={"w-full flex flex-row"}>
+                    <InputText placeholder={"emailo@email.com"} value={email}
+                               onInput={( e: React.FormEvent<HTMLInputElement> ) => {
+                                   setEmail( e.currentTarget.value );
+                               }} label={<EnvelopeIcon className={"text-blue-700 w-6 h-6 mr-4"}/>}
+                               id={"EMAIL"}/>
+                </div>
+                <InputText placeholder={"555-555-5555"} value={phone}
+                           onInput={( e: React.FormEvent<HTMLInputElement> ) => {
+                               setPhone( e.currentTarget.value );
+                           }} label={<span className={"font-semibold text-blue-700 select-none mx-4"}>Phone</span>}
+                           id={"PHONE"}/>
+                <InputText placeholder={"555-555-5555"} value={cellphone.toString()}
+                           onInput={( e ) => setCellphone( Number( e.currentTarget.value ) )}
+                           label={<span
+                               className={"font-semibold text-blue-700 select-none mx-4 w-fit"}>Cellphone</span>}
+                           id={"CELLPHONE"}/>
+            </div>
+            <div className={"font-bold w-fit mx-auto text-blue-700 text-lg mt-4"}>
+                <MapPinIcon
+                    className={"m-auto inline w-6 h-6 ml-6 mr-4"}/>
+                <span>Address</span>
+            </div>
+            <div className={"flex flex-row px-10 items-center"}>
+                <InputText placeholder={"State"} value={country} onInput={( e ) => setCountry( e.currentTarget.value )}
+                           label={<span className={"font-semibold text-blue-700 select-none mr-4"}>State</span>}
+                           id={"COUNTRY"}/>
+                <InputText placeholder={"City"} value={city} onInput={( e ) => setCity( e.currentTarget.value )}
+                           label={<span className={"font-semibold text-blue-700 select-none mx-4"}>City</span>}
+                           id={"CITY"}/>
+            </div>
+            <div className={"flex flex-row px-10 items-center"}>
+                <InputText placeholder={"Alvaro Obregon"} value={province}
+                           onInput={( e: React.FormEvent<HTMLInputElement> ) => {
+                               setProvince( e.currentTarget.value );
+                           }} label={<span className={"font-semibold text-blue-700 select-none mr-4"}>Province</span>}
+                           id={"PROVINCE"}/>
+                <InputText placeholder={"Settlement"} value={settlement}
+                           onInput={( e ) => setSettlement( e.currentTarget.value )}
+                           label={<span className={"font-semibold text-blue-700 select-none mx-4"}>Settlement</span>}
+                           id={"SETTLEMENT"}/>
+                <InputText placeholder={"ZIP"} value={zip} onInput={( e: React.FormEvent<HTMLInputElement> ) => {
+                    setZIP( e.currentTarget.value );
+                }} label={<span className={"font-semibold text-blue-700 select-none mx-4"}>ZIP</span>} id={"ZIP"}/>
+            </div>
+            <div className={"flex flex-row px-10 items-center"}>
+                <InputText placeholder={"Street"} value={street} onInput={( e ) => setStreet( e.currentTarget.value )}
+                           label={<span className={"font-semibold text-blue-700 select-none mr-4"}>Street</span>}
+                           id={"STREET"}/>
+                <div className={"w-4/6 flex flex-row"}>
+                    <InputText placeholder={"Ext"} value={ext.toString()}
+                               onInput={( e ) => setExt( Number( e.currentTarget.value ) )}
+                               label={<span className={"font-semibold text-blue-700 select-none mx-4"}>Ext</span>}
+                               id={"EXT"}/>
+                    <InputText placeholder={"Int"} value={int.toString()}
+                               onInput={( e ) => setInt( Number( e.currentTarget.value ) )}
+                               label={<span className={"font-semibold text-blue-700 select-none mx-4 w-fit"}>Int</span>}
+                               id={"INT"}/>
+                </div>
+            </div>
+        </EditEmployeeWrapper>
     )
 }
 

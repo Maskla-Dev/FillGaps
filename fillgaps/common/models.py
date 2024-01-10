@@ -88,6 +88,9 @@ class EmployeeDocuments(models.Model):
     id_proof = models.FileField()
     bachelors_degree_proof = models.FileField()
 
+    def __str__(self):
+        return self.employee.user.first_name + ' ' + self.employee.user.last_name + ' | ' + self.employee.department + ' : ' + self.employee.role
+
 
 class EmployeeDocumentsCertificates(models.Model):
     employee_documents = models.ForeignKey(EmployeeDocuments, on_delete=models.PROTECT)

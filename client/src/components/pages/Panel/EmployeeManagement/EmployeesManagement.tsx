@@ -9,7 +9,7 @@ function isEmployeeManagementMachineInDeep( state_value: string ) {
 }
 
 const EmployeesManagement = () => {
-    const { state: app_state, dialog_message } = AppContext.useSelector( state => {
+    const { state: app_state, dialog_message, current_employee } = AppContext.useSelector( state => {
         let state_value;
         if ( typeof ( state.value ) == "object" ) {
             if ( state.value["FillGaps App"] ) {
@@ -21,6 +21,7 @@ const EmployeesManagement = () => {
         }
         return {
             dialog_message: state.context.cache.dialog_message,
+            current_employee: state.context.user_data.employee_id,
             state: state_value
         }
     } );
@@ -48,23 +49,19 @@ const EmployeesManagement = () => {
 
     return (
         <div
-            className={"flex flex-col w-full h-full rounded-lg bg-zinc-600 bg-opacity-40 overflow-hidden relative"}>
-            <nav className={"flex items-center bg-purple-600 py-2"}>
-                <ArrowLeftCircleIcon
-                    className={`ml-3 w-8 h-8 ${isBackButtonEnabled ? "text-white cursor-pointer" : "text-purple-800 "}`}
-                    onClick={isBackButtonEnabled ? changeState : undefined}/>
-                <div className={"w-full"}>
-                    <h1 className={"text-center font-bold text-white text-xl"}>Employee Management</h1>
-                </div>
-            </nav>
+            className={"flex flex-col w-full h-full bg-opacity-40 overflow-hidden relative"}>
+            <ArrowLeftCircleIcon
+                className={`absolute z-30 left-3 top-3 w-8 h-8 ${isBackButtonEnabled ? "hover:text-purple-600 text-purple-400 cursor-pointer" : "text-zinc-200 "}`}
+                onClick={isBackButtonEnabled ? changeState : undefined}/>
             {
                 isBackButtonEnabled ?
                     ( <div
-                        className={"absolute bottom-2 right-3 flex flex-col py-2 px-4 rounded-2xl items-center w-fit hover:text-zinc-300 hover:bg-violet-800 cursor-pointer bg-zinc-900 justify-center"}
+                        className={"absolute z-10 shadow bottom-2 right-3 flex flex-col py-2 px-4 rounded-2xl items-center w-fit hover:text-zinc-300 hover:bg-violet-800 cursor-pointer bg-purple-100 justify-center"}
                         onClick={() => {
-                            console.log( "New Employee" )
+                            console.log( "New Employee", current_employee )
                             employeeManagementActor.send( {
-                                type: "Edit Employee"
+                                type: "Edit Employee",
+                                employee_id: -1
                             } )
                         }}>
                         <UserPlusIcon className={"w-6 h-6 text-inherit"}/>
@@ -76,6 +73,14 @@ const EmployeesManagement = () => {
             {
                 <ErrorMessage error={dialog_message}
                               show={app_state === "Employee List Error"}/>
+            }
+            {
+                app_state === "Edit Success" ?
+                    <div
+                        className={`absolute z-20 w-3/4 min-h-22 left-0 right-0 rounded-xl bg-green-500 flex flex-col items-center bottom-2 overflow-y-hidden ${show ? "animate-fade-up animate-duration-200 animate-ease-in" : "animate-fade-up animate-duration-200 animate-ease-in animate-reverse"}`}>
+                        <h1 className={"text-white text-lg text-center"}>{error}</h1>
+                    </div> :
+                    <></>
             }
             <div className={"absolute"}>
             </div>

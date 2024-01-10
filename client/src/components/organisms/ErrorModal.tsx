@@ -8,7 +8,7 @@ export interface ErrorModalProps {
 }
 
 const ErrorModal = ( { error_header, error_body, onClose }: ErrorModalProps ) => {
-    const ref = useClickAway( () => {
+    const ref = useClickAway<HTMLDivElement>( () => {
         onClose();
     } );
 
@@ -24,7 +24,8 @@ const ErrorModal = ( { error_header, error_body, onClose }: ErrorModalProps ) =>
     }, [error_body] );
 
     return (
-        <div ref={ref} className={"bg-black bg-opacity-50 absolute w-full h-full flex items-center justify-center px-5"}>
+        <div ref={ref}
+             className={"bg-black bg-opacity-50 absolute w-full h-full flex items-center justify-center px-5"}>
             <div className={"w-full h-fit bg-white rounded-3xl flex flex-col justify-center items-center py-4 px-3"}>
                 <h1 className={"text-2xl text-red-600 font-extrabold"}>Error</h1>
                 <h2 className={"text-lg text-red-600 font-semibold"}>{error_header}</h2>

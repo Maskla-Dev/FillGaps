@@ -16,10 +16,7 @@ const WorkAreas = () => {
 
     return (
         <>
-            <div
-                className={"w-full h-full overflow-y-auto flex flex-col"}>
-                {cards}
-            </div>
+            {cards}
         </>
     );
 }

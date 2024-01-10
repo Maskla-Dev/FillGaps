@@ -59,13 +59,13 @@ const EditEmployeeRouter = () => {
         case "Save Employee Data":
             return <Loader/>;
         case "Personal Info":
-            return <EditEmployeePersonalInfo actor={actorRef} state={state}/>;
+            return <EditEmployeePersonalInfo/>;
         case "Documents":
-            return <EditEmployeeDocuments actor={actorRef} state={state}/>;
+            return <EditEmployeeDocuments/>;
         case "Worker Data":
-            return <EditEmployeeEmployeeData actor={actorRef} state={state}/>;
+            return <EditEmployeeEmployeeData/>;
         case "Medical File":
-            return <EditEmployeeMedicalFiles actor={actorRef} state={state}/>;
+            return <EditEmployeeMedicalFiles/>;
         default:
             return <div>Not Found</div>;
     }

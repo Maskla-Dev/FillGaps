@@ -13,7 +13,7 @@ export interface SelectInputProps {
 
 const SelectInput = ( { options, placeholder, onChange, value, default_value }: SelectInputProps ) => {
     const [open, setOpen] = useState( false );
-    const ref = useClickAway( () => setOpen( false ) );
+    const ref = useClickAway<HTMLDivElement>( () => setOpen( false ) );
 
     const onSelectOption = ( event: any ) => {
         onChange( event.currentTarget.id );
@@ -38,9 +38,9 @@ const SelectInput = ( { options, placeholder, onChange, value, default_value }: 
                 <ChevronDownIcon
                     className={`w-6 h-6 text-white mr-1 transition ease-in ${open ? "rotate-180" : "rotate-0"}`}/>
                 <span
-                    className={"text-white text-sm uppercase font-bold"}>{value ? value : placeholder}</span>
+                    className={"text-white text-sm uppercase font-bold select-none"}>{value ? value : placeholder}</span>
                 <div
-                    className={`max-h-52 overflow-y-auto absolute top-full ${open ? "w-fit h-fit" : "w-0 h-0"} overflow-y-auto flex flex-col bg-zinc-800 rounded-lg`}>
+                    className={`z-30 max-h-52 overflow-y-auto absolute top-full ${open ? "w-fit h-fit" : "w-0 h-0"} overflow-y-auto flex flex-col bg-zinc-800 rounded-lg select-none`}>
                     {options_list}
                 </div>
             </div>
