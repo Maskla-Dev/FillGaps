@@ -3,10 +3,10 @@ import { ChatChannel, Employee } from "../../utils/services/chat/Models.ts";
 import EmployeeCard from "../molecules/EmployeeCard.tsx";
 import React, { ReactNode, useContext, useEffect, useMemo, useState } from "react";
 import { ChatContext } from "../../utils/hooks/ChatProvider.tsx";
-import { send } from "vite";
 import { CreateChannelRequest } from "../../utils/services/chat/ChatIO.ts";
 import { useSelector } from "react-redux";
 import { RootState } from "../../utils/appstate/store.ts";
+import InputText from "../atoms/InputText.tsx";
 
 export interface SelectableEmployee extends Employee {
     is_selected: boolean;
@@ -75,17 +75,14 @@ function NewChannelManager() {
 
     return (
         <div className={"w-full h-full overflow-y-scroll px-5"}>
-            <h1 className={""}>New Channel in group</h1>
+            <h1 className={"text-center my-5 font-bold text-lg capitalize"}>New Channel in group</h1>
             <div className={"flex flex-col w-full h-fit flex-grow"}>
-                <label className={"flex"} htmlFor="channel_name">
-                    <p>Channel Name</p>
-                    <input id={"channel_name"} value={channel_name} onChange={e => setChannelName( e.target.value )}/>
-                </label>
-                <label className={"flex items-start"} htmlFor={"chat_description"}>
-                    <p>Description</p>
-                    <textarea className={""} value={channel_description}
-                              onChange={event => setChannelDescription( event.target.value )}/>
-                </label>
+                <InputText placeholder={"Channel Name"} value={channel_name}
+                           onInput={e => setChannelName( e.target.value )} label={<p> Channel Name</p>}
+                           id={"channel_name"}/>
+                <InputText placeholder={"Channel Description"} value={channel_description} onInput={e => {
+                    setChannelDescription( e.target.value )
+                }} label={<p>Description</p>} id={"chat_description"}/>
                 <button className={"text-white bg-emerald-500 rounded-2xl mt-2"} type={"submit"}
                         onClick={submit}>Create
                 </button>
@@ -94,7 +91,8 @@ function NewChannelManager() {
                 </div>
             </div>
         </div>
-    );
+    )
+        ;
 }
 
 export default NewChannelManager;

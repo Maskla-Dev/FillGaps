@@ -4,7 +4,7 @@ import DBChatService from "../services/chat/DBChatService.ts";
 import { ChatChannel, ChatMessage } from "../services/chat/Models.ts";
 
 export interface ChatArgs {
-    children: React.ReactNode[];
+    children: React.ReactNode[] | React.ReactNode;
     employee_id: number;
 }
 
@@ -27,13 +27,14 @@ function ChatProvider( {
     const log = useRef( [] as string[] );
 
 
-    useEffect( () => {
+    const connect = () => {
         const socket = new WebSocket( `ws://127.0.0.1:8000/ws/chat/${employee_id}` );
         socket.onopen = ( event ) => {
             console.log( event )
             setIsOnline( true );
             console.log( "Websocket opened" )
             console.log( db.current )
+            // Attempt to reconnect after 1 second
         }
         socket.onmessage = ( event ) => {
             const messageSentHandler = ( receipt: ChatMessage ) => {
@@ -136,6 +137,7 @@ function ChatProvider( {
             console.log( event );
             setIsOnline( false )
             console.log( "Websocket closed" )
+            setTimeout( connect, 1000 );
         }
 
         // @ts-ignore
@@ -143,6 +145,16 @@ function ChatProvider( {
         return () => {
             socket.close();
         }
+    }
+
+    useEffect( () => {
+        if ( !is_online ) {
+            connect();
+        }
+        return () => {
+            // @ts-ignore
+            ws.current?.close();
+        };
     }, [] );
 
     // @ts-ignore

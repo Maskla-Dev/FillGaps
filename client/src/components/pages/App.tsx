@@ -1,7 +1,7 @@
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import SessionInfo from "../molecules/SessionInfo.tsx";
 import AppNav from "../molecules/AppNav.tsx";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ArrowLeftOnRectangleIcon } from "@heroicons/react/24/outline";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../utils/appstate/store.ts";
@@ -12,6 +12,7 @@ function App() {
     const session = useSelector( ( state: RootState ) => state.session_state.session );
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const [isPanel, setIsPanel] = useState( false );
 
     useEffect( () => {
         if ( !session ) {
@@ -24,16 +25,12 @@ function App() {
         return (
             <>
                 <ChatProvider employee_id={session.user_id}>
-                    <header
-                        className={"w-full h-fit bg-blue-600 flex items-center justify-between pr-2 shadow-black shadow-sm"}>
-                        <SessionInfo image={session.photo} name={session.name} position={session.role}/>
-                        <ArrowLeftOnRectangleIcon className={"h-8 w-8 text-white"} onClick={() => {
-                            dispatch( logout() );
-                            navigate( "/login" );
+                    <div className={"w-full h-full flex flex-col"}>
+                        <AppNav is_panel={isPanel} onButtonClick={( isPanel ) => {
+                            setIsPanel( isPanel );
                         }}/>
-                    </header>
-                    <AppNav/>
-                    <Outlet/>
+                        <Outlet/>
+                    </div>
                 </ChatProvider>
             </>
         )

@@ -1,19 +1,33 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
+import { ChatBubbleLeftRightIcon, HomeIcon } from "@heroicons/react/24/solid";
+import SessionStatus from "./SessionStatus.tsx";
 
-function AppNav() {
+interface AppNavProps {
+    onButtonClick: ( isPanel: boolean ) => void;
+    is_panel: boolean;
+}
+
+function AppNav( { is_panel, onButtonClick }: AppNavProps ) {
     const location = useLocation();
-    const [is_panel, setIsPanel] = useState( !location.pathname.startsWith( "/chat" ) );
 
 
     return (
-        <nav className={"flex justify-center w-full px-5 my-2"}>
-            <Link to={""}
-                  onClick={() => setIsPanel( true )}
-                  className={`basis-2/4 rounded-l-full border-l-2 border-t-2 border-b-2  block px-3 py-2 text-center ${!is_panel ? "border-blue-300 text-blue-300" : "bg-blue-600 text-blue-50 border-blue-600"}`}>Panel</Link>
-            <Link to={"/chat"}
-                  onClick={() => setIsPanel( false )}
-                  className={`basis-2/4 rounded-r-full border-r-2 border-t-2 border-b-2  block px-3 py-2 text-center ${is_panel ? "border-blue-300 text-blue-300" : "bg-blue-600 text-blue-50 border-blue-600"}`}>Chat</Link>
+        <nav
+            className={"w-full h-24 max-h-24 bg-blue-800 flex px-4 items-center justify-between shadow-black shadow-sm py-2"}>
+            <SessionStatus/>
+            <div className={"flex flex-row w-fit"}>
+                <Link to={""} className={"flex flex-col items-center justify-between mx-4 h-full"}>
+                    <HomeIcon className={`w-8 h-8 ${is_panel ? "text-white" : ""}`} onClick={() => {
+                        onButtonClick( true );
+                    }}/>
+                </Link>
+                <Link to={"/chat"} className={"flex flex-col items-center justify-between mx-2.5 h-full"}>
+                    <ChatBubbleLeftRightIcon className={`w-8 h-8  ${is_panel ? "" : "text-white"}`} onClick={() => {
+                        onButtonClick( false );
+                    }}/>
+                </Link>
+            </div>
         </nav>
     );
 }
